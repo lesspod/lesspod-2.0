@@ -13,7 +13,7 @@ $ npm run dev
 
 # build for production and launch server
 $ npm run build
-$ npm run sls:offline  // running serverless in offline mode
+$ npm run sls:local  // running serverless in offline mode
 
 # generate static project
 $ npm run generate
