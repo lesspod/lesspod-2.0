@@ -1,70 +1,51 @@
 <template>
-  <section class="container">
-    <div>
-      <logo/>
-      <h1 class="title">
-        lesspod-2.0
-      </h1>
-      <h2 class="subtitle">
-        Lesspod-2.0 built with vue/nuxt/serverless
-      </h2>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          class="button--green">Documentation</a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          class="button--grey">GitHub</a>
-      </div>
-    </div>
-  </section>
+  <div class="page-index">
+    <!-- <h1>Nuxt Serverless Template {{ this.version }}</h1> -->
+    <h1>All Blog Posts </h1>
+    <!-- <p>{{ message }}</p> -->
+    <li v-for="post in posts">
+      <a v-bind:href="'/post/'+ post._id">{{ post.title }}</a>
+    </li><br><br><br>
+    <a href="/post/new">New Post</a>
+<!--     <nuxt-link to="/typescript">typescript</nuxt-link>
+    <nuxt-link to="/nuxt">nuxt</nuxt-link> -->
+  </div>
 </template>
 
-<script>
-import Logo from '~/components/Logo.vue'
-
-export default {
-  components: {
-    Logo
+<script lang="ts">
+import { Component, Vue } from 'nuxt-property-decorator'
+import { State } from 'vuex-class'
+@Component
+export default class PageIndex extends Vue {
+  /**
+   * You can fetch data from remote server with 'asyncData()' method
+   */
+  private async asyncData() {
+    return {
+      message: 'Say Hello to Node.js 8.10 in AWS Lambda and Nuxt 2.0',
+      posts: [
+        {_id: '1', title: 'post one'}, 
+        {_id: '2', title: 'post two'}, 
+        {_id: '3', title: 'post three'}
+      ]
+    }
   }
+  /**
+   * overide tags in <head> with 'head()' method
+   */
+  private head() {
+    return {
+      title: 'Hello, Nuxt Serverless Template',
+    }
+  }
+  @State((state) => state.version) private version: string
 }
 </script>
-<style>
-/* Sample `apply` at-rules with Tailwind CSS
-.container {
-  @apply min-h-screen flex justify-center items-center text-center mx-auto;
-}
-*/
 
-.container {
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-
-.title {
-  font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
-    'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
-}
-
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
-}
-
-.links {
-  padding-top: 15px;
+<style lang="scss">
+.page-index {
+  h1 {
+    color: #087f5b;
+  }
 }
 </style>
