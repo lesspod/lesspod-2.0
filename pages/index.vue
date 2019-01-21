@@ -1,21 +1,75 @@
 <template>
-  <section class="container">
-    <div class="page-index">
+
+  <div>
+    <nav class="font-sans flex flex-col text-center content-center sm:flex-row sm:text-left sm:justify-between py-2 px-6 bg-white border-b border-grey sm:items-baseline w-full">
+      <div class="mb-2 sm:mb-0 flex flex-row xs:flex-col">
+        <div class="h-10 w-10 self-center mr-2">
+          <img 
+            class="h-10 w-10 self-center" 
+            src="../static/icon.png" >
+        </div>
+        <div class="self-start xs:self-center">
+          <a 
+            href="./index.html" 
+            class="text-2xl no-underline text-grey-darkest hover:text-blue-dark font-sans font-bold">Lesspod</a><br>
+          <span class="text-xs text-grey-dark">Serverless CMS</span>
+        </div>
+      </div>
+
+      <div class="mb-2 sm:mb-0 flex flex-row xs:flex-col">
+        <a 
+          href="./index.html" 
+          class="text-md no-underline text-black hover:text-blue-dark ml-2 px-1">Home</a>
+        <div class="dropdown text-md no-underline text-black hover:text-blue-dark ml-2 px-1">
+          <a 
+            href="#" 
+            class="appearance-none flex items-center inline-block">New
+            <svg 
+              class="h-4 w-4 ml-1" 
+              xmlns="http://www.w3.org/2000/svg" 
+              viewBox="0 0 20 20">
+          <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /></svg></a>
+          <div class="dropdown-content bg-white shadow rounded border overflow-hidden">
+            <a 
+              href="/post/new" 
+              class="no-underline block px-4 py-3 border-b text-grey-darkest bg-white hover:text-white hover:bg-blue">Post</a>
+            <a 
+              href="/menu/new" 
+              class="no-underline block px-4 py-3 border-b text-grey-darkest bg-white hover:text-white hover:bg-blue">Menu</a>  
+          </div>
+        </div>  
+        <a 
+          href="./components.html" 
+          class="text-md no-underline text-grey-darker hover:text-blue-dark ml-2 px-1">Dashboard</a>
+        <!-- <a href="/two" class="text-lg no-underline text-grey-darkest hover:text-blue-dark ml-2">About Us</a> -->
+        <a 
+          href="./about.html" 
+          class="text-md no-underline text-grey-darker hover:text-blue-dark ml-2 px-1">First Last</a>
+      <!-- </div> -->
+
+      </div>
+    </nav>
+    <div class="page-index ml-10 py-20">
       <!-- <h1>Nuxt Serverless Template {{ this.version }}</h1> -->
-      <h1>All Blog Posts </h1>
+      <h1>All Blog Posts </h1><br>
       <!-- <p>{{ message }}</p> -->
       <li 
         v-for="post in posts" 
         :key="post._id">
         <a :href="'/post/'+ post._id">{{ post.title }}</a>
-      </li><br><br><br>
-      <button class="bg-blue hover:bg-blue-dark text-white font-bold py-2 px-4 rounded-full">
+      </li><br>
+      <button class="bg-blue hover:bg-blue-dark text-white font-bold py-2 px-4 rounded">
         <a 
-          href="/post/new" 
-          style="text-decoration: none;">New Post</a>
-      </button>
+          href="/post/new">New Post</a>
+      </button><br><br>
     </div>
-  </section>
+
+    <footer class="w-full text-center border-t border-grey p-4">
+      <p>
+        Made with ❤️ by Lesspod Team
+      </p>
+    </footer>
+  </div>
 </template>
 
 <script>
@@ -45,34 +99,16 @@ export default {
   @apply min-h-screen flex justify-center items-center text-center mx-auto;
 }
 */
-
-.container {
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+a:-webkit-any-link {
+  text-decoration: none !important;
+  color: inherit;
 }
-
-.title {
-  font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
-    'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+.dropdown-content {
+  display: none;
+  position: absolute;
+  z-index: 1;
+}
+.dropdown:hover .dropdown-content {
   display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
-}
-
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
-}
-
-.links {
-  padding-top: 15px;
 }
 </style>
