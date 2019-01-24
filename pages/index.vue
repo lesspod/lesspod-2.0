@@ -12,6 +12,7 @@
       </li><br>
       <button class="bg-blue hover:bg-blue-dark text-white font-bold py-2 px-4 rounded">
         <a 
+          class="no-underline text-white" 
           href="/post/new">New Post</a>
       </button><br><br>
     </div>
@@ -22,7 +23,7 @@
 
 <script>
 import Logo from '~/components/Logo.vue'
-import Navbar from '~/components/Navbar.vue'
+import Navbar from '~/components/NavbarResponsive.vue'
 import Footer from '~/components/Footer.vue'
 
 export default {
@@ -51,8 +52,4 @@ export default {
   @apply min-h-screen flex justify-center items-center text-center mx-auto;
 }
 */
-a:-webkit-any-link {
-  text-decoration: none !important;
-  color: inherit;
-}
 </style>
