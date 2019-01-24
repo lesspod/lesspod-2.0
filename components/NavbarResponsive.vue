@@ -21,21 +21,24 @@
         </div>
         <div 
           id="main-nav" 
-          class="w-full flex-grow sm:flex items-center sm:w-auto hidden">
+          class="w-full flex-grow sm:flex self-center items-center sm:w-auto hidden">
           <div class="text-sm sm:flex-grow">
             <a 
               href="#" 
-              class="no-underline font-bold block mt-4 sm:inline-block sm:mt-0 text-grey-lighter hover:text-grey-light mr-4">
+              class="no-underline font-bold block mt-4 sm:inline-block sm:mt-0 text-grey-lighter hover:text-grey-light mr-4"
+              @click="navClicked('Link One')">
               Link One
             </a>
             <a 
               href="#" 
-              class="no-underline font-bold block mt-4 sm:inline-block sm:mt-0 text-grey-lighter hover:text-grey-light mr-4">
+              class="no-underline font-bold block mt-4 sm:inline-block sm:mt-0 text-grey-lighter hover:text-grey-light mr-4"
+              @click="navClicked('Link Two')">
               Link Two
             </a>
             <a 
               href="#" 
-              class="no-underline font-bold block mt-4 sm:inline-block sm:mt-0 text-grey-lighter hover:text-grey-light mr-4">
+              class="no-underline font-bold block mt-4 sm:inline-block sm:mt-0 text-grey-lighter hover:text-grey-light mr-4"
+              @click="navClicked('Link Three')">
               Link Three
 <!--               <svg 
                 class="self-center"
@@ -92,6 +95,11 @@ export default {
           $target.classList.toggle('hidden')
         })
       })
+    }
+  },
+  methods: {
+    navClicked: function(msg) {
+      alert(msg)
     }
   }
 }
