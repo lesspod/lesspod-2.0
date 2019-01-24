@@ -14,7 +14,52 @@
         <a 
           class="no-underline text-white" 
           href="/post/new">New Post</a>
-      </button><br><br>
+      </button><br><br><br><br>
+      <form class="w-full max-w-xs">
+        <div class="md:flex md:items-center mb-6">
+          <div class="md:w-1/3">
+            <label 
+              class="block text-grey font-bold md:text-right mb-1 md:mb-0 pr-4" 
+              for="inline-menu-name">
+              Menu Name
+            </label>
+          </div>
+          <div class="md:w-2/3">
+            <input 
+              id="inline-full-name" 
+              class="bg-grey-lighter appearance-none border-2 border-grey-lighter rounded w-full py-2 px-4 text-grey-darker leading-tight focus:outline-none focus:bg-white focus:border-green" 
+              type="text" 
+              value="Menu5">
+          </div>
+        </div>
+        <div class="md:flex md:items-center mb-6">
+          <div class="md:w-1/3">
+            <label 
+              class="block text-grey font-bold md:text-right mb-1 md:mb-0 pr-4" 
+              for="inline-username">
+              Under Menu
+            </label>
+          </div>
+          <div class="md:w-2/3">
+            <input 
+              id="inline-under-menu" 
+              class="bg-grey-lighter appearance-none border-2 border-grey-lighter rounded w-full py-2 px-4 text-grey-darker leading-tight focus:outline-none focus:bg-white focus:border-green" 
+              type="text" 
+              value="Menu1">
+          </div>
+        </div>
+        If the "Under Menu" is blank, the menu will be added on the top level.<br><br>
+        <div class="md:flex md:items-center">
+          <div class="md:w-1/3"/>
+          <div class="md:w-2/3">
+            <button 
+              class="shadow bg-green hover:bg-green-light focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" 
+              type="button">
+              Add Menu
+            </button>
+          </div>
+        </div>
+      </form>
     </div>
     <Footer/>
     
