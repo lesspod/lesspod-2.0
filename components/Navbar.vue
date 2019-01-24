@@ -14,11 +14,11 @@
       </div>
     </div>
 
-    <div class="mb-2 sm:mb-0 flex text-lg flex-row xs:flex-col">
+    <div class="mb-2 sm:mb-0 self-center flex text-lg flex-row xs:flex-col">
       <a 
         href="./index.html" 
-        class="text-md no-underline text-black hover:text-blue-dark ml-2 px-1">Home</a>
-      <div class="dropdown text-md no-underline text-black hover:text-blue-dark ml-2 px-1">
+        class="text-md no-underline text-black hover:text-blue-dark ml-2 px-2 py-2">Home</a>
+      <div class="dropdown text-md no-underline text-black hover:text-blue-dark ml-2 px-2 py-2">
         <a 
           href="#" 
           class="appearance-none flex items-center inline-block">New
@@ -38,8 +38,8 @@
       </div>  
       <a 
         href="#" 
-        class="text-md no-underline text-grey-darker hover:text-blue-dark ml-2 px-1">Dashboard</a>
-      <div class="dropdown text-md no-underline text-black hover:text-blue-dark ml-2 px-1">
+        class="text-md no-underline text-grey-darker hover:text-blue-dark ml-2 px-2 py-2">Dashboard</a>
+      <div class="dropdown text-md no-underline text-black hover:text-blue-dark ml-2 px-2 py-2">
         <a 
           href="#" 
           class="appearance-none flex items-center inline-block">First Last
@@ -60,6 +60,9 @@
             class="no-underline block px-4 py-3 border-b text-grey-darkest bg-white hover:text-white hover:bg-blue">Signout</a>    
         </div>
       </div>  
+      <a 
+        href="https://github.com/lesspod/lesspod-2.0" 
+        class="bg-transparent hover:bg-black text-blue-dark font-semibold hover:text-white  ml-2 px-2 py-2 mt-auto border-2 border-black hover:border-transparent rounded">Github</a>
     </div>
   </nav>
 </template>
