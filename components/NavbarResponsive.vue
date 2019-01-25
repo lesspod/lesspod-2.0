@@ -62,8 +62,9 @@
           </div>
           <div>
             <a 
-              href="#" 
-              class="no-underline inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal hover:bg-white lg:mt-0">Download
+              href="https://github.com/lesspod/lesspod-2.0" 
+              target="_blank" 
+              class="no-underline inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal hover:bg-white lg:mt-0">Github
        
             </a>
           </div>
