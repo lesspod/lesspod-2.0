@@ -1,9 +1,6 @@
 <template>
-  <div>
-    <nuxt/>
-  </div>
+  <div><nuxt /></div>
 </template>
-
 <style>
 html {
   font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI',

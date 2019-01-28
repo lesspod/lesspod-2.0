@@ -1,22 +1,20 @@
 <template>
   <section class="container">
     <div>
-      <logo/>
-      <h1 class="title">
-        lesspod-2.0
-      </h1>
-      <h2 class="subtitle">
-        Lesspod-2.0 built with vue/nuxt/serverless
-      </h2>
+      <logo />
+      <h1 class="title">lesspod-2.0</h1>
+      <h2 class="subtitle">Lesspod-2.0 built with vue/nuxt/serverless</h2>
       <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          class="button--green">Documentation</a>
+        <a href="https://nuxtjs.org/" target="_blank" class="button--green">
+          Documentation
+        </a>
         <a
           href="https://github.com/nuxt/nuxt.js"
           target="_blank"
-          class="button--grey">GitHub</a>
+          class="button--grey"
+        >
+          GitHub
+        </a>
       </div>
     </div>
   </section>
