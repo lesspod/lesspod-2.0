@@ -1,8 +1,8 @@
 <template>
   <div>
     <b-navbar type="light" variant="light" toggleable>
-      <b-navbar-toggle target="nav_dropdown_collapse"></b-navbar-toggle>
       <b-navbar-brand href="/">Lesspod</b-navbar-brand>
+      <b-navbar-toggle target="nav_dropdown_collapse"></b-navbar-toggle>
       <b-collapse is-nav id="nav_dropdown_collapse">
         <b-navbar-nav>
           <b-nav-item href="/">Home</b-nav-item>
