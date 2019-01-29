@@ -3,14 +3,33 @@
     <Navbar />
     <div class="container">
       <h1 class="w-full text-center pt-1 pb-1">All Blog Posts</h1>
-      <div class="w-full flex flex-wrap overflow-hidden items-center">
-        <br /><br />
-        <div v-for="post in posts" :key="post._id" class="">
-          <a :href="'/post/' + post._id" class="no-underline">
-            {{ post.title }}
-          </a>
-        </div>
-      </div>
+      <b-card-group deck class="mb-3">
+        <b-card
+          v-for="post in posts"
+          :key="post._id"
+          :title="post.title"
+          img-src="https://picsum.photos/600/300/?image=25"
+          img-alt="Image"
+          img-top
+          tag="article"
+          style="max-width: 20rem;"
+          class="mb-2"
+        >
+          <p class="card-text">
+            Some quick example text to build on the card title and make up the
+            bulk of the card's content.
+          </p>
+          <b-button href="#" variant="primary">Go somewhere</b-button>
+        </b-card>
+        <!-- <div class="w-full flex flex-wrap overflow-hidden items-center">
+          <br /><br />
+          <div v-for="post in posts" :key="post._id" class="">
+            <a :href="'/post/' + post._id" class="no-underline">
+              {{ post.title }}
+            </a>
+          </div>
+        </div> -->
+      </b-card-group>
     </div>
     <div class="page-index ml-10 py-20">
       <!-- <h1>Nuxt Serverless Template {{ this.version }}</h1> -->
