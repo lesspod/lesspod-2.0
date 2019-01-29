@@ -26,7 +26,6 @@
               v-model="title"
               class=""
               type="text"
-              value="Some Random Thought"
             />
           </div>
         </div>
@@ -46,7 +45,6 @@
           </div>
         </div>
         <div class="md:flex md:items-center">
-          <div class="md:w-1/3" />
           <div class="md:w-2/3">
             <button class="btn btn-primary" type="button" @click="addPost">
               Add Post
@@ -69,6 +67,7 @@ export default {
   },
   methods: {
     addPost: function() {
+      console.log('addPost called')
       alert(
         'post added with title: ' + this.title + ' content: ' + this.content
       )
@@ -82,7 +81,7 @@ export default {
     // as the name said, it can be async
     // Also, the returned object will be merged with your data object
     return {
-      title: '',
+      title: 'aaa bbbb',
       content: '',
       posts: [
         { _id: '1', title: 'post one' },
