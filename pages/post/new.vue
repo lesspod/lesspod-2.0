@@ -1,7 +1,7 @@
 <template>
   <div>
     <Navbar />
-    <div class="page-index ml-10 py-20">
+    <div class="container">
       <!-- <h1>Nuxt Serverless Template {{ this.version }}</h1> -->
       <h1>All Blog Posts</h1>
       <br />
@@ -10,7 +10,6 @@
         <a :href="'/post/' + post._id"> {{ post.title }} </a>
       </li>
       <br />
-      <br /><br />
       <form class="w-full max-w-xs">
         <div class="md:flex md:items-center mb-6">
           <div class="md:w-1/3">
@@ -25,18 +24,15 @@
             <input
               id="inline-post-title"
               v-model="title"
-              class="bg-grey-lighter appearance-none border-2 border-grey-lighter rounded w-full py-2 px-4 text-grey-darker leading-tight focus:outline-none focus:bg-white focus:border-green"
+              class=""
               type="text"
               value="Some Random Thought"
             />
           </div>
         </div>
-        <div class="md:flex md:items-center mb-6">
-          <div class="md:w-1/3">
-            <label
-              class="block text-grey font-bold md:text-right mb-1 md:mb-0 pr-4"
-              for="inline-username"
-            >
+        <div class="">
+          <div>
+            <label class="" for="inline-username">
               Content
             </label>
           </div>
@@ -44,7 +40,7 @@
             <textarea
               id="inline-post-content"
               v-model="content"
-              class="bg-grey-lighter appearance-none border-2 border-grey-lighter rounded w-full py-2 px-4 text-grey-darker leading-tight focus:outline-none focus:bg-white focus:border-green"
+              class=""
               type="text"
             />
           </div>
@@ -52,11 +48,7 @@
         <div class="md:flex md:items-center">
           <div class="md:w-1/3" />
           <div class="md:w-2/3">
-            <button
-              class="shadow bg-green hover:bg-green-light focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
-              type="button"
-              @click="addPost"
-            >
+            <button class="btn btn-primary" type="button" @click="addPost">
               Add Post
             </button>
           </div>
@@ -68,7 +60,7 @@
 </template>
 <style></style>
 <script type="text/javascript">
-import Navbar from '~/components/NavbarResponsive.vue'
+import Navbar from '~/components/Navbar.vue'
 import Footer from '~/components/Footer.vue'
 export default {
   components: {

@@ -1,15 +1,11 @@
 <template>
   <div>
     <Navbar />
-    <div class="container mx-2">
-      <h1 class="self-center">All Blog Posts</h1>
-      <div class="flex flex-wrap overflow-hidden self-center ">
+    <div class="container">
+      <h1 class="w-full text-center pt-1 pb-1">All Blog Posts</h1>
+      <div class="w-full flex flex-wrap overflow-hidden items-center">
         <br /><br />
-        <div
-          v-for="post in posts"
-          :key="post._id"
-          class="my-1 px-1 w-full overflow-hidden sm:w-full md:w-1/3 lg:my-1 lg:px-1 lg:w-1/3 xl:my-2 xl:px-2 xl:w-1/4 border border-grey rounded mx-1 h-32"
-        >
+        <div v-for="post in posts" :key="post._id" class="">
           <a :href="'/post/' + post._id" class="no-underline">
             {{ post.title }}
           </a>
@@ -24,7 +20,7 @@
 </template>
 <style></style>
 <script type="text/javascript">
-import Navbar from '~/components/NavbarResponsive.vue'
+import Navbar from '~/components/Navbar.vue'
 import Footer from '~/components/Footer.vue'
 export default {
   components: {
