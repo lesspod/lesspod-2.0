@@ -31,10 +31,7 @@ async function start() {
     await builder.build()
   }
   initDb()
-  app.use(bodyParser.json())
-  app.use(cors())
-  app.use('/api', routes)
-
+  app.use('/api', [cors(), bodyParser.json()], routes)
   app.get('/p/:id', (req, res) => {
     const actualPage = '/post'
     const queryParams = { id: req.params.id }
@@ -44,6 +41,7 @@ async function start() {
 
   // Give nuxt middleware to express
   app.use(nuxt.render)
+
   // Listen the server
   app.listen(port, host)
   consola.ready({

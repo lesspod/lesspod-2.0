@@ -71,6 +71,10 @@ export default {
       alert(
         'post added with title: ' + this.title + ' content: ' + this.content
       )
+      this.$axios.post('/api/post', {
+        title: this.title,
+        text: this.content
+      })
       var id = Math.floor(Math.random() * 100 + 4)
       this.posts.push({ _id: id, title: this.title })
       this.title = ''
