@@ -12,6 +12,10 @@ Lesspod's mission is to transition the Internet from server architecture to serv
 
 Our goal is to make it as simple as possible to host serverless websites and blogs. As we build Lesspod, we stare at the possibility of the serverless Internet.
 
+## Static websites vs Serverless websites
+
+Static websites can also be deployed without servers (VMs or bare metal) and can be considered as a serverless website. The key difference from development perspective is that a serverless website built with Lesspod can be a dynamic serverless website.
+
 ## Themes Support (Bootstrap themes + Tailwind CSS)
 
 We know that when it comes to building websites, themes do speed up the development effort. Currently, we support tailwind css and bootstrap both. Thousands of Bootstrap 4 themes are available online and can be quickly integrated using nuxt.config.js.
