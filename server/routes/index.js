@@ -1,13 +1,12 @@
-const express = require('express')
-
-const router = express.Router()
-
+const { Router } = require('express');
+const PostModel = require('../models/post');
 // routes
-router.get('/', async (req, res) => {
-  res.send({
-    message: 'hello world'
-  })
-})
+const auth = require('./auth');
+const post = require('./post');
 
-// main router
-module.exports = router
+const router = Router();
+// register routes
+router.use('/auth', auth);
+router.use('/post', post);
+
+module.exports = router;
