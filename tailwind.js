@@ -146,7 +146,6 @@ module.exports = {
 
   colors: colors,
 
-
   /*
   |-----------------------------------------------------------------------------
   | Screens                      https://tailwindcss.com/docs/responsive-design
