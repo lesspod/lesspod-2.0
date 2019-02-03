@@ -16,8 +16,11 @@
           <b-nav-item href="/post/new">
             Add Post
           </b-nav-item>
-          <b-nav-item href="#">
-            Link
+          <b-nav-item href="/signup">
+            Signup
+          </b-nav-item>
+          <b-nav-item href="/login">
+            Login
           </b-nav-item>
           <!-- Navbar dropdowns -->
           <b-nav-item-dropdown text="Lang" right>

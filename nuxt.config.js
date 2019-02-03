@@ -14,22 +14,22 @@ module.exports = {
       { hid: "description", name: "description", content: pkg.description }
     ],
     link: [
-      { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
-      {
-        rel: "stylesheet",
-        href:
-          "https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-      },
-      {
-        rel: "stylesheet",
-        href:
-          "https://stackpath.bootstrapcdn.com/bootswatch/4.1.2/journal/bootstrap.min.css"
-      },
-      {
-        rel: "stylesheet",
-        href:
-          "https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
-      }
+      { rel: "icon", type: "image/x-icon", href: "/favicon.ico" }
+      // {
+      //   rel: "stylesheet",
+      //   href:
+      //     "https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+      // },
+      // {
+      //   rel: "stylesheet",
+      //   href:
+      //     "https://stackpath.bootstrapcdn.com/bootswatch/4.1.2/journal/bootstrap.min.css"
+      // },
+      // {
+      //   rel: "stylesheet",
+      //   href:
+      //     "https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+      // }
     ]
   },
 
@@ -56,7 +56,7 @@ module.exports = {
   modules: [
     // Doc: https://github.com/nuxt-community/axios-module#usage
     ["@nuxtjs/axios"],
-    ["bootstrap-vue/nuxt", { css: false }],
+    ["bootstrap-vue/nuxt", { css: true }],
     ["@nuxtjs/pwa"]
   ],
   /*
