@@ -3,21 +3,8 @@
     <Navbar />
     <div class="container">
       <br />
-      <h3>Create An Account</h3>
+      <h3>Let's Login</h3>
       <b-form v-if="show" @submit="onSubmit" @reset="onReset">
-        <b-form-group
-          id="fullNameGroup"
-          label="Full Name:"
-          label-for="fullNameInput"
-        >
-          <b-form-input
-            id="fullNameInput"
-            v-model="form.name"
-            type="text"
-            required
-            placeholder="Enter name"
-          />
-        </b-form-group>
         <b-form-group
           id="emailInputGroup"
           label="Email address:"
@@ -43,15 +30,8 @@
             placeholder="Enter password"
           />
         </b-form-group>
-        <b-form-group id="checkboxGroup">
-          <b-form-checkbox-group id="agreeChecks" v-model="form.checked">
-            <b-form-checkbox value="me">
-              I've read your terms of service.
-            </b-form-checkbox>
-          </b-form-checkbox-group>
-        </b-form-group>
         <b-button type="submit" variant="primary">
-          Create Account
+          Login
         </b-button>
         <!-- <b-button type="reset" variant="danger">
             Reset
