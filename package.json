@@ -49,6 +49,7 @@
     "eslint": "^5.13.0",
     "eslint-config-prettier": "^4.0.0",
     "eslint-loader": "^2.1.1",
+    "eslint-plugin-nuxt": "^0.3.0",
     "eslint-plugin-prettier": "^3.0.1",
     "eslint-plugin-vue": "^5.1.0",
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
