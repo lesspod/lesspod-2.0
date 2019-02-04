@@ -96,7 +96,9 @@ export default {
   },
   methods: {
     addMenu() {
-      alert('menu added')
+      var strHTML = '<li class=\"nav-item\">\r\n<a class=\"nav-link\" href=\"#\">NEW MENU<\/a>\r\n<\/li>'
+      var node = document.createRange().createContextualFragment(strHTML)
+      document.getElementById("navUl").appendChild(node)
     }
   },
   asyncData(context) {

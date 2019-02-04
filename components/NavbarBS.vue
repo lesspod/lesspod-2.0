@@ -5,7 +5,7 @@
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
-    <ul class="navbar-nav">
+    <ul class="navbar-nav" id="navUl">
       <li class="nav-item active">
         <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
       </li>
@@ -32,6 +32,10 @@
 <style></style>
 <script>
 export default {
-
+  methods: {
+    addMenu: function(){
+      document.getElementById("navbarNavDropdown").appendChild('<li class=\"nav-item\">\r\n        <a class=\"nav-link\" href=\"#\">NEW MENU<\/a>\r\n      <\/li>')
+    }
+  }
 }
 </script>
