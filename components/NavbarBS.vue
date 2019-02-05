@@ -13,7 +13,7 @@
           <span>{{ menu.menuName }}</span>
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <a role="menuitem" v-for="menu1 in subMenusOf(menu)" :key="menu1.menuName" class="dropdown-item"  :href="menuHref(menu)" target="_self">{{ menu1.menuName }}</a>
+            <a role="menuitem" v-for="menu1 in subMenusOf(menu)" :key="menu1.menuName" class="dropdown-item"  :href="menuHref(menu1)" target="_self">{{ menu1.menuName }}</a>
           </div>
         </template>
       </li>
@@ -69,7 +69,7 @@ export default {
       });
     },
     menuHref: function(menu1) {
-      if(menu1.linkedTo.length > 0){
+      if(menu1 && menu1.linkedTo && menu1.linkedTo.length > 0){
         return menu1.linkedTo.toString()
       }else {
         return '#'
