@@ -54,9 +54,6 @@ export default {
     }
   },
   methods: {
-    addMenu: function(){
-      document.getElementById("navbarNavDropdown").appendChild('<li class=\"nav-item\">\r\n        <a class=\"nav-link\" href=\"#\">NEW MENU<\/a>\r\n      <\/li>')
-    },
     menuClass: function(menu) {
       if(this.subMenusOf(menu).length > 0)
       return 'nav-item dropdown '

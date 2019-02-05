@@ -98,10 +98,11 @@ export default {
   },
   methods: {
     addMenu() {
-      var strHTML = '<li class=\"nav-item\">\r\n<a class=\"nav-link\" href=\"#\">'+ this.menuName +'<\/a>\r\n<\/li>'
-      var node = document.createRange().createContextualFragment(strHTML)
-      document.getElementById("navUl").appendChild(node)
-
+      // var strHTML = '<li class=\"nav-item\">\r\n<a class=\"nav-link\" href=\"#\">'+ this.menuName +'<\/a>\r\n<\/li>'
+      // var node = document.createRange().createContextualFragment(strHTML)
+      // document.getElementById("navUl").appendChild(node)
+      this.menus.push({menuName: this.menuName, underMenu: this.underMenu, linkedTo: ''})
+      console.log(JSON.stringify(this.menus))
     }
   },
   asyncData(context) {
