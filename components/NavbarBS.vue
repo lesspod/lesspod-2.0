@@ -7,13 +7,13 @@
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
     <ul class="navbar-nav" id="navUl">
       <li v-for="menu in topLevelMenus" :key="menu.menuName" :class="menuClass(menu)">
-        <a v-if="menuClass(menu) == 'nav-item'" class="nav-link" href="#">{{ menu.menuName }}</a>
+        <a v-if="menuClass(menu) == 'nav-item'" class="nav-link" :href="menuHref(menu)">{{ menu.menuName }}</a>
         <template v-else>
-          <a class="nav-link b-nav-dropdown dropdown-toggle" href="#" target="_self" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <a class="nav-link b-nav-dropdown dropdown-toggle"  href="#" target="_self" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <span>{{ menu.menuName }}</span>
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <a role="menuitem" v-for="menu1 in subMenusOf(menu)" :key="menu1.menuName" class="dropdown-item" href="#" target="_self">{{ menu1.menuName }}</a>
+            <a role="menuitem" v-for="menu1 in subMenusOf(menu)" :key="menu1.menuName" class="dropdown-item"  :href="menuHref(menu)" target="_self">{{ menu1.menuName }}</a>
           </div>
         </template>
       </li>
@@ -67,6 +67,13 @@ export default {
           return (menu.underMenu == menu1.menuName)
         }
       });
+    },
+    menuHref: function(menu1) {
+      if(menu1.linkedTo.length > 0){
+        return menu1.linkedTo.toString()
+      }else {
+        return '#'
+      }
     }
   },
   data: function(){

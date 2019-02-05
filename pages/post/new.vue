@@ -68,9 +68,9 @@ export default {
   methods: {
     addPost: function() {
       console.log('addPost called')
-      alert(
-        'post added with title: ' + this.title + ' content: ' + this.content
-      )
+      // alert(
+      //   'post added with title: ' + this.title + ' content: ' + this.content
+      // )
       this.$axios.post('/api/post', {
         title: this.title,
         text: this.content

@@ -25,8 +25,6 @@
       </button>
       <br>
       <br>
-      <br>
-      <br>
       <form class="w-full max-w-xs">
         <div class="md:flex md:items-center mb-6">
           <div class="md:w-1/3">
@@ -47,19 +45,38 @@
             >
           </div>
         </div>
-        <div class="md:flex md:items-center mb-6">
-          <div class="md:w-1/3">
+        <div class="">
+          <div class="">
             <label
               class="block text-grey font-bold md:text-right mb-1 md:mb-0 pr-4"
-              for="inline-username"
+              for="under-menu"
             >
               Under Menu
             </label>
           </div>
-          <div class="md:w-2/3">
+          <div class="">
             <input
               v-model="underMenu"
-              id="inline-under-menu"
+              id="under-menu"
+              class
+              type="text"
+              value=""
+            >
+          </div>
+        </div>
+        <div class="">
+          <div class="">
+            <label
+              class="block text-grey font-bold md:text-right mb-1 md:mb-0 pr-4"
+              for="linked-to"
+            >
+              Linked To URL
+            </label>
+          </div>
+          <div class="md:w-2/3">
+            <input
+              v-model="linkedTo"
+              id="linked-to"
               class
               type="text"
               value=""
@@ -67,7 +84,6 @@
           </div>
         </div>
         If the "Under Menu" is blank, the menu will be added on the top level.
-        <br>
         <br>
         <div>
           <div>
@@ -101,7 +117,7 @@ export default {
       // var strHTML = '<li class=\"nav-item\">\r\n<a class=\"nav-link\" href=\"#\">'+ this.menuName +'<\/a>\r\n<\/li>'
       // var node = document.createRange().createContextualFragment(strHTML)
       // document.getElementById("navUl").appendChild(node)
-      this.menus.push({menuName: this.menuName, underMenu: this.underMenu, linkedTo: ''})
+      this.menus.push({menuName: this.menuName, underMenu: this.underMenu, linkedTo: this.linkedTo})
       console.log(JSON.stringify(this.menus))
     }
   },
@@ -116,14 +132,15 @@ export default {
         { _id: '3', title: 'post three' }
       ],
       menus: [
-        { menuName: 'Home', underMenu: '', linkedTo: ''},
-        { menuName: 'Features', underMenu: '', linkedTo: ''},
+        { menuName: 'Home', underMenu: '', linkedTo: 'https://lesspod.com'},
+        { menuName: 'Features', underMenu: '', linkedTo: 'https://lesspod.com'},
         { menuName: 'Pricing', underMenu: '', linkedTo: ''},
-        { menuName: 'Key Features', underMenu: 'Features', linkedTo: ''},
+        { menuName: 'Key Features', underMenu: 'Features', linkedTo: 'https://lesspod.com'},
         { menuName: 'All Features', underMenu: 'Features', linkedTo: ''}
       ],
       menuName: '',
-      underMenu: ''
+      underMenu: '',
+      linkedTo: 'https://www.lesspod.com'
     }
   }
 }
