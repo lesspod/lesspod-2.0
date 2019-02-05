@@ -9,6 +9,22 @@ new Vuex.Store({
     }
   },
   modules: {
+    menus: {
+      namespaced: true,
+      state: () => ({
+
+      }),
+      mutations: {
+        add(state, { text }) {
+          state.menus.push({
+            text
+          })
+        },
+        remove(state, { menu }) {
+          state.menus.splice(state.menus.indexOf(menu), 1)
+        }
+      }
+    },
     posts: {
       namespaced: true,
       state: () => ({

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Navbar />
+    <Navbar :menus='menus' />
     <div class="container">
       <!-- <h1>Nuxt Serverless Template {{ this.version }}</h1> -->
       <h1>All Blog Posts</h1>
@@ -39,10 +39,11 @@
           </div>
           <div class="md:w-2/3">
             <input
-              id="inline-full-name"
+              id="inline-menu-name"
               class
               type="text"
               value="Menu5"
+              v-model="menuName"
             >
           </div>
         </div>
@@ -57,10 +58,11 @@
           </div>
           <div class="md:w-2/3">
             <input
+              v-model="underMenu"
               id="inline-under-menu"
               class
               type="text"
-              value="Menu1"
+              value=""
             >
           </div>
         </div>
@@ -96,9 +98,10 @@ export default {
   },
   methods: {
     addMenu() {
-      var strHTML = '<li class=\"nav-item\">\r\n<a class=\"nav-link\" href=\"#\">NEW MENU<\/a>\r\n<\/li>'
+      var strHTML = '<li class=\"nav-item\">\r\n<a class=\"nav-link\" href=\"#\">'+ this.menuName +'<\/a>\r\n<\/li>'
       var node = document.createRange().createContextualFragment(strHTML)
       document.getElementById("navUl").appendChild(node)
+
     }
   },
   asyncData(context) {
@@ -111,7 +114,15 @@ export default {
         { _id: '2', title: 'post two' },
         { _id: '3', title: 'post three' }
       ],
-      menuName: ''
+      menus: [
+        { menuName: 'Home', underMenu: '', linkedTo: ''},
+        { menuName: 'Features', underMenu: '', linkedTo: ''},
+        { menuName: 'Pricing', underMenu: '', linkedTo: ''},
+        { menuName: 'Key Features', underMenu: 'Features', linkedTo: ''},
+        { menuName: 'All Features', underMenu: 'Features', linkedTo: ''}
+      ],
+      menuName: '',
+      underMenu: ''
     }
   }
 }
