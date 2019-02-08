@@ -12,7 +12,7 @@
           img-alt="Image"
           img-top
           tag="article"
-          style="max-width: 20rem;"
+          style="max-width: 15rem;min-width: 10rem;"
           class="mb-2"
         >
           <p class="card-text">

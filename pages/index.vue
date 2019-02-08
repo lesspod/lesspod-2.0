@@ -4,7 +4,6 @@
     <div class="container">
       <!-- <h1>Nuxt Serverless Template {{ this.version }}</h1> -->
       <h1>All Blog Posts</h1>
-      <br>
       <!-- <p>{{ message }}</p> -->
       <li v-for="post in posts" :key="post._id">
         <a :href="'/post/' + post._id">{{ post.title }}</a>

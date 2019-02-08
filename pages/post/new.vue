@@ -131,7 +131,7 @@ export default {
     // as the name said, it can be async
     // Also, the returned object will be merged with your data object
     return {
-      title: 'aaa bbbb',
+      title: '',
       content: '',
       content: '<p>I am Example</p>',
       editorOption: {
