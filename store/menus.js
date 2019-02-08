@@ -10,12 +10,10 @@ export const state = () => ({
 })
 
 export const mutations = {
-  add(state, { text }) {
-    state.menuItems.push({
-      text
-    })
+  add(state, menuItem) {
+    state.menuItems.push(menuItem)
   },
-  remove(state, { menuItem }) {
+  remove(state, menuItem) {
     state.menuItems.splice(state.menuItems.indexOf(menuItem), 1)
   }
 }

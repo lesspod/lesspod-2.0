@@ -69,7 +69,8 @@ module.exports = {
    ** Plugins to load before mounting the App
    */
   plugins: [
-    { src: '~plugins/nuxt-quill-plugin.js', ssr: false }
+    { src: '~plugins/nuxt-quill-plugin.js', ssr: false },
+    { src: '~/plugins/vuex-persist', ssr: false }
   ],
 
   /*
