@@ -106,11 +106,18 @@
 // import Logo from '~/components/Logo.vue'
 import Navbar from '~/components/NavbarBS.vue'
 import Footer from '~/components/Footer.vue'
+import { mapMutations } from 'vuex'
 export default {
   components: {
     // Logo,
     Navbar,
     Footer
+  },
+  computed: {
+    menus() {
+      // return this.$store.state.menus.menuItems
+      return this.$store.state.menus.menuItems
+    }
   },
   methods: {
     addMenu() {
@@ -131,7 +138,7 @@ export default {
         { _id: '2', title: 'post two' },
         { _id: '3', title: 'post three' }
       ],
-      menus: [
+      menus1: [
         { menuName: 'Home', underMenu: '', linkedTo: 'https://lesspod.com'},
         { menuName: 'Features', underMenu: '', linkedTo: 'https://lesspod.com'},
         { menuName: 'Pricing', underMenu: '', linkedTo: ''},

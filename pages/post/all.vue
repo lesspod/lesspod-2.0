@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Navbar />
+    <Navbar :menus='menus'/>
     <div class="container">
       <h1 class="w-full text-center pt-1 pb-1">All Blog Posts</h1>
       <b-card-group deck class="mb-3">
@@ -39,12 +39,18 @@
 </template>
 <style></style>
 <script type="text/javascript">
-import Navbar from '~/components/Navbar.vue'
+import Navbar from '~/components/NavbarBS.vue'
 import Footer from '~/components/Footer.vue'
 export default {
   components: {
     Navbar,
     Footer
+  },
+  computed: {
+    menus() {
+      // return this.$store.state.menus.menuItems
+      return this.$store.state.menus.menuItems
+    }
   },
   methods: {
     addPost: function() {

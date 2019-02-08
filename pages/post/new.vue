@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Navbar/>
+    <Navbar :menus='menus'/>
     <div class="container">
       <!-- <h1>Nuxt Serverless Template {{ this.version }}</h1> -->
       <h1>All Blog Posts</h1>
@@ -67,7 +67,7 @@
   }
 </style>
 <script type="text/javascript">
-import Navbar from '~/components/Navbar.vue'
+import Navbar from '~/components/NavbarBS.vue'
 import Footer from '~/components/Footer.vue'
 export default {
   components: {
@@ -79,6 +79,12 @@ export default {
     setTimeout(() => {
       this.content = 'i am changed'
     }, 3000)
+  },
+  computed: {
+    menus() {
+      // return this.$store.state.menus.menuItems
+      return this.$store.state.menus.menuItems
+    }
   },
   methods: {
     addPost: function() {
