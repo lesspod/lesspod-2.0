@@ -50,6 +50,10 @@ export default {
     menus() {
       // return this.$store.state.menus.menuItems
       return this.$store.state.menus.menuItems
+    },
+    posts() {
+      // return this.$store.state.menus.menuItems
+      return this.$store.state.posts.posts
     }
   },
   methods: {
@@ -68,12 +72,7 @@ export default {
     // Also, the returned object will be merged with your data object
     return {
       title: '',
-      content: '',
-      posts: [
-        { _id: '1', title: 'post one' },
-        { _id: '2', title: 'post two' },
-        { _id: '3', title: 'post three' }
-      ]
+      content: ''
     }
   }
 }

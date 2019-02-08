@@ -84,6 +84,10 @@ export default {
     menus() {
       // return this.$store.state.menus.menuItems
       return this.$store.state.menus.menuItems
+    },
+    posts() {
+      // return this.$store.state.menus.menuItems
+      return this.$store.state.posts.posts
     }
   },
   methods: {
@@ -97,8 +101,16 @@ export default {
         text: this.content
       })
       var id = Math.floor(Math.random() * 100 + 4)
-      this.posts.push({ _id: id, title: this.title })
+      // this.posts.push({ _id: id, title: this.title })
+      var post = {
+        _id : id,
+        title: this.title,
+        content: this.content,
+        author: 'Jason Bourne'
+      }
+      this.$store.commit('posts/add', post)
       this.title = ''
+      this.content = ''
     },
     onEditorBlur(editor) {
       console.log('editor blur!', editor)
@@ -121,11 +133,6 @@ export default {
     return {
       title: 'aaa bbbb',
       content: '',
-      posts: [
-        { _id: '1', title: 'post one' },
-        { _id: '2', title: 'post two' },
-        { _id: '3', title: 'post three' }
-      ],
       content: '<p>I am Example</p>',
       editorOption: {
         // some quill options

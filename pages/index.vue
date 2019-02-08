@@ -76,6 +76,10 @@ export default {
     menus() {
       // return this.$store.state.menus.menuItems
       return this.$store.state.menus.menuItems
+    },
+    posts() {
+      // return this.$store.state.menus.menuItems
+      return this.$store.state.posts.posts
     }
   },
   methods: {
@@ -104,11 +108,11 @@ export default {
     // as the name said, it can be async
     // Also, the returned object will be merged with your data object
     return {
-      posts: [
-        { _id: '1', title: 'post one' },
-        { _id: '2', title: 'post two' },
-        { _id: '3', title: 'post three' }
-      ],
+      // posts: [
+      //   { _id: '1', title: 'post one' },
+      //   { _id: '2', title: 'post two' },
+      //   { _id: '3', title: 'post three' }
+      // ],
       menuName: '',
       underMenu: '',
       linkedTo: 'https://www.lesspod.com'
