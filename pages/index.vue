@@ -2,18 +2,6 @@
   <div>
     <Navbar :menus="menus"/>
     <div class="container">
-      <!-- <h1>Nuxt Serverless Template {{ this.version }}</h1> -->
-      <h1>All Blog Posts</h1>
-      <!-- <p>{{ message }}</p> -->
-      <li v-for="post in posts" :key="post._id">
-        <a :href="'/post/' + post._id">{{ post.title }}</a>
-      </li>
-      <br>
-      <button class="btn btn-primary">
-        <a class="no-underline text-white" href="/post/new">New Post</a>
-      </button>
-      <br>
-      <br>
       <form class="w-full max-w-xs">
         <div class="md:flex md:items-center mb-6">
           <div class="md:w-1/3">
@@ -82,39 +70,13 @@ export default {
     }
   },
   methods: {
-    addMenu() {
-      // var strHTML = '<li class=\"nav-item\">\r\n<a class=\"nav-link\" href=\"#\">'+ this.menuName +'<\/a>\r\n<\/li>'
-      // var node = document.createRange().createContextualFragment(strHTML)
-      // document.getElementById("navUl").appendChild(node)
-      // this.menus.push({
-      //   menuName: this.menuName,
-      //   underMenu: this.underMenu,
-      //   linkedTo: this.linkedTo
-      // })
 
-      var menuItem = {
-        menuName: this.menuName,
-        underMenu: this.underMenu,
-        linkedTo: this.linkedTo
-      }
-
-      this.$store.commit('menus/add', menuItem)
-      console.log(JSON.stringify(this.menus))
-    }
   },
   asyncData(context) {
     // called every time before loading the component
     // as the name said, it can be async
     // Also, the returned object will be merged with your data object
     return {
-      // posts: [
-      //   { _id: '1', title: 'post one' },
-      //   { _id: '2', title: 'post two' },
-      //   { _id: '3', title: 'post three' }
-      // ],
-      menuName: '',
-      underMenu: '',
-      linkedTo: 'https://www.lesspod.com'
     }
   }
 }

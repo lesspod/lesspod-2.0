@@ -2,15 +2,12 @@
   <div>
     <Navbar :menus='menus'/>
     <div class="container">
-      <h1 class="w-full text-center pt-1 pb-1">All Blog Posts</h1>
+      <h2 class="w-full text-center pt-1 pb-1">All Blog Posts</h2>
       <b-card-group deck class="mb-3">
         <b-card
           v-for="post in posts"
           :key="post._id"
           :title="post.title"
-          img-src="https://picsum.photos/600/300/?image=25"
-          img-alt="Image"
-          img-top
           tag="article"
           style="max-width: 15rem;min-width: 10rem;"
           class="mb-2"
@@ -19,7 +16,7 @@
             Some quick example text to build on the card title and make up the
             bulk of the card's content.
           </p>
-          <b-button href="#" variant="primary">Go somewhere</b-button>
+          <b-button href="#" variant="primary">Read More</b-button>
         </b-card>
         <!-- <div class="w-full flex flex-wrap overflow-hidden items-center">
           <br /><br />

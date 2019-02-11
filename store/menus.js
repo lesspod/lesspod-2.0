@@ -4,7 +4,9 @@ export const state = () => ({
     { menuName: 'Features', underMenu: '', linkedTo: 'https://lesspod.com'},
     { menuName: 'Pricing', underMenu: '', linkedTo: ''},
     { menuName: 'Blog', underMenu: '', linkedTo: '/post/all'},
-    { menuName: 'New Post', underMenu: '', linkedTo: '/post/new'},
+    { menuName: 'New', underMenu: '', linkedTo: '/'},
+    { menuName: 'Post', underMenu: 'New', linkedTo: '/post/new'},
+    { menuName: 'Menu', underMenu: 'New', linkedTo: ''},
     { menuName: 'Key Features', underMenu: 'Features', linkedTo: 'https://lesspod.com'},
     { menuName: 'All Features', underMenu: 'Features', linkedTo: ''}
   ]
