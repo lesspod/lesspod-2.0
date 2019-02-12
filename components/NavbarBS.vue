@@ -1,7 +1,11 @@
 <template>
   <span>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="/">Lesspod</a>
+      <a class="navbar-brand" href="#">
+        <img src="/icon.png" alt="Logo" style="width: 40px;margin-right:0.25rem;">
+        <img src="/type.png" alt="Logo" style="height: 40px;width: auto;">
+      </a>
+      <!-- <a class="navbar-brand" href="/">Lesspod</a> -->
       <button
         class="navbar-toggler"
         type="button"
