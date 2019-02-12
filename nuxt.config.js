@@ -28,7 +28,7 @@ module.exports = {
       {
         rel: "stylesheet",
         href:
-          "https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+          "https://use.fontawesome.com/releases/v5.7.1/css/all.css"
       }
     ],
     script: [
@@ -70,7 +70,8 @@ module.exports = {
    */
   plugins: [
     { src: '~plugins/nuxt-quill-plugin.js', ssr: false },
-    { src: '~/plugins/vuex-persist', ssr: false }
+    { src: '~/plugins/vuex-persist', ssr: false },
+    { src: '~/plugins/vue-sidebar-menu', ssr: false }
   ],
 
   /*

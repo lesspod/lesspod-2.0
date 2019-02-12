@@ -8,7 +8,8 @@ export const state = () => ({
     { menuName: 'Post', underMenu: 'New', linkedTo: '/post/new'},
     { menuName: 'Menu', underMenu: 'New', linkedTo: ''},
     { menuName: 'Key Features', underMenu: 'Features', linkedTo: 'https://lesspod.com'},
-    { menuName: 'All Features', underMenu: 'Features', linkedTo: ''}
+    { menuName: 'All Features', underMenu: 'Features', linkedTo: ''},
+    { menuName: 'Admin', underMenu: '', linkedTo: '/admin'}
   ]
 })
 

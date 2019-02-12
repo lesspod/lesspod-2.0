@@ -65,7 +65,7 @@
 <style></style>
 
 <script>
-import Navbar from '../components/Navbar.vue'
+import Navbar from '../components/NavbarBS.vue'
 import Footer from '../components/Footer.vue'
 export default {
   components: {
