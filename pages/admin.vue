@@ -1,8 +1,8 @@
 <template>
-  <div>
+  <div style="margin-left:2rem;">
     <Navbar :menus="menus"/>
     <div class="container">
-      <h4 class="w-full text-center pt-1 pb-1">Admin Panel</h4>
+      <h4 class="w-full text-center pt-1 pb-1">Dashboard</h4>
       <no-ssr>
         <sidebar-menu :menu="sidebarMenu"/>
       </no-ssr>
@@ -56,12 +56,12 @@ export default {
       sidebarMenu: [
         {
           header: true,
-          title: 'Main Navigation'
+          title: 'Admin Panel'
           // component: componentName
           // visibleOnCollapse: true
         },
         {
-          href: '/',
+          href: '/dashboard',
           title: 'Dashboard',
           icon: 'fas fa-user'
           /*
@@ -73,12 +73,38 @@ export default {
                         */
         },
         {
-          title: 'Charts',
-          icon: 'fas fa-chart-area',
+          title: 'Theme Settings',
+          icon: 'fas fa-pen-nib',
           child: [
             {
-              href: '/charts/sublink',
-              title: 'Sub Link'
+              href: '#',
+              title: 'Global Settings'
+            },
+            {
+              href: '#',
+              title: 'Navbar Settings'
+            },
+            {
+              href: '#',
+              title: 'Footer Settings'
+            }
+          ]
+        },
+        {
+          title: 'Plugins',
+          icon: 'fas fa-plug',
+          child: [
+            {
+              href: '#',
+              title: 'Google Analytics'
+            },
+            {
+              href: '#',
+              title: 'Tawk.to Widget'
+            },
+            {
+              href: '#',
+              title: 'Mailchimp Settings'
             }
           ]
         }
