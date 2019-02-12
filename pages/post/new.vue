@@ -6,8 +6,8 @@
         <div class="md:flex md:items-center mb-6">
           <div class="md:w-1/3">
             <label
-              class="block text-grey font-bold md:text-right mb-1 md:mb-0 pr-4"
-              for="inline-menu-name"
+              class="block text-grey font-bold mb-0 md:text-right md:mb-0 pr-4"
+              for="inline-post-title"
             >Title</label>
           </div>
           <div class>
@@ -16,10 +16,11 @@
         </div>
         <div class>
           <div>
-            <label class for="inline-username">Content</label>
+            <label class="mb-0 mt-1" for="content">Content</label>
           </div>
           <div class>
             <div
+              id="content"
               class="quill-editor"
               :content="content"
               @change="onEditorChange($event)"
