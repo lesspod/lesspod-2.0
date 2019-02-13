@@ -85,7 +85,11 @@
               >Under Menu</label>
             </div>
             <div class>
-              <input v-model="underMenu" id="under-menu" class type="text" value>
+              <!-- <input v-model="underMenu" id="under-menu" class type="text" value> -->
+              <b-form-select v-model="underMenu" :options="underMenuOptions" style="width: 50%;" size="sm"/>
+              <!-- <div>Selected:
+                <strong>{{ underMenu }}</strong>
+              </div> -->
             </div>
           </div>
           <div class>
@@ -102,7 +106,9 @@
         </form>
       </b-container>
       <div slot="modal-footer" class="w-100">
-        <span class="float-left">If the "Under Menu" is blank, the menu will be added on the top level.</span>
+        <span
+          class="float-left"
+        >If the "Under Menu" is blank, the menu will be added on the top level.</span>
         <b-btn size="md" class="float-right" variant="info" @click="hideNewMenuModal">Close</b-btn>
         <b-btn
           size="md"
@@ -126,6 +132,11 @@ export default {
           return !(menu.underMenu !== '')
         }
       })
+    },
+    underMenuOptions: function() {
+      return this.menus.map(menu => ({
+        value: menu.menuName, text: menu.menuName
+      }))
     }
   },
   methods: {
@@ -179,7 +190,14 @@ export default {
     return {
       menuName: '',
       underMenu: '',
-      linkedTo: 'https://www.lesspod.com'
+      linkedTo: 'https://www.lesspod.com',
+      options: [
+        { value: null, text: 'Please select an option' },
+        { value: 'a', text: 'This is First option' },
+        { value: 'b', text: 'Selected Option' },
+        { value: { C: '3PO' }, text: 'This is an option with object value' },
+        { value: 'd', text: 'This one is disabled', disabled: true }
+      ]
     }
   }
 }
