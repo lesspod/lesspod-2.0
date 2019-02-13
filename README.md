@@ -12,6 +12,8 @@ Lesspod's mission is to transition the Internet from server architecture to serv
 
 Our goal is to make it as simple as possible to host serverless websites and blogs. As we build Lesspod, we stare at the possibility of the serverless Internet.
 
+![Discussion at Reddit Opensource](https://www.reddit.com/r/opensource/comments/ap1pm4/lesspod_serverless_cms_using_vuejsnuxtjs_and/)
+
 ## Static websites vs Serverless websites
 
 Static websites can also be deployed without servers (VMs or bare metal) and can be considered as a serverless website. The key difference from development perspective is that a serverless website built with Lesspod can be a dynamic serverless website.

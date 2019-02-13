@@ -63,7 +63,31 @@ export default {
         {
           href: '/dashboard',
           title: 'Dashboard',
-          icon: 'fas fa-user'
+          icon: 'fas fa-tachometer-alt'
+          /*
+                        disabled: true
+                        badge: {
+                            text: 'new',
+                            // class:''
+                        }
+                        */
+        },
+        {
+          href: '/posts',
+          title: 'Posts',
+          icon: 'fas fa-file'
+          /*
+                        disabled: true
+                        badge: {
+                            text: 'new',
+                            // class:''
+                        }
+                        */
+        },
+        {
+          href: '/pages',
+          title: 'Pages',
+          icon: 'fas fa-file-alt'
           /*
                         disabled: true
                         badge: {
@@ -107,6 +131,30 @@ export default {
               title: 'Mailchimp Settings'
             }
           ]
+        },
+        {
+          href: '/users',
+          title: 'Users',
+          icon: 'fas fa-users'
+          /*
+                        disabled: true
+                        badge: {
+                            text: 'new',
+                            // class:''
+                        }
+                        */
+        },
+        {
+          href: '/trash',
+          title: 'Trash',
+          icon: 'fas fa-trash-alt'
+          /*
+                        disabled: true
+                        badge: {
+                            text: 'new',
+                            // class:''
+                        }
+                        */
         }
       ]
     }
