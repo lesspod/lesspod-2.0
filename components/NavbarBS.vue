@@ -155,10 +155,36 @@ export default {
       //   underMenu: this.underMenu,
       //   linkedTo: this.linkedTo
       // })
+
+
+      var link = ""
+
+      console.log('linkedTo: ' + this.linkedTo)
+
+      if(this.linkedTo == ""){
+
+        link = '/' + this.menuName.toLowerCase().toString().replace(' ', '-')
+
+      } else {
+        link = this.linkedTo
+      }
+      console.log('link: ' + link)
+      // var id = Math.floor(Math.random() * 100 + 10)
+      // this.posts.push({ _id: id, title: this.title })
+      var page = {
+        _id : Math.floor(Math.random() * 100 + 10).toString(),
+        title: this.menuName,
+        menuName: this.menuName,
+        content: 'content for ' + this.menuName,
+        author: 'Rajan Chandi'
+      }
+      this.$store.commit('pages/add', page)
+      console.log(JSON.stringify(page))
+
       var menuItem = {
         menuName: this.menuName,
         underMenu: this.underMenu,
-        linkedTo: this.linkedTo
+        linkedTo: link
       }
       this.$store.commit('menus/add', menuItem)
       console.log(JSON.stringify(this.menus))
@@ -188,7 +214,7 @@ export default {
     return {
       menuName: '',
       underMenu: '',
-      linkedTo: 'https://www.lesspod.com'
+      linkedTo: ''
     }
   }
 }

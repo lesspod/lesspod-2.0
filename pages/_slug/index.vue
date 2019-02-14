@@ -2,7 +2,7 @@
   <div>
     <Navbar :menus='menus'/>
     <div class="container">
-      <p>Page Content: {{ JSON.stringify(page[0].content) }}</p>
+      <p>Page Content: {{ pageContent }}</p>
     </div>
     <Footer/>
   </div>
@@ -33,6 +33,13 @@ export default {
     //   this.content = 'i am changed'
     // }, 3000)
     console.log(this.$nuxt._route.params.slug)
+    let slug = this.$nuxt._route.params.slug
+      var page1 = this.$store.state.pages.pages.filter(function(page){
+        //console.log(page.menuName.toLowerCase())
+        return (page.menuName.toLowerCase().toString().replace(' ','-').valueOf() == slug.valueOf())
+      })
+      console.log('JSON.stringify(page1[0])' + JSON.stringify(page1[0]))
+      this.content = JSON.stringify(page1[0].content)
   },
   computed: {
     menus() {
@@ -43,13 +50,17 @@ export default {
       // return this.$store.state.menus.menuItems
       return this.$store.state.posts.posts
     },
-    page() {
+    pageData() {
       // return this.$nuxt._route.params.slug
       let slug = this.$nuxt._route.params.slug
       return this.$store.state.pages.pages.filter(function(page){
         console.log(page.menuName.toLowerCase())
-        return (page.menuName.toLowerCase().valueOf() === slug.valueOf())
+        return page && page.menuName && (page.menuName.toLowerCase().toString().replace(' ','-').valueOf() == slug.valueOf())
       })
+    },
+    pageContent() {
+      // return this.$nuxt._route.params.slug
+      return this.content
     }
   },
   methods: {
