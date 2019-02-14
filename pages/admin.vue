@@ -61,7 +61,7 @@ export default {
           // visibleOnCollapse: true
         },
         {
-          href: '/dashboard',
+          href: '/admin',
           title: 'Dashboard',
           icon: 'fas fa-tachometer-alt'
           /*
@@ -73,7 +73,7 @@ export default {
                         */
         },
         {
-          href: '/posts',
+          href: '/post/all',
           title: 'Posts',
           icon: 'fas fa-file'
           /*

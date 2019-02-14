@@ -68,10 +68,10 @@ export default {
     Footer
   },
   mounted() {
-    console.log('app init, my quill insrance object is:', this.myQuillEditor)
-    setTimeout(() => {
-      this.content = 'i am changed'
-    }, 3000)
+    console.log('app init, my quill instance object is:', this.myQuillEditor)
+    // setTimeout(() => {
+    //   this.content = 'i am changed'
+    // }, 3000)
   },
   computed: {
     menus() {

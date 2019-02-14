@@ -155,13 +155,11 @@ export default {
       //   underMenu: this.underMenu,
       //   linkedTo: this.linkedTo
       // })
-
       var menuItem = {
         menuName: this.menuName,
         underMenu: this.underMenu,
         linkedTo: this.linkedTo
       }
-
       this.$store.commit('menus/add', menuItem)
       console.log(JSON.stringify(this.menus))
     },
@@ -190,14 +188,7 @@ export default {
     return {
       menuName: '',
       underMenu: '',
-      linkedTo: 'https://www.lesspod.com',
-      options: [
-        { value: null, text: 'Please select an option' },
-        { value: 'a', text: 'This is First option' },
-        { value: 'b', text: 'Selected Option' },
-        { value: { C: '3PO' }, text: 'This is an option with object value' },
-        { value: 'd', text: 'This one is disabled', disabled: true }
-      ]
+      linkedTo: 'https://www.lesspod.com'
     }
   }
 }
