@@ -2,7 +2,7 @@
   <div>
     <Navbar :menus='menus'/>
     <div class="container">
-      <h1>You're viewing {{ pageName }} page.</h1>
+      <p>Page Content: {{ JSON.stringify(page[0].content) }}</p>
     </div>
     <Footer/>
   </div>
@@ -43,8 +43,13 @@ export default {
       // return this.$store.state.menus.menuItems
       return this.$store.state.posts.posts
     },
-    pageName() {
-      return this.$nuxt._route.params.slug
+    page() {
+      // return this.$nuxt._route.params.slug
+      let slug = this.$nuxt._route.params.slug
+      return this.$store.state.pages.pages.filter(function(page){
+        console.log(page.menuName.toLowerCase())
+        return (page.menuName.toLowerCase().valueOf() === slug.valueOf())
+      })
     }
   },
   methods: {
