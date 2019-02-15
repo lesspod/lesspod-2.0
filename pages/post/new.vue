@@ -125,7 +125,6 @@ export default {
     // Also, the returned object will be merged with your data object
     return {
       title: '',
-      content: '',
       content: '<p>I am Example</p>',
       editorOption: {
         // some quill options
