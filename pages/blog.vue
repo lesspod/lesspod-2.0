@@ -2,7 +2,7 @@
   <div>
     <Navbar :menus='menus'/>
     <div class="container">
-      <h2 class="w-full text-center pt-1 pb-1">All Blog Posts</h2>
+      <h3 class="w-full text-center pt-1 pb-1">All Blog Posts</h3>
       <b-card-group deck class="mb-3">
         <b-card
           v-for="post in posts"

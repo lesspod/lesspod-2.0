@@ -15,7 +15,9 @@
           <p class="card-text">
             {{ page.content }}
           </p>
-          <b-button :href="page.title.toString().toLowerCase().replace(' ','-')" variant="primary">Edit Page</b-button>
+          <b-button :href="page.title.toString().toLowerCase().replace(' ','-')" variant="success">Edit</b-button>
+          <!-- <b-button :href="editUrl(post)" variant="success">Edit</b-button> -->
+          <button type="button" class="btn btn-danger" @click="deletePage(page)">Delete</button>
         </b-card>
         <!-- <div class="w-full flex flex-wrap overflow-hidden items-center">
           <br /><br />
@@ -64,6 +66,9 @@ export default {
       var id = Math.floor(Math.random() * 100 + 4)
       this.posts.push({ _id: id, title: this.title })
       this.title = ''
+    },
+    deletePage: function(page) {
+      console.log('deleting.... ' + JSON.stringify(page))
     }
   },
   asyncData(context) {

@@ -2,7 +2,7 @@
   <div>
     <Navbar :menus='menus'/>
     <div class="container">
-      <h2 class="w-full text-center pt-1 pb-1">All Blog Posts</h2>
+      <h2 class="w-full text-center pt-1 pb-1">Admin Posts</h2>
       <b-card-group deck class="mb-3">
         <b-card
           v-for="post in posts"
@@ -13,10 +13,11 @@
           class="mb-2"
         >
           <p class="card-text">
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
+            {{post.content}}
           </p>
-          <b-button href="#" variant="primary">Read More</b-button>
+          <!-- <b-button href="#" variant="success">Edit</b-button> -->
+          <b-button :href="editUrl(post)" variant="success">Edit</b-button>
+          <button type="button" class="btn btn-danger" @click="deletePost(post)">Delete</button>
         </b-card>
         <!-- <div class="w-full flex flex-wrap overflow-hidden items-center">
           <br /><br />
@@ -61,6 +62,12 @@ export default {
       var id = Math.floor(Math.random() * 100 + 4)
       this.posts.push({ _id: id, title: this.title })
       this.title = ''
+    },
+    editUrl(post){
+      return process.env.baseUrl + '/post/edit/' + post._id
+    },
+    deletePost: function(post) {
+      console.log('deleting.... ' + JSON.stringify(post))
     }
   },
   asyncData(context) {
