@@ -37,6 +37,7 @@
 <script type="text/javascript">
 import Navbar from '~/components/NavbarBS.vue'
 import Footer from '~/components/Footer.vue'
+import { mapMultiRowFields } from 'vuex-map-fields'
 // import hljs from 'highlight.js'
 export default {
   components: {

@@ -1,3 +1,4 @@
+import { getField, updateField } from 'vuex-map-fields'
 export const state = () => ({
   pages: [
     { _id: '1', title: 'Home', menuName: 'Home', content: '', author: ''},
@@ -8,11 +9,19 @@ export const state = () => ({
   ]
 })
 
+export const getters = {
+  getField
+}
+
 export const mutations = {
   add(state, page) {
     state.pages.push(page)
   },
   remove(state, page) {
     state.pages.splice(state.pages.indexOf(page), 1)
-  }
+  },
+  updateField
+  // update(state, page) {
+  //   state.page = page
+  // }
 }
