@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Navbar :menus='menus'/>
+    <Navbar :menus="menus"/>
     <div class="container">
       <h2 class="w-full text-center pt-1 pb-1">Admin Posts</h2>
       <b-card-group deck class="mb-3">
@@ -12,9 +12,7 @@
           style="max-width: 15rem;min-width: 10rem;"
           class="mb-2"
         >
-          <p class="card-text">
-            <!-- {{post.content}} -->
-          </p>
+          <div class="card-text block-ellipsis">{{html2text(post.content)}}</div>
           <!-- <b-button href="#" variant="success">Edit</b-button> -->
           <b-button :href="editUrl(post)" variant="success">Edit</b-button>
           <button type="button" class="btn btn-danger" @click="deletePost(post)">Delete</button>
@@ -26,16 +24,42 @@
               {{ post.title }}
             </a>
           </div>
-        </div> -->
+        </div>-->
       </b-card-group>
     </div>
+    <div id="hiddendiv"></div>
     <div class="page-index ml-10 py-20">
       <!-- <h1>Nuxt Serverless Template {{ this.version }}</h1> -->
     </div>
-    <Footer />
+    <Footer/>
   </div>
 </template>
-<style></style>
+<style>
+.two-line-ellipsis {
+  /* padding-left:2vw; */
+  text-overflow: ellipsis;
+  overflow: hidden;
+  width: 325px;
+  line-height: 25px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  padding-top: 0px;
+}
+.block-ellipsis {
+  display: block;
+  display: -webkit-box;
+  max-width: 100%;
+  height: 43px;
+  margin: 0 0 0.5rem 0;
+  font-size: 1rem;
+  line-height: 1;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+</style>
 <script type="text/javascript">
 import Navbar from '~/components/NavbarBS.vue'
 import Footer from '~/components/Footer.vue'
@@ -63,11 +87,27 @@ export default {
       this.posts.push({ _id: id, title: this.title })
       this.title = ''
     },
-    editUrl(post){
+    editUrl(post) {
       return process.env.baseUrl + '/post/edit/' + post._id
     },
     deletePost: function(post) {
       console.log('deleting.... ' + JSON.stringify(post))
+    },
+    html2text(html) {
+      html = html.replace(/<\s*br\/*>/gi, '\n')
+      html = html.replace(
+        /<\s*a.*href="(.*?)".*>(.*?)<\/a>/gi,
+        ' $2 (Link->$1) '
+      )
+      html = html.replace(/<\s*\/*.+?>/gi, '\n')
+      html = html.replace(/ {2,}/gi, ' ')
+      html = html.replace(/\n+\s*/gi, '\n\n')
+
+      return html
+
+      // var d = document.createElement( 'div' )
+      // d.innerHTML = html
+      // return d.textContent
     }
   },
   asyncData(context) {
@@ -79,8 +119,8 @@ export default {
       content: ''
     }
   },
-  async fetch ({ store, params }) {
-    await store.dispatch('posts/GET_POSTS');
+  async fetch({ store, params }) {
+    await store.dispatch('posts/GET_POSTS')
   }
 }
 </script>

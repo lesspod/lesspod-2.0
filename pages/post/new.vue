@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Navbar :menus='menus'/>
+    <Navbar :menus="menus"/>
     <div class="container">
       <form class="w-full max-w-xs">
         <div class="md:flex md:items-center mb-6">
@@ -28,7 +28,8 @@
               @focus="onEditorFocus($event)"
               @ready="onEditorReady($event)"
               v-quill:myQuillEditor="editorOption"
-            ></div><br>
+            ></div>
+            <br>
             <!-- <textarea
               id="inline-post-content"
               v-model="content"
@@ -48,16 +49,16 @@
   </div>
 </template>
 <style lang="scss" scoped>
-  .container {
-    width: 60%;
-    margin: 0 auto;
-    padding: 50px 0;
-    .quill-editor {
-      min-height: 200px;
-      max-height: 400px;
-      overflow-y: auto;
-    }
+.container {
+  width: 60%;
+  margin: 0 auto;
+  padding: 50px 0;
+  .quill-editor {
+    min-height: 200px;
+    max-height: 400px;
+    overflow-y: auto;
   }
+}
 </style>
 <script type="text/javascript">
 import Navbar from '~/components/NavbarBS.vue'
@@ -85,25 +86,29 @@ export default {
   },
   methods: {
     addPost: function() {
+      localStorage.clear()
       console.log('addPost called')
       // alert(
       //   'post added with title: ' + this.title + ' content: ' + this.content
       // )
-      this.$axios.post('/api/post', {
-        title: this.title,
-        text: this.content
-      })
-      var id = Math.floor(Math.random() * 100 + 4)
-      // this.posts.push({ _id: id, title: this.title })
-      var post = {
-        _id : id,
-        title: this.title,
-        content: this.content,
-        author: 'Jason Bourne'
+      if (this.title && this.title.length > 0) {
+        this.$axios.post('/api/post', {
+          title: this.title,
+          content: this.content,
+          author: this.author
+        })
+        var id = Math.floor(Math.random() * 100 + 4)
+        // this.posts.push({ _id: id, title: this.title })
+        var post = {
+          _id: id,
+          title: this.title,
+          content: this.content,
+          author: 'Jason Bourne'
+        }
+        this.$store.commit('posts/add', post)
+        this.title = ''
+        this.content = ''
       }
-      this.$store.commit('posts/add', post)
-      this.title = ''
-      this.content = ''
     },
     onEditorBlur(editor) {
       console.log('editor blur!', editor)
