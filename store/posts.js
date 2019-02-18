@@ -28,5 +28,10 @@ export const actions = {
     const { data } = await axios.get(process.env.baseUrl + '/api/post/')
     commit('setPosts', data)
     console.log('data in GET_POSTS... ' + JSON.stringify(data))
+  },
+  async DELETE_POST({ commit }, post) {
+    const { result } = await axios.delete(process.env.baseUrl + '/api/post/' + post._id)
+    console.log('post deleted...' + result)
+    commit('remove', post)
   }
 }

@@ -90,8 +90,9 @@ export default {
     editUrl(post) {
       return process.env.baseUrl + '/post/edit/' + post._id
     },
-    deletePost: function(post) {
+    async deletePost(post) {
       console.log('deleting.... ' + JSON.stringify(post))
+      await this.$store.dispatch('posts/DELETE_POST', post)
     },
     html2text(html) {
       html = html.replace(/<\s*br\/*>/gi, '\n')

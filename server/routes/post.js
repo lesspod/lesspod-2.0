@@ -27,6 +27,18 @@ router.get("/:id", async (req, res) => {
   }
 });
 
+router.delete("/:id", async (req, res) => {
+  try {
+    let { id } = req.params;
+    let Post = new PostModel();
+    let post1 = await Post.getById(id);
+    let result = post1.delete(post1._id);
+    res.send(result)
+  } catch (e) {
+    res.send(e);
+  }
+});
+
 router.post("/", async (req, res) => {
   try {
     let { body } = req;
