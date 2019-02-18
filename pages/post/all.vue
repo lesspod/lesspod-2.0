@@ -13,7 +13,7 @@
           class="mb-2"
         >
           <p class="card-text">
-            {{post.content}}
+            <!-- {{post.content}} -->
           </p>
           <!-- <b-button href="#" variant="success">Edit</b-button> -->
           <b-button :href="editUrl(post)" variant="success">Edit</b-button>
@@ -78,6 +78,9 @@ export default {
       title: '',
       content: ''
     }
+  },
+  async fetch ({ store, params }) {
+    await store.dispatch('posts/GET_POSTS');
   }
 }
 </script>

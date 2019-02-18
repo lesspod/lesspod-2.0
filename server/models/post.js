@@ -2,7 +2,8 @@ const mongoose = require("mongoose");
 
 const postSchema = mongoose.Schema({
   title: String,
-  text: String,
+  content: String,
+  author: String,
   createdBy: String,
   createdAt: Number,
   updatedAt: Number
@@ -26,7 +27,7 @@ class Post {
     return newPost.save();
   }
 
-  get({ limit, skip } = { limit: 10, skip: 0 }) {
+  get({ limit, skip } = { limit: 100, skip: 0 }) {
     return this.Post.find({}, formatPost)
       .limit(limit)
       .skip(skip);
