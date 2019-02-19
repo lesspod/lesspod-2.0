@@ -41,7 +41,7 @@ class Post {
     return this.Post.remove({ _id });
   }
 
-  update(id, data) {
+  update(_id, data) {
     return this.Post.findOneAndUpdate({ _id }, data, { new: true });
   }
 }

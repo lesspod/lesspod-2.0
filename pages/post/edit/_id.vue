@@ -11,7 +11,7 @@
             >Title</label>
           </div>
           <div class>
-            <input id="inline-post-title" v-model="title" class type="text">
+            <input id="inline-post-title" :value="currentPost.title" class type="text">
           </div>
         </div>
         <div class>
@@ -22,7 +22,7 @@
             <div
               id="content"
               class="quill-editor"
-              :content="content"
+              :content="currentPost.content"
               @change="onEditorChange($event)"
               @blur="onEditorBlur($event)"
               @focus="onEditorFocus($event)"
@@ -70,6 +70,8 @@ export default {
   },
   mounted() {
     console.log('app init, my quill instance object is:', this.myQuillEditor)
+    this.post_id = this.$nuxt._route.params.id
+    this.$store.dispatch('posts/GET_POST', this.post_id)
     // setTimeout(() => {
     //   this.content = 'i am changed'
     // }, 3000)
@@ -82,11 +84,36 @@ export default {
     posts() {
       // return this.$store.state.menus.menuItems
       return this.$store.state.posts.posts
+    },
+    currentPost() {
+      // return this.$store.state.menus.menuItems
+      return this.$store.state.posts.currentPost
     }
   },
   methods: {
+    savePost: function() {
+      var titl = document.getElementById('inline-post-title')
+      var cont = document.getElementsByClassName('ql-editor')
+      cont = cont[0].innerHTML
+      titl = titl.value
+      console.log('saving content: ' + cont + '... title: ' + titl)
+
+      if (titl && titl.length > 0) {
+
+        // this.posts.push({ _id: id, title: this.title })
+        var post = {
+          _id: this.post_id,
+          title: titl,
+          content: cont,
+          author: 'Rajan Chandi'
+        }
+
+        this.$axios.put('/api/post/' + this.post_id, post)
+        // this.$store.commit('posts/update', post)
+      }
+    },
     addPost: function() {
-      // localStorage.clear()
+      localStorage.clear()
       console.log('addPost called')
       // alert(
       //   'post added with title: ' + this.title + ' content: ' + this.content
@@ -110,15 +137,6 @@ export default {
         this.content = ''
       }
     },
-    savePost: function() {
-      if (this.title && this.title.length > 0) {
-        this.$axios.put('/api/post', {
-          title: this.title,
-          content: this.content,
-          author: this.author
-        })
-      }
-    },
     onEditorBlur(editor) {
       console.log('editor blur!', editor)
     },
@@ -133,13 +151,15 @@ export default {
       this.content = html
     }
   },
-  asyncData(context) {
+  async asyncData(context) {
     // called every time before loading the component
     // as the name said, it can be async
     // Also, the returned object will be merged with your data object
+
     return {
       title: '',
       content: '<p>I am Example</p>',
+      post_id: '',
       editorOption: {
         // some quill options
         modules: {
