@@ -92,6 +92,9 @@ export default {
       content: '',
       selectedPage: {}
     }
+  },
+  async fetch({ store, params }) {
+    await store.dispatch('pages/GET_PAGES')
   }
 }
 </script>
