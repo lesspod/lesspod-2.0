@@ -15,7 +15,8 @@
           <div class="card-text block-ellipsis">{{html2text(post.content)}}</div>
           <!-- <b-button href="#" variant="success">Edit</b-button> -->
           <b-button :href="editUrl(post)" variant="success">Edit</b-button>
-          <button type="button" class="btn btn-danger" @click="deletePost(post)">Delete</button>
+
+          <b-button type="button" class="btn btn-danger" @click="deletePost(post)">Delete</b-button>
         </b-card>
         <!-- <div class="w-full flex flex-wrap overflow-hidden items-center">
           <br /><br />
@@ -27,7 +28,6 @@
         </div>-->
       </b-card-group>
     </div>
-    <div id="hiddendiv"></div>
     <div class="page-index ml-10 py-20">
       <!-- <h1>Nuxt Serverless Template {{ this.version }}</h1> -->
     </div>

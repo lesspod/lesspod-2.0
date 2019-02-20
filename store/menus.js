@@ -17,7 +17,18 @@ export const mutations = {
   add(state, menuItem) {
     state.menuItems.push(menuItem)
   },
-  remove(state, menuItem) {
-    state.menuItems.splice(state.menuItems.indexOf(menuItem), 1)
+  remove(state, menuName) {
+    var menuItem = state.menuItems.filter(menu1 => {
+      return menu1.menuName == menuName;
+    })
+    state.menuItems.splice(state.menuItems.indexOf(menuItem[0], 1))
+  }
+}
+
+export const actions = {
+  async DELETE_MENU({ commit }, menuName) {
+    // const { result } = await axios.delete(process.env.baseUrl + '/api/menu/' + menu._id)
+    // console.log('menu deleted...' + result)
+    commit('remove', menuName)
   }
 }

@@ -1,6 +1,16 @@
 <template>
   <div>
     <Navbar :menus='menus'/>
+    <!-- Modal Component -->
+    <b-modal id="del-prompt" centered title="Delete Page + Menu"
+      @ok="deletePage(selectedPage)"
+      ok-title="Delete" ok-variant="danger">
+      <p class="my-4">This will also delete <b>
+        <template v-if="this.selectedPage">
+        {{ this.selectedPage.title }}
+        </template>
+      </b> menu item.</p>
+    </b-modal>
     <div class="container">
       <h4 class="w-full text-center pt-1 pb-1">All The Pages</h4>
       <b-card-group deck class="mb-3">
@@ -17,7 +27,7 @@
           </p>
           <b-button :href="page.title.toString().toLowerCase().replace(' ','-')" variant="success">Edit</b-button>
           <!-- <b-button :href="editUrl(post)" variant="success">Edit</b-button> -->
-          <button type="button" class="btn btn-danger" @click="deletePage(page)">Delete</button>
+          <b-button type="button" class="btn btn-danger" @click="selectedPage=page" v-b-modal.del-prompt>Delete</b-button>
         </b-card>
         <!-- <div class="w-full flex flex-wrap overflow-hidden items-center">
           <br /><br />
@@ -67,8 +77,10 @@ export default {
       this.posts.push({ _id: id, title: this.title })
       this.title = ''
     },
-    deletePage: function(page) {
+    async deletePage(page) {
       console.log('deleting.... ' + JSON.stringify(page))
+      await this.$store.dispatch('pages/DELETE_PAGE', page)
+      this.$store.dispatch('menus/DELETE_MENU', page.menuName)
     }
   },
   asyncData(context) {
@@ -77,7 +89,8 @@ export default {
     // Also, the returned object will be merged with your data object
     return {
       title: '',
-      content: ''
+      content: '',
+      selectedPage: {}
     }
   }
 }

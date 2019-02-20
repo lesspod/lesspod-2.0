@@ -1,3 +1,4 @@
+import axios from 'axios'
 import { getField, updateField } from 'vuex-map-fields'
 export const state = () => ({
   pages: [
@@ -24,4 +25,12 @@ export const mutations = {
   // update(state, page) {
   //   state.page = page
   // }
+}
+
+export const actions = {
+  async DELETE_PAGE({ commit }, page) {
+    // const { result } = await axios.delete(process.env.baseUrl + '/api/page/' + page._id)
+    // console.log('page deleted...' + result)
+    commit('remove', page)
+  }
 }
