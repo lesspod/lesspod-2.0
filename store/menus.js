@@ -11,10 +11,19 @@ export const state = () => ({
     { menuName: 'Menu', underMenu: 'New', linkedTo: ''},
     { menuName: 'Key Features', underMenu: 'Features', linkedTo: '/key-features'},
     { menuName: 'All Features', underMenu: 'Features', linkedTo: '/all-features'}
-  ]
+  ],
+  currentMenu: {}
 })
 
 export const mutations = {
+  setMenus(state, data) {
+    console.log('setting menus... ' + JSON.stringify(data))
+    if(data) state.menuItems = state.menuItems.concat(data)
+  },
+  setMenu(state, data) {
+    console.log('setting current menu... ' + JSON.stringify(data))
+    if(data) state.currentMenu = data
+  },
   add(state, menuItem) {
     state.menuItems.push(menuItem)
     axios.post('/api/menu', menuItem)
@@ -30,14 +39,15 @@ export const mutations = {
 export const actions = {
   async GET_MENUS ({ commit }) {
     // process.env.baseUrl
+    console.log('getting menus......')
     const { data } = await axios.get(process.env.baseUrl + '/api/menu/')
-    commit('setPosts', data)
+    commit('setMenus', data)
     console.log('data in GET_MENUS... ' + JSON.stringify(data))
   },
   async GET_MENU ({ commit }, menu_id) {
     // process.env.baseUrl
     const { data } = await axios.get(process.env.baseUrl + '/api/menu/' + menu_id)
-    commit('setPost', data)
+    commit('setMenu', data)
     console.log('data in GET_MENU... ' + JSON.stringify(data))
   },
   async DELETE_MENU({ commit }, menuName) {

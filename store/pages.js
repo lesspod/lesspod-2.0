@@ -15,6 +15,14 @@ export const getters = {
 }
 
 export const mutations = {
+  setPages(state, data) {
+    console.log('setting pages... ' + JSON.stringify(data))
+    if(data) state.pages = state.pages.concat(data)
+  },
+  setPage(state, data) {
+    console.log('setting current page... ' + JSON.stringify(data))
+    if(data) state.currentPage = data
+  },
   add(state, page) {
     state.pages.push(page)
     axios.post('/api/page', page)
@@ -29,6 +37,18 @@ export const mutations = {
 }
 
 export const actions = {
+  async GET_PAGES ({ commit }) {
+    // process.env.baseUrl
+    const { data } = await axios.get(process.env.baseUrl + '/api/page/')
+    commit('setPages', data)
+    console.log('data in GET_PAGES... ' + JSON.stringify(data))
+  },
+  async GET_PAGE ({ commit }, page_id) {
+    // process.env.baseUrl
+    const { data } = await axios.get(process.env.baseUrl + '/api/page/' + post_id)
+    commit('setPage', data)
+    console.log('data in GET_PAGE... ' + JSON.stringify(data))
+  },
   async DELETE_PAGE({ commit }, page) {
     // const { result } = await axios.delete(process.env.baseUrl + '/api/page/' + page._id)
     // console.log('page deleted...' + result)

@@ -143,7 +143,7 @@ export default {
     // Also, the returned object will be merged with your data object
     return {
       title: '',
-      content: '<p>I am Example</p>',
+      content: '',
       editorOption: {
         // some quill options
         modules: {
@@ -169,6 +169,10 @@ export default {
         }
       }
     }
+  },
+  async fetch({ store, params }) {
+    store.dispatch('menus/GET_MENUS')
+    await store.dispatch('pages/GET_PAGES')
   }
 }
 </script>
