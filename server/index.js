@@ -32,6 +32,7 @@ async function start() {
     await builder.build();
   }
   initDb();
+  console.log('API routes: ' + JSON.stringify(routes))
   app.use("/api", [cors(), bodyParser.json()], routes);
   app.get("/p/:id", (req, res) => {
     const actualPage = "/post";

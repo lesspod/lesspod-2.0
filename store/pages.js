@@ -17,6 +17,7 @@ export const getters = {
 export const mutations = {
   add(state, page) {
     state.pages.push(page)
+    axios.post('/api/page', page)
   },
   remove(state, page) {
     state.pages.splice(state.pages.indexOf(page), 1)

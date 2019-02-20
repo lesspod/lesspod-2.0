@@ -51,7 +51,7 @@ router.put("/:id", async (req, res) => {
   }
 });
 
-router.menu("/", async (req, res) => {
+router.post("/", async (req, res) => {
   try {
     let { body } = req;
     let Menu = new MenuModel();

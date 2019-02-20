@@ -172,7 +172,7 @@ export default {
       // var id = Math.floor(Math.random() * 100 + 10)
       // this.posts.push({ _id: id, title: this.title })
       var page = {
-        _id : Math.floor(Math.random() * 100 + 10).toString(),
+        // _id : Math.floor(Math.random() * 100 + 10).toString(),
         title: this.menuName,
         menuName: this.menuName,
         content: 'content for ' + this.menuName,
