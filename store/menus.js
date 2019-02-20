@@ -16,6 +16,7 @@ export const state = () => ({
 export const mutations = {
   add(state, menuItem) {
     state.menuItems.push(menuItem)
+    axios.post('/api/menu', menuItem)
   },
   remove(state, menuName) {
     var menuItem = state.menuItems.filter(menu1 => {
@@ -26,6 +27,18 @@ export const mutations = {
 }
 
 export const actions = {
+  async GET_MENUS ({ commit }) {
+    // process.env.baseUrl
+    const { data } = await axios.get(process.env.baseUrl + '/api/menu/')
+    commit('setPosts', data)
+    console.log('data in GET_MENUS... ' + JSON.stringify(data))
+  },
+  async GET_MENU ({ commit }, menu_id) {
+    // process.env.baseUrl
+    const { data } = await axios.get(process.env.baseUrl + '/api/menu/' + menu_id)
+    commit('setPost', data)
+    console.log('data in GET_MENU... ' + JSON.stringify(data))
+  },
   async DELETE_MENU({ commit }, menuName) {
     // const { result } = await axios.delete(process.env.baseUrl + '/api/menu/' + menu._id)
     // console.log('menu deleted...' + result)

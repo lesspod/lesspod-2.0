@@ -92,15 +92,10 @@ export default {
       //   'post added with title: ' + this.title + ' content: ' + this.content
       // )
       if (this.title && this.title.length > 0) {
-        this.$axios.post('/api/post', {
-          title: this.title,
-          content: this.content,
-          author: this.author
-        })
-        var id = Math.floor(Math.random() * 100 + 4)
+        // var id = Math.floor(Math.random() * 100 + 4)
         // this.posts.push({ _id: id, title: this.title })
         var post = {
-          _id: id,
+          // _id: id,
           title: this.title,
           content: this.content,
           author: 'Jason Bourne'

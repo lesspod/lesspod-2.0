@@ -21,6 +21,7 @@ export const mutations = {
   },
   add(state, post) {
     state.posts.push(post)
+    axios.post('/api/post', post)
   },
   remove(state, post) {
     state.posts.splice(state.posts.indexOf(post), 1)
