@@ -37,9 +37,6 @@ export default {
     // Also, the returned object will be merged with your data object
     return {
     }
-  },
-  async fetch({ store, params }) {
-    await store.dispatch('menus/GET_MENUS')
   }
 }
 </script>

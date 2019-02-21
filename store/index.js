@@ -7,3 +7,9 @@ export const mutations = {
     state.counter++
   }
 }
+
+export const actions = {
+  async nuxtServerInit ({ dispatch }) {
+    await dispatch('menus/GET_MENUS')
+  }
+}

@@ -171,7 +171,6 @@ export default {
     }
   },
   async fetch({ store, params }) {
-    store.dispatch('menus/GET_MENUS')
     await store.dispatch('pages/GET_PAGES')
   }
 }
