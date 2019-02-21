@@ -19,6 +19,7 @@ export const mutations = {
     console.log('setting pages... ' + JSON.stringify(data))
     if (data) {
       var temp = state.pages.concat(data)
+      // deduplication code
       temp.sort();
       for (var i = 1; i < temp.length;) {
         if (temp[i - 1]._id == temp[i]._id) {
@@ -61,8 +62,8 @@ export const actions = {
     console.log('data in GET_PAGE... ' + JSON.stringify(data))
   },
   async DELETE_PAGE({ commit }, page) {
-    // const { result } = await axios.delete(process.env.baseUrl + '/api/page/' + page._id)
-    // console.log('page deleted...' + result)
+    const { result } = await axios.delete(process.env.baseUrl + '/api/page/' + page._id)
+    console.log('page deleted...' + result)
     commit('remove', page)
   }
 }

@@ -32,6 +32,8 @@ export const mutations = {
     var menuItem = state.menuItems.filter(menu1 => {
       return menu1.menuName == menuName;
     })
+    const { result } = axios.delete(process.env.baseUrl + '/api/menu/' + menuItem[0]._id)
+    console.log('menu deleted...' + result)
     state.menuItems.splice(state.menuItems.indexOf(menuItem[0], 1))
   }
 }
@@ -51,8 +53,6 @@ export const actions = {
     console.log('data in GET_MENU... ' + JSON.stringify(data))
   },
   async DELETE_MENU({ commit }, menuName) {
-    // const { result } = await axios.delete(process.env.baseUrl + '/api/menu/' + menu._id)
-    // console.log('menu deleted...' + result)
     commit('remove', menuName)
   }
 }
