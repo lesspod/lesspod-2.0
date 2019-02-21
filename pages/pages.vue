@@ -83,6 +83,8 @@ export default {
       this.$store.dispatch('menus/DELETE_MENU', page.menuName)
     }
   },
+  mounted() {
+  },
   asyncData(context) {
     // called every time before loading the component
     // as the name said, it can be async

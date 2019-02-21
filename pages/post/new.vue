@@ -86,7 +86,6 @@ export default {
   },
   methods: {
     addPost: function() {
-      localStorage.clear()
       console.log('addPost called')
       // alert(
       //   'post added with title: ' + this.title + ' content: ' + this.content
