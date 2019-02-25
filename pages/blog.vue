@@ -16,7 +16,7 @@
             Some quick example text to build on the card title and make up the
             bulk of the card's content.
           </p>
-          <b-button href="#" variant="primary">Read More</b-button>
+          <b-button :href="readURL(post)" variant="primary">Read More</b-button>
         </b-card>
         <!-- <div class="w-full flex flex-wrap overflow-hidden items-center">
           <br /><br />
@@ -54,13 +54,8 @@ export default {
     }
   },
   methods: {
-    addPost: function() {
-      alert(
-        'post added with title: ' + this.title + ' content: ' + this.content
-      )
-      var id = Math.floor(Math.random() * 100 + 4)
-      this.posts.push({ _id: id, title: this.title })
-      this.title = ''
+    readURL(post) {
+      return '/post/' + post._id
     }
   },
   asyncData(context) {
