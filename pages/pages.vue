@@ -84,6 +84,7 @@ export default {
     }
   },
   mounted() {
+    window.localStorage.clear();
   },
   asyncData(context) {
     // called every time before loading the component
