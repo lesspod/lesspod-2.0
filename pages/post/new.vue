@@ -30,12 +30,6 @@
               v-quill:myQuillEditor="editorOption"
             ></div>
             <br>
-            <!-- <textarea
-              id="inline-post-content"
-              v-model="content"
-              class=""
-              type="text"
-            />-->
           </div>
         </div>
         <div class="md:flex md:items-center">
@@ -85,8 +79,8 @@ export default {
     }
   },
   methods: {
-    addPost: function() {
-      console.log('addPost called')
+    async addPost() {
+      console.log('addPost called. Title: ' + this.title)
       // alert(
       //   'post added with title: ' + this.title + ' content: ' + this.content
       // )
@@ -97,9 +91,9 @@ export default {
           // _id: id,
           title: this.title,
           content: this.content,
-          author: 'Jason Bourne'
+          author: 'Rajan Chandi'
         }
-        this.$store.commit('posts/add', post)
+        await this.$store.dispatch('posts/ADD_POST', post)
         this.title = ''
         this.content = ''
       }
@@ -114,7 +108,7 @@ export default {
       console.log('editor ready!', editor)
     },
     onEditorChange({ editor, html, text }) {
-      console.log('editor change!', editor, html, text)
+      // console.log('editor change!', editor, html, text)
       this.content = html
     }
   },

@@ -21,14 +21,23 @@ export const mutations = {
   },
   add(state, post) {
     state.posts.push(post)
-    axios.post('/api/post', post)
   },
+  // add(state, post) {
+  //   state.posts.push(post)
+  //   axios.post('/api/post', post)
+  // },
   remove(state, post) {
     state.posts.splice(state.posts.indexOf(post), 1)
   }
 }
 
 export const actions = {
+  async ADD_POST ({ commit }, post) {
+    console.log('ADD_POST...')
+    var result = await axios.post('/api/post', post)
+    console.log('ADD_POST result: ' + JSON.stringify(result))
+    commit('add', post)
+  },
   async GET_POSTS ({ commit }) {
     // process.env.baseUrl
     const { data } = await axios.get(process.env.baseUrl + '/api/post/')

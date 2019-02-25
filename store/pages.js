@@ -37,7 +37,7 @@ export const mutations = {
   },
   add(state, page) {
     state.pages.push(page)
-    axios.post('/api/page', page)
+    // axios.post('/api/page', page)
   },
   remove(state, page) {
     state.pages.splice(state.pages.indexOf(page), 1)
@@ -49,6 +49,12 @@ export const mutations = {
 }
 
 export const actions = {
+  async ADD_PAGE ({ commit }, page) {
+    console.log('ADD_PAGE...')
+    var result = await axios.post('/api/page', page)
+    console.log('ADD_PAGE result: ' + JSON.stringify(result))
+    commit('add', page)
+  },
   async GET_PAGES({ commit }) {
     // process.env.baseUrl
     const { data } = await axios.get(process.env.baseUrl + '/api/page/')

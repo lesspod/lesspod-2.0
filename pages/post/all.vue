@@ -95,15 +95,16 @@ export default {
       await this.$store.dispatch('posts/DELETE_POST', post)
     },
     html2text(html) {
-      html = html.replace(/<\s*br\/*>/gi, '\n')
-      html = html.replace(
-        /<\s*a.*href="(.*?)".*>(.*?)<\/a>/gi,
-        ' $2 (Link->$1) '
-      )
-      html = html.replace(/<\s*\/*.+?>/gi, '\n')
-      html = html.replace(/ {2,}/gi, ' ')
-      html = html.replace(/\n+\s*/gi, '\n\n')
-
+      if(html) {
+        html = html.replace(/<\s*br\/*>/gi, '\n')
+        html = html.replace(
+          /<\s*a.*href="(.*?)".*>(.*?)<\/a>/gi,
+          ' $2 (Link->$1) '
+        )
+        html = html.replace(/<\s*\/*.+?>/gi, '\n')
+        html = html.replace(/ {2,}/gi, ' ')
+        html = html.replace(/\n+\s*/gi, '\n\n')
+      }
       return html
 
       // var d = document.createElement( 'div' )

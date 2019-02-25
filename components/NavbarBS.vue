@@ -178,7 +178,7 @@ export default {
         content: 'content for ' + this.menuName,
         author: 'Rajan Chandi'
       }
-      this.$store.commit('pages/add', page)
+      this.$store.dispatch('pages/ADD_PAGE', page)
       console.log(JSON.stringify(page))
 
       var menuItem = {
@@ -186,7 +186,7 @@ export default {
         underMenu: this.underMenu,
         linkedTo: link
       }
-      this.$store.commit('menus/add', menuItem)
+      this.$store.dispatch('menus/ADD_MENU', menuItem)
       console.log(JSON.stringify(this.menus))
     },
     menuClass: function(menu) {

@@ -26,7 +26,7 @@ export const mutations = {
   },
   add(state, menuItem) {
     state.menuItems.push(menuItem)
-    axios.post('/api/menu', menuItem)
+    // axios.post('/api/menu', menuItem)
   },
   remove(state, menuName) {
     var menuItem = state.menuItems.filter(menu1 => {
@@ -39,6 +39,12 @@ export const mutations = {
 }
 
 export const actions = {
+  async ADD_MENU ({ commit }, menu) {
+    console.log('ADD_MENU...')
+    var result = await axios.post('/api/menu', menu)
+    console.log('ADD_MENU result: ' + JSON.stringify(result))
+    commit('add', menu)
+  },
   async GET_MENUS ({ commit }) {
     // process.env.baseUrl
     console.log('getting menus......')

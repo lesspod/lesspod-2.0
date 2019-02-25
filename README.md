@@ -61,6 +61,8 @@ For example following code illustrates adding 'Journal' Bootswatch theme.
 
 ## Build Setup
 
+Mongo should be running locally. Also, rename .env.sample to .env before running.
+
 ```bash
 # install dependencies
 $ npm install
