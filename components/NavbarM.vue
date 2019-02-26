@@ -65,6 +65,12 @@
               </div>
             </template>
           </li>
+          <!-- <li class="nav-link">
+            <div class="form-group has-search">
+              <span class="fa fa-search form-control-feedback"></span>
+              <input type="text" class="form-control" placeholder="Search">
+            </div>
+          </li>-->
         </ul>
         <form class="form-inline my-2 my-lg-0 form-group has-search form-group-sm pl-2">
           <span class="fa fa-search form-control-feedback"></span>
@@ -156,10 +162,6 @@
   text-align: center;
   pointer-events: none;
   color: #aaa;
-}
-
-.navbar {
-  margin-bottom: 10rem;
 }
 </style>
 <script>

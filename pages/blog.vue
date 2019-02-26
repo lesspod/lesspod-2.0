@@ -35,7 +35,11 @@
     <Footer />
   </div>
 </template>
-<style></style>
+<style>
+.container {
+  padding: 4rem 0;
+}
+</style>
 <script type="text/javascript">
 import Navbar from '~/components/NavbarBS.vue'
 import Footer from '~/components/Footer.vue'

@@ -1,5 +1,5 @@
 <template>
-  <div style="margin-left:2rem;">
+  <div>
     <Navbar :menus="menus"/>
     <div class="container">
       <h4 class="w-full text-center pt-1 pb-1">Dashboard</h4>
@@ -7,12 +7,15 @@
         <sidebar-menu :menu="sidebarMenu"/>
       </no-ssr>
     </div>
-
     <Footer/>
   </div>
 </template>
 
-<style></style>
+<style>
+.v-sidebar-menu {
+  z-index: 1031;
+}
+</style>
 
 <script>
 import Navbar from '../components/NavbarBS.vue'

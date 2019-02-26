@@ -1,7 +1,7 @@
 <template>
   <div>
     <Navbar :menus="menus"/>
-    <div class="container-fluid">
+    <div class="container container-fluid">
       <div
         id="content"
         class="quill-editor"
@@ -20,7 +20,7 @@
 .container {
   width: 60%;
   margin: 0 auto;
-  padding: 50px 0;
+  padding: 4rem 0;
   .quill-editor {
     min-height: 200px;
     max-height: 400px;
@@ -144,6 +144,7 @@ export default {
     return {
       title: '',
       content: '',
+      loggedIn: false,
       editorOption: {
         // some quill options
         modules: {

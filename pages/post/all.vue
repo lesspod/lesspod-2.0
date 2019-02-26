@@ -9,7 +9,7 @@
           :key="post._id"
           :title="post.title"
           tag="article"
-          style="max-width: 15rem;min-width: 10rem;"
+          style="max-width: 15rem;min-width: 12rem;"
           class="mb-2"
         >
           <div class="card-text block-ellipsis">{{html2text(post.content)}}</div>

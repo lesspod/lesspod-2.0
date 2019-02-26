@@ -19,7 +19,7 @@
           :key="page._id"
           :title="page.title"
           tag="article"
-          style="max-width: 15rem;min-width: 10rem;"
+          style="max-width: 15rem;min-width: 12rem;"
           class="mb-2"
         >
           <p class="card-text">

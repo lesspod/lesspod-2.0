@@ -9,7 +9,7 @@
 
 <script>
 // import Logo from '~/components/Logo.vue'
-import Navbar from '~/components/NavbarBS.vue'
+import Navbar from '~/components/NavbarM.vue'
 import Footer from '~/components/Footer.vue'
 import { mapMutations } from 'vuex'
 export default {
