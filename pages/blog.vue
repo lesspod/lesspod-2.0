@@ -67,6 +67,9 @@ export default {
       title: '',
       content: ''
     }
+  },
+  async fetch({ store, params }) {
+    await store.dispatch('posts/GET_POSTS')
   }
 }
 </script>
