@@ -16,7 +16,8 @@
             Some quick example text to build on the card title and make up the
             bulk of the card's content.
           </p>
-          <b-button :href="readURL(post)" variant="primary">Read More</b-button>
+          <!-- <b-button :href="readURL(post)" variant="primary">Read More</b-button> -->
+          <nuxt-link class="btn btn-success" :to="{ name: 'post-id', params: { id: post._id }}">Read More</nuxt-link>
         </b-card>
         <!-- <div class="w-full flex flex-wrap overflow-hidden items-center">
           <br /><br />

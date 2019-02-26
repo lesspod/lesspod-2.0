@@ -14,8 +14,8 @@
         >
           <div class="card-text block-ellipsis">{{html2text(post.content)}}</div>
           <!-- <b-button href="#" variant="success">Edit</b-button> -->
-          <b-button :href="editUrl(post)" variant="success">Edit</b-button>
-
+          <!-- <b-button :href="editUrl(post)" variant="success">Edit</b-button> -->
+          <nuxt-link class="btn btn-success" :to="{ name: 'post-edit-id', params: { id: post._id }}">Edit</nuxt-link>
           <b-button type="button" class="btn btn-danger" @click="deletePost(post)">Delete</b-button>
         </b-card>
         <!-- <div class="w-full flex flex-wrap overflow-hidden items-center">
