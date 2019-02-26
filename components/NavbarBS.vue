@@ -20,11 +20,12 @@
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav" id="navUl">
           <li v-for="menu in topLevelMenus" :key="menu.menuName" :class="menuClass(menu)">
-            <a
+            <!-- <a
               v-if="menuClass(menu) == 'nav-item'"
               class="nav-link"
               :href="menuHref(menu)"
-            >{{ menu.menuName }}</a>
+            >{{ menu.menuName }}</a> -->
+            <nuxt-link v-if="menuClass(menu) == 'nav-item'" class="nav-link" :to="{ path: menuHref(menu), params: {}}">{{ menu.menuName }}</nuxt-link>
             <template v-else>
               <a
                 class="nav-link b-nav-dropdown dropdown-toggle"
