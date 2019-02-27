@@ -18,9 +18,9 @@ Our goal is to make it as simple as possible to host serverless websites and blo
 
 Static websites can also be deployed without servers (VMs or bare metal) and can be considered as a serverless website. The key difference from development perspective is that a serverless website built with Lesspod can be a dynamic serverless website.
 
-## Themes Support (Bootstrap themes + Tailwind CSS)
+## Themes Support (Bootstrap 4 themes )
 
-We know that when it comes to building websites, themes do speed up the development effort. Currently, we support tailwind css and bootstrap both. Thousands of Bootstrap 4 themes are available online and can be quickly integrated using nuxt.config.js.
+When it comes to building websites, themes do speed up the development effort. Currently, we support Bootstrap 4 themes. Thousands of Bootstrap 4 themes are available online and can be quickly integrated via nuxt.config.js.
 
 For example following code illustrates adding 'Journal' Bootswatch theme.
 

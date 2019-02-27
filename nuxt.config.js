@@ -18,10 +18,25 @@ module.exports = {
     link: [
       { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
       {
-        rel: "stylesheet",
+        rel: 'stylesheet',
         href:
-          "https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          'https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css'
       },
+      {
+        rel: 'stylesheet',
+        href:
+          'https://stackpath.bootstrapcdn.com/bootswatch/4.1.2/litera/bootstrap.min.css'
+      },
+      // {
+      //   rel: 'stylesheet',
+      //   href:
+      //     'https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'
+      // },
+      // {
+      //   rel: "stylesheet",
+      //   href:
+      //     "https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+      // },
       // {
       //   rel: "stylesheet",
       //   href:
