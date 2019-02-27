@@ -6,13 +6,16 @@
       <b-card-group deck class="mb-3">
         <b-card
           v-for="post in posts"
+          :img-src="'https://loremflickr.com/320/240/' + post.title.substr(0,post.title.indexOf(' '))"
+          img-alt="Image"
+          img-top
           :key="post._id"
-          :title="post.title"
           tag="article"
           style="max-width: 15rem;min-width: 12rem;"
           class="mb-2"
         >
-          <p class="card-text">
+          <b-card-title style="font-weight: 600;font-size: 1.3rem;">{{ post.title }}</b-card-title>
+          <p class="card-text" style="font-size: 1rem;">
             Some quick example text to build on the card title and make up the
             bulk of the card's content.
           </p>
