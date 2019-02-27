@@ -12,7 +12,7 @@
       </b> menu item.</p>
     </b-modal>
     <div class="container">
-      <h4 class="w-full text-center pt-1 pb-1">All The Pages</h4>
+      <h4 class="w-full text-center pt-1 pb-1">Admin Pages</h4>
       <b-card-group deck class="mb-3">
         <b-card
           v-for="page in pages"

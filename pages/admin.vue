@@ -15,6 +15,9 @@
 .v-sidebar-menu {
   z-index: 1031;
 }
+.navbar-brand {
+  margin-left: 2rem;
+}
 </style>
 
 <script>
