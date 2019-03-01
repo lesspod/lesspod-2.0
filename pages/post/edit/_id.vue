@@ -108,8 +108,8 @@ export default {
           author: 'Rajan Chandi'
         }
 
-        this.$axios.put('/api/post/' + this.post_id, post)
-        // this.$store.commit('posts/update', post)
+        // this.$axios.put('/api/post/' + this.post_id, post)
+        this.$store.dispatch('posts/UPDATE_POST', post)
       }
     },
     addPost: function() {
