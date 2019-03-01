@@ -42,7 +42,8 @@ class Page {
     return this.Page.remove({ _id });
   }
 
-  update(id, data) {
+  update(_id, data) {
+    console.log('updating a page (model)... '+ JSON.stringify(data));
     return this.Page.findOneAndUpdate({ _id }, data, { new: true });
   }
 }
