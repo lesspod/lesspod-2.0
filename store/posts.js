@@ -1,11 +1,11 @@
 import axios from 'axios'
 export const state = () => ({
   posts: [
-    { _id: '1', title: 'Just one good.', content: '', author: ''},
-    { _id: '2', title: 'Why the world is great?', content: '', author: ''},
-    { _id: '3', title: 'Just another blog post', content: '', author: ''},
-    { _id: '4', title: 'How about some fun facts?', content: '', author: ''},
-    { _id: '5', title: '10 ways to attain nirvana', content: '', author: ''}
+    { _id: '5c73755d8d37x1457000bf01', title: 'Just one good.', content: '', author: ''},
+    { _id: '5c73755d8d37x1457000bf02', title: 'Why the world is great?', content: '', author: ''},
+    { _id: '5c73755d8d37x1457000bf03', title: 'Just another blog post', content: '', author: ''},
+    { _id: '5c73755d8d37x1457000bf04', title: 'How about some fun facts?', content: '', author: ''},
+    { _id: '5c73755d8d37x1457000bf05', title: '10 ways to attain nirvana', content: '', author: ''}
   ],
   currentPost: []
 })
@@ -18,6 +18,14 @@ export const mutations = {
   setPost(state, data) {
     console.log('setting current post... ' + JSON.stringify(data))
     if(data) state.currentPost = data
+  },
+  update(state, post) {
+    console.log('updating post... ' + JSON.stringify(post))
+    for(var i in state.posts) {
+      if(state.posts[i]._id == post._id) {
+        state.posts[i] = post
+      }
+    }
   },
   add(state, post) {
     state.posts.push(post)
@@ -49,6 +57,12 @@ export const actions = {
     const { data } = await axios.get(process.env.baseUrl + '/api/post/' + post_id)
     commit('setPost', data)
     console.log('data in GET_POST... ' + JSON.stringify(data))
+  },
+  async UPDATE_POST ({ commit }, post) {
+    console.log('UPDATE_POST...')
+    var result = await axios.put('/api/post/' + post._id, post)
+    console.log('UPDATE_POST result: ' + JSON.stringify(result))
+    commit('update', post)
   },
   async DELETE_POST({ commit }, post) {
     const { result } = await axios.delete(process.env.baseUrl + '/api/post/' + post._id)

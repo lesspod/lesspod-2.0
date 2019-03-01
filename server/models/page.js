@@ -53,8 +53,6 @@ class Page {
       if (error) console.log(error);
       // do something with the document
       });
-
-    // return this.Page.findByIdAndUpdate(_id, {$set:{data}}, { new: true });
   }
 }
 

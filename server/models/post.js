@@ -37,6 +37,20 @@ class Post {
     return this.Post.findOne({ _id }, formatPost);
   }
 
+  update(_id, data) {
+    console.log('updating a post (model)... '+ JSON.stringify(data));
+    var query = { '_id' : _id },
+    update = data,
+    options = { upsert: true };
+
+    // Find the document
+    return this.Post.findOneAndUpdate(query, update, options, function(error, result) {
+      if (error) console.log(error);
+      // do something with the document
+      });
+  }
+
+
   delete(_id) {
     return this.Post.remove({ _id });
   }

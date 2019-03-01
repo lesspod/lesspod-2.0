@@ -27,6 +27,20 @@ router.get("/:id", async (req, res) => {
   }
 });
 
+router.put("/:id", async (req, res) => {
+
+  try {
+    let { id } = req.params;
+    let { body } = req;
+    console.log('updating a page (routes)... ' + id + ', body= ' + body);
+    let Post = new PostModel();
+    let result = await Post.update(id, body);
+    res.send(result);
+  } catch (e) {
+    res.send(e);
+  }
+});
+
 router.delete("/:id", async (req, res) => {
   try {
     let { id } = req.params;

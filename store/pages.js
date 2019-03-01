@@ -7,8 +7,7 @@ export const state = () => ({
     { _id: '5c73755d8d37b1457000bf03', title: 'Pricing', menuName: 'Pricing', content: 'This is a pricing page.', author: '' },
     { _id: '5c73755d8d37b1457000bf04', title: 'Key Features', menuName: 'Key Features', content: '', author: '' },
     { _id: '5c73755d8d37b1457000bf05', title: 'All Features', menuName: 'All Features', content: '', author: '' }
-  ],
-  currentPage: { _id: '1111111', title: '', menuName: '', content: '', author: '' }
+  ]
 })
 
 export const getters = {
@@ -19,12 +18,12 @@ export const mutations = {
   setPages(state, data) {
     console.log('setting pages... ' + JSON.stringify(data))
     if (data) {
-      var temp = state.pages.concat(data)
+      var temp = state.pages.concat(data).sort((a, b) => a._id.localeCompare(b._id))
       // deduplication code
-      temp.sort();
+      // temp.sort();
       for (var i = 1; i < temp.length;) {
         if (temp[i - 1]._id == temp[i]._id) {
-          temp.splice(i, 1);
+          temp.splice(i-1, 1);
         } else {
           i++;
         }
