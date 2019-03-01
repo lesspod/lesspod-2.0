@@ -44,7 +44,17 @@ class Page {
 
   update(_id, data) {
     console.log('updating a page (model)... '+ JSON.stringify(data));
-    return this.Page.findOneAndUpdate({ _id }, data, { new: true });
+    var query = { '_id' : _id },
+    update = data,
+    options = { upsert: true };
+
+    // Find the document
+    return this.Page.findOneAndUpdate(query, update, options, function(error, result) {
+      if (error) console.log(error);
+      // do something with the document
+      });
+
+    // return this.Page.findByIdAndUpdate(_id, {$set:{data}}, { new: true });
   }
 }
 

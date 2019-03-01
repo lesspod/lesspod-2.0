@@ -2,11 +2,11 @@ import axios from 'axios'
 import { getField, updateField } from 'vuex-map-fields'
 export const state = () => ({
   pages: [
-    { _id: '1', title: 'Home', menuName: 'Home', content: 'just a home', author: '' },
-    { _id: '2', title: 'Features', menuName: 'Features', content: '', author: '' },
-    { _id: '3', title: 'Pricing', menuName: 'Pricing', content: 'This is a pricing page.', author: '' },
-    { _id: '4', title: 'Key Features', menuName: 'Key Features', content: '', author: '' },
-    { _id: '5', title: 'All Features', menuName: 'All Features', content: '', author: '' }
+    { _id: '5c73755d8d37b1457000bf01', title: 'Home', menuName: 'Home', content: 'just a home', author: '' },
+    { _id: '5c73755d8d37b1457000bf02', title: 'Features', menuName: 'Features', content: '', author: '' },
+    { _id: '5c73755d8d37b1457000bf03', title: 'Pricing', menuName: 'Pricing', content: 'This is a pricing page.', author: '' },
+    { _id: '5c73755d8d37b1457000bf04', title: 'Key Features', menuName: 'Key Features', content: '', author: '' },
+    { _id: '5c73755d8d37b1457000bf05', title: 'All Features', menuName: 'All Features', content: '', author: '' }
   ],
   currentPage: { _id: '1111111', title: '', menuName: '', content: '', author: '' }
 })
