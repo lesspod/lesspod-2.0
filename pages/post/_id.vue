@@ -3,8 +3,8 @@
     <Navbar :menus="menus"/>
     <div class="container container-fluid">
       <div class="row">
-        <div class="col-sm-1 px-1">
-          <div class="py-1 sticky-top flex-grow-1" style="top:6rem;margin-left:4rem;">
+        <div class="col-sm-1 px-1 share-sidebar">
+          <div class="py-1 sticky-top flex-grow-1" style="top:6rem;">
             <div class="nav flex-sm-column">
               <span href class="nav-link d-none d-sm-inline" style="color:grey;"></span>
               <a  target="_blank" href="https://twitter.com/home?status=http%3A//www.lesspod.com" class="nav-link" style="color:darkgrey;"><i class="fab fa-twitter"></i></a>
@@ -20,7 +20,9 @@
             class="postTitle"
             style="font-family: 'Noto Serif SC', serif !important;font-weight: 600;font-size: 2rem;"
           >{{ currentPost.title }}</div>
-          <div class="card" style="margin-top: 0.5rem;margin-bottom: -1rem; width: 20rem;">
+          <span style="font-family: sans-serif; font-weight:300; font-size: 0.9rem;">March 1, 2019 . 5 min read . Written By: <a href="#" style="color:black;">Rajan Chandi</a></span>
+          <span id="postContent" style v-html="currentPost.content"></span>
+          <div class="card" style="margin-top: -3rem;margin-bottom: -1rem;">
             <div class="card-body">
               <div class="row">
                 <div class="col-md-3">
@@ -43,12 +45,11 @@
                     </a>
                   </p>
                   <div class="clearfix"></div>
-                  <span style="font-family: sans-serif; font-weight:200; font-size: 0.5rem;">March 1, 2019 . 5 min read</span>
+                  <span style="font-family: sans-serif; font-weight:400; font-size: 0.9rem;">Product developer & marketer with skills in programming, technology, design, digital marketing and tech leadership. Built 3 revenue generating products from scratch. Funded, hired a team, launched products and monetized them.</span>
                 </div>
               </div>
             </div>
           </div>
-          <span id="postContent" style v-html="currentPost.content"></span>
           <br>
           <div class="content" id="disqus_thread"></div>
           <!-- <form class="w-full max-w-xs">
@@ -65,15 +66,55 @@
   </div>
 </template>
 <style lang="css">
+
+/* Extra small devices (portrait phones, less than 576px) */
+@media (max-width: 575.98px) {
+    #main {
+      margin-right: 0.75rem;
+      margin-left: 0.75rem;
+    }
+}
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) and (max-width: 767.98px) {
+    #main {
+      margin-right: 1rem;
+      margin-left: 1rem;
+    }
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) and (max-width: 991.98px) {
+  #main {
+    margin-right: 3rem;
+    margin-left: 3rem;
+  }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  #main {
+    margin-right: 4.5rem;
+    margin-left: 4.55rem;
+  }
+}
+
+/* // Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+    #main {
+      margin-right: 6rem;
+      margin-left: 6rem;
+    }
+    .share-sidebar {
+      margin-left: 4rem;
+    }
+}
 p {
   font-family: 'Noto Serif SC', serif;
   font-weight: medium;
-  font-size: 1.1rem;
+  font-size: 1.05rem;
 }
-#main {
-  margin-right: 6rem;
-  margin-left: 6rem;
-}
+
 #postContent {
   padding: 1rem;
 }
