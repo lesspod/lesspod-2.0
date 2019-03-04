@@ -4,39 +4,60 @@
     <div class="container container-fluid">
       <div class="row">
         <div class="col-sm-1 px-1">
-          <div class="py-1 sticky-top flex-grow-1" style="top:3rem;">
+          <div class="py-1 sticky-top flex-grow-1" style="top:6rem;margin-left:4rem;">
             <div class="nav flex-sm-column">
-              <a href class="nav-link d-none d-sm-inline">Sidebar</a>
-              <a href class="nav-link">Link</a>
-              <a href class="nav-link">Link</a>
-              <a href class="nav-link">Link</a>
-              <a href class="nav-link">Link</a>
-              <a href class="nav-link">Link</a>
+              <span href class="nav-link d-none d-sm-inline" style="color:grey;"></span>
+              <a  target="_blank" href="https://twitter.com/home?status=http%3A//www.lesspod.com" class="nav-link" style="color:darkgrey;"><i class="fab fa-twitter"></i></a>
+              <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A//www.lesspod.com" class="nav-link" style="color:darkgrey;"><i class="fab fa-facebook"></i></a>
+              <a href class="nav-link" style="color:darkgrey;"><i class="fa fa-link"></i></a>
+                <!-- <a href class="nav-link">Link</a>
+                <a href class="nav-link">Link</a> -->
             </div>
           </div>
         </div>
         <div class="col" id="main">
-          <form class="w-full max-w-xs">
-            <div class="md:flex md:items-center mb-6">
-              <div
-                class="postTitle"
-                style="font-family: 'Noto Serif SC', serif !important;font-weight: 600;font-size: 1.5rem;"
-              >{{ currentPost.title }}</div>
-            </div>
-            <div class>
-              <div class>
-                <span id="postContent" style v-html="currentPost.content"></span>
-                <br>
-                <div class="content" id="disqus_thread"></div>
-                <!-- <textarea
-              id="inline-post-content"
-              v-model="content"
-              class=""
-              type="text"
-                />-->
+          <div
+            class="postTitle"
+            style="font-family: 'Noto Serif SC', serif !important;font-weight: 600;font-size: 2rem;"
+          >{{ currentPost.title }}</div>
+          <div class="card" style="margin-top: 0.5rem;margin-bottom: -1rem; width: 20rem;">
+            <div class="card-body">
+              <div class="row">
+                <div class="col-md-3">
+                  <img
+                    src="https://image.ibb.co/jw55Ex/def_face.jpg"
+                    class="img img-rounded img-fluid"
+                  >
+                </div>
+                <div class="col-md-9">
+                  <p style="margin:0; padding:0;">
+                    <a
+                      class="float-left"
+                      href="#"
+                      style="font-family: sans-serif; font-weight:200; font-size: 1rem;"
+                    >
+                      <strong>Rajan Chandi</strong>
+                    </a>
+                    <a class="float-right btn btn-sm text-white btn-success">
+                      Subscribe
+                    </a>
+                  </p>
+                  <div class="clearfix"></div>
+                  <span style="font-family: sans-serif; font-weight:200; font-size: 0.5rem;">March 1, 2019 . 5 min read</span>
+                </div>
               </div>
             </div>
-          </form>
+          </div>
+          <span id="postContent" style v-html="currentPost.content"></span>
+          <br>
+          <div class="content" id="disqus_thread"></div>
+          <!-- <form class="w-full max-w-xs">
+            <div class="md:flex md:items-center mb-6"></div>
+            <div class>
+              <div class>
+              </div>
+            </div>
+          </form>-->
         </div>
       </div>
     </div>
@@ -45,9 +66,13 @@
 </template>
 <style lang="css">
 p {
-  font-family: 'Noto Serif SC', serif !important;
+  font-family: 'Noto Serif SC', serif;
   font-weight: medium;
-  font-size: 0.8rem;
+  font-size: 1.1rem;
+}
+#main {
+  margin-right: 6rem;
+  margin-left: 6rem;
 }
 #postContent {
   padding: 1rem;
@@ -55,7 +80,7 @@ p {
 .postTitle {
   font-family: 'Noto Serif SC', serif !important;
   font-weight: 600;
-  font-size: 2rem;
+  font-size: 3rem;
 }
 </style>
 <script type="text/javascript">
