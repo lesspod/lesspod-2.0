@@ -20,9 +20,9 @@
             class="postTitle"
             style="font-family: 'Noto Serif SC', serif !important;font-weight: 600;font-size: 2rem;"
           >{{ currentPost.title }}</div>
-          <span style="font-family: sans-serif; font-weight:300; font-size: 0.9rem;">March 1, 2019 . 5 min read . Written By: <a href="#" style="color:black;">Rajan Chandi</a></span>
+          <span style="font-family: sans-serif; font-weight:300; font-size: 0.9rem;">{{ new Date(currentPost.createdAt) | moment("MMM Do, YYYY") }} . {{ readMins }} . Written by <a href="#" style="color:black;">{{ currentPost.author }}</a></span>
           <span id="postContent" style v-html="currentPost.content"></span>
-          <div class="card" style="margin-top: -3rem;margin-bottom: -1rem;">
+          <div class="card" style="margin-top: -2rem;margin-bottom: -1rem;">
             <div class="card-body">
               <div class="row">
                 <div class="col-md-3">
@@ -38,7 +38,7 @@
                       href="#"
                       style="font-family: sans-serif; font-weight:200; font-size: 1rem;"
                     >
-                      <strong>Rajan Chandi</strong>
+                      <strong>{{ currentPost.author }}</strong>
                     </a>
                     <a class="float-right btn btn-sm text-white btn-success">
                       Subscribe
@@ -103,7 +103,7 @@
 @media (min-width: 1200px) {
     #main {
       margin-right: 6rem;
-      margin-left: 6rem;
+      margin-left: 1rem;
     }
     .share-sidebar {
       margin-left: 4rem;
@@ -127,6 +127,7 @@ p {
 <script type="text/javascript">
 import Navbar from '~/components/NavbarBS.vue'
 import Footer from '~/components/Footer.vue'
+// import readingTime from 'reading-time'
 export default {
   components: {
     Navbar,
@@ -168,6 +169,15 @@ export default {
     currentPost() {
       // return this.$store.state.menus.menuItems
       return this.$store.state.posts.currentPost
+    },
+    readMins() {
+      var readingTime = require('reading-time')
+      console.log(this.currentPost)
+      if(this.currentPost) {
+        return readingTime(this.currentPost.content).text
+      }else {
+        return readingTime("").text
+      }
     }
   },
   methods: {
