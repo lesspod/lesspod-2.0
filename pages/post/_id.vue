@@ -1,51 +1,61 @@
 <template>
   <div>
     <Navbar :menus="menus"/>
-    <div class="container">
-      <form class="w-full max-w-xs">
-        <div class="md:flex md:items-center mb-6">
-          <div class>
-            <h4>{{ currentPost.title }}</h4>
+    <div class="container container-fluid">
+      <div class="row">
+        <div class="col-sm-1 px-1">
+          <div class="py-1 sticky-top flex-grow-1" style="top:3rem;">
+            <div class="nav flex-sm-column">
+              <a href class="nav-link d-none d-sm-inline">Sidebar</a>
+              <a href class="nav-link">Link</a>
+              <a href class="nav-link">Link</a>
+              <a href class="nav-link">Link</a>
+              <a href class="nav-link">Link</a>
+              <a href class="nav-link">Link</a>
+            </div>
           </div>
         </div>
-        <div class>
-          <div class>
-            <div
-              id="content"
-              class="quill-editor"
-              :content="currentPost.content"
-              @change="onEditorChange($event)"
-              @blur="onEditorBlur($event)"
-              @focus="onEditorFocus($event)"
-              @ready="onEditorReady($event)"
-              v-quill:myQuillEditor="editorOption"
-            ></div>
-            <br>
-            <div class="content" id="disqus_thread"></div>
-            <!-- <textarea
+        <div class="col" id="main">
+          <form class="w-full max-w-xs">
+            <div class="md:flex md:items-center mb-6">
+              <div
+                class="postTitle"
+                style="font-family: 'Noto Serif SC', serif !important;font-weight: 600;font-size: 1.5rem;"
+              >{{ currentPost.title }}</div>
+            </div>
+            <div class>
+              <div class>
+                <span id="postContent" style v-html="currentPost.content"></span>
+                <br>
+                <div class="content" id="disqus_thread"></div>
+                <!-- <textarea
               id="inline-post-content"
               v-model="content"
               class=""
               type="text"
-            />-->
-          </div>
+                />-->
+              </div>
+            </div>
+          </form>
         </div>
-
-      </form>
+      </div>
     </div>
     <Footer/>
   </div>
 </template>
-<style lang="scss" scoped>
-.container {
-  width: 60%;
-  margin: 0 auto;
-  padding: 4rem 0;
-  .quill-editor {
-    min-height: 200px;
-    max-height: 400px;
-    overflow-y: auto;
-  }
+<style lang="css">
+p {
+  font-family: 'Noto Serif SC', serif !important;
+  font-weight: medium;
+  font-size: 0.8rem;
+}
+#postContent {
+  padding: 1rem;
+}
+.postTitle {
+  font-family: 'Noto Serif SC', serif !important;
+  font-weight: 600;
+  font-size: 2rem;
 }
 </style>
 <script type="text/javascript">
@@ -58,25 +68,27 @@ export default {
   },
   mounted() {
     console.log('app init, my quill instance object is:', this.myQuillEditor)
-    this.myQuillEditor.disable()
+    // this.myQuillEditor.disable()
     this.post_id = this.$nuxt._route.params.id
     this.$store.dispatch('posts/GET_POST', this.post_id)
 
     // load disqus comments below
     /**
-    *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-    *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
 
-    var disqus_config = function () {
-    this.page.url = window.location;  // Replace PAGE_URL with your page's canonical URL variable
-    this.page.identifier = this.href.substr(this.href.lastIndexOf('/') + 1); // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-    };
-    (function() { // DON'T EDIT BELOW THIS LINE
-    var d = document, s = d.createElement('script');
-    s.src = 'https://lesspod.disqus.com/embed.js';
-    s.setAttribute('data-timestamp', +new Date());
-    (d.head || d.body).appendChild(s);
-    })();
+    var disqus_config = function() {
+      this.page.url = window.location // Replace PAGE_URL with your page's canonical URL variable
+      this.page.identifier = this.href.substr(this.href.lastIndexOf('/') + 1) // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    }
+    ;(function() {
+      // DON'T EDIT BELOW THIS LINE
+      var d = document,
+        s = d.createElement('script')
+      s.src = 'https://lesspod.disqus.com/embed.js'
+      s.setAttribute('data-timestamp', +new Date())
+      ;(d.head || d.body).appendChild(s)
+    })()
   },
   computed: {
     menus() {
@@ -101,7 +113,6 @@ export default {
       console.log('saving content: ' + cont + '... title: ' + titl)
 
       if (titl && titl.length > 0) {
-
         // this.posts.push({ _id: id, title: this.title })
         var post = {
           _id: this.post_id,

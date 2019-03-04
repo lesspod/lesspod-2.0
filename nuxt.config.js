@@ -27,6 +27,11 @@ module.exports = {
         href:
           'https://stackpath.bootstrapcdn.com/bootswatch/4.1.2/litera/bootstrap.min.css'
       },
+      {
+        rel: 'stylesheet',
+        href:
+          'https://fonts.googleapis.com/css?family=Noto+Serif+SC'
+      },
       // {
       //   rel: 'stylesheet',
       //   href:
