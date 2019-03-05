@@ -63,7 +63,9 @@
 <script type="text/javascript">
 import Navbar from '~/components/NavbarBS.vue'
 import Footer from '~/components/Footer.vue'
+import contentProcessing from '~/mixins/contentProcessing.js'
 export default {
+  mixins: [contentProcessing],
   components: {
     Navbar,
     Footer
@@ -93,19 +95,6 @@ export default {
     async deletePost(post) {
       console.log('deleting.... ' + JSON.stringify(post))
       await this.$store.dispatch('posts/DELETE_POST', post)
-    },
-    html2text(html) {
-      if(html) {
-        html = html.replace(/<\s*br\/*>/gi, '\n')
-        html = html.replace(
-          /<\s*a.*href="(.*?)".*>(.*?)<\/a>/gi,
-          ' $2 (Link->$1) '
-        )
-        html = html.replace(/<\s*\/*.+?>/gi, '\n')
-        html = html.replace(/ {2,}/gi, ' ')
-        html = html.replace(/\n+\s*/gi, '\n\n')
-      }
-      return html
     }
   },
   asyncData(context) {
