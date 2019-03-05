@@ -12,7 +12,7 @@
           style="max-width: 15rem;min-width: 12rem;"
           class="mb-2"
         >
-          <div class="card-text block-ellipsis">{{html2text(post.content)}}</div>
+          <p class="card-text block-ellipsis">{{html2text(post.content)}}</p>
           <!-- <b-button href="#" variant="success">Edit</b-button> -->
           <!-- <b-button :href="editUrl(post)" variant="success">Edit</b-button> -->
           <nuxt-link class="btn btn-success" :to="{ name: 'post-edit-id', params: { id: post._id }}">Edit</nuxt-link>
@@ -106,10 +106,6 @@ export default {
         html = html.replace(/\n+\s*/gi, '\n\n')
       }
       return html
-
-      // var d = document.createElement( 'div' )
-      // d.innerHTML = html
-      // return d.textContent
     }
   },
   asyncData(context) {

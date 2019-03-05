@@ -40,7 +40,7 @@
                     >
                       <strong>{{ currentPost.author }}</strong>
                     </a>
-                    <a class="float-right btn btn-sm text-white btn-success">
+                    <a class="float-left btn btn-sm text-white btn-success mx-2 py-0">
                       Subscribe
                     </a>
                   </p>
@@ -112,7 +112,7 @@
 p {
   font-family: 'Noto Serif SC', serif;
   font-weight: medium;
-  font-size: 1.05rem;
+  font-size: 0.9rem;
 }
 
 #postContent {
