@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Navbar />
+    <Navbar :menus="menus"/>
     <div class="container">
       <br />
       <h3>Create An Account</h3>
@@ -46,7 +46,7 @@
         <b-form-group id="checkboxGroup">
           <b-form-checkbox-group id="agreeChecks" v-model="form.checked">
             <b-form-checkbox value="me">
-              I've read your terms of service.
+              I've read the terms of service.
             </b-form-checkbox>
           </b-form-checkbox-group>
         </b-form-group>
@@ -67,7 +67,9 @@
 <script>
 import Navbar from '../components/NavbarBS.vue'
 import Footer from '../components/Footer.vue'
+import contentProcessing from '~/mixins/contentProcessing.js'
 export default {
+  mixins: [contentProcessing],
   components: {
     Navbar,
     Footer

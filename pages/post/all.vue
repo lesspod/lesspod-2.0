@@ -70,14 +70,6 @@ export default {
     Footer
   },
   computed: {
-    menus() {
-      // return this.$store.state.menus.menuItems
-      return this.$store.state.menus.menuItems
-    },
-    posts() {
-      // return this.$store.state.menus.menuItems
-      return this.$store.state.posts.posts
-    }
   },
   methods: {
     addPost: function() {

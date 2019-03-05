@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Navbar />
+    <Navbar :menus="menus"/>
     <div class="container">
       <br />
       <h3>Let's Login</h3>
@@ -47,7 +47,9 @@
 <script>
 import Navbar from '../components/NavbarBS.vue'
 import Footer from '../components/Footer.vue'
+import contentProcessing from '~/mixins/contentProcessing.js'
 export default {
+  mixins: [contentProcessing],
   components: {
     Navbar,
     Footer
@@ -58,19 +60,8 @@ export default {
         email: '',
         password: '',
         name: '',
-        food: null,
         checked: []
       },
-      foods: [
-        {
-          text: 'Select One',
-          value: null
-        },
-        'Carrots',
-        'Beans',
-        'Tomatoes',
-        'Corn'
-      ],
       show: true
     }
   },
@@ -84,7 +75,6 @@ export default {
       /* Reset our form values */
       this.form.email = ''
       this.form.name = ''
-      this.form.food = null
       this.form.checked = []
       /* Trick to reset/clear native browser form validation state */
       this.show = false

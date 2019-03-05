@@ -4,14 +4,14 @@
     <div class="container">
       <form class="w-full max-w-xs">
         <div class="md:flex md:items-center mb-6">
-          <div class="md:w-1/3">
+          <div>
             <label
               class="block text-grey font-bold mb-0 md:text-right md:mb-0 pr-4"
               for="inline-post-title"
             >Title</label>
           </div>
           <div class>
-            <input id="inline-post-title" :value="currentPost.title" class type="text">
+            <input id="inline-post-title" :value="currentPost.title" type="text" class="w-100">
           </div>
         </div>
         <div class>
@@ -63,7 +63,9 @@
 <script type="text/javascript">
 import Navbar from '~/components/NavbarBS.vue'
 import Footer from '~/components/Footer.vue'
+import contentProcessing from '~/mixins/contentProcessing.js'
 export default {
+  mixins: [contentProcessing],
   components: {
     Navbar,
     Footer
@@ -77,14 +79,6 @@ export default {
     // }, 3000)
   },
   computed: {
-    menus() {
-      // return this.$store.state.menus.menuItems
-      return this.$store.state.menus.menuItems
-    },
-    posts() {
-      // return this.$store.state.menus.menuItems
-      return this.$store.state.posts.posts
-    },
     currentPost() {
       // return this.$store.state.menus.menuItems
       return this.$store.state.posts.currentPost

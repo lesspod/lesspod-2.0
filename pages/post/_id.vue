@@ -122,8 +122,10 @@
 <script type="text/javascript">
 import Navbar from '~/components/NavbarBS.vue'
 import Footer from '~/components/Footer.vue'
+import contentProcessing from '~/mixins/contentProcessing.js'
 // import readingTime from 'reading-time'
 export default {
+  mixins: [contentProcessing],
   components: {
     Navbar,
     Footer
@@ -153,14 +155,6 @@ export default {
     })()
   },
   computed: {
-    menus() {
-      // return this.$store.state.menus.menuItems
-      return this.$store.state.menus.menuItems
-    },
-    posts() {
-      // return this.$store.state.menus.menuItems
-      return this.$store.state.posts.posts
-    },
     currentPost() {
       // return this.$store.state.menus.menuItems
       return this.$store.state.posts.currentPost

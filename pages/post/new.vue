@@ -11,7 +11,7 @@
             >Title</label>
           </div>
           <div class>
-            <input id="inline-post-title" v-model="title" class type="text">
+            <input id="inline-post-title" v-model="title" class="w-100" type="text">
           </div>
         </div>
         <div class>

@@ -126,8 +126,10 @@ p {
 import Navbar from '~/components/NavbarBS.vue'
 import Footer from '~/components/Footer.vue'
 import { mapFields, mapMultiRowFields } from 'vuex-map-fields'
+import contentProcessing from '~/mixins/contentProcessing.js'
 // import hljs from 'highlight.js'
 export default {
+  mixins: [contentProcessing],
   components: {
     Navbar,
     Footer
@@ -158,14 +160,6 @@ export default {
     // this.content = JSON.stringify(this.currentPage.content).toString()
   },
   computed: {
-    menus() {
-      // return this.$store.state.menus.menuItems
-      return this.$store.state.menus.menuItems
-    },
-    posts() {
-      // return this.$store.state.menus.menuItems
-      return this.$store.state.posts.posts
-    },
     pageData() {
       return this.$store.state.pages.pages.filter(function(page) {
         console.log(page.menuName.toLowerCase())

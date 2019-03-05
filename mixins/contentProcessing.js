@@ -1,6 +1,20 @@
 export default {
   created: function() {
-    console.log('Created from Mixin!')
+    // console.log('Created from Mixin!')
+  },
+  computed: {
+    menus() {
+      // return this.$store.state.menus.menuItems
+      return this.$store.state.menus.menuItems
+    },
+    posts() {
+      // return this.$store.state.menus.menuItems
+      return this.$store.state.posts.posts
+    },
+    pages() {
+      // return this.$store.state.menus.menuItems
+      return this.$store.state.pages.pages
+    }
   },
   methods: {
     aCommonMethod: function() {
