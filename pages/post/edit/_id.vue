@@ -52,7 +52,7 @@
 .container {
   width: 60%;
   margin: 0 auto;
-  padding: 50px 0;
+  padding: 4rem 0;
   .quill-editor {
     min-height: 200px;
     max-height: 400px;

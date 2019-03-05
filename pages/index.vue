@@ -1,7 +1,7 @@
 <template>
   <div>
     <Navbar :menus="menus"/>
-    <div class="container container-fluid">
+    <div id="homeContainer" class="container container-fluid">
       <div
         id="content"
         class="quill-editor"
@@ -22,8 +22,8 @@
     <Footer/>
   </div>
 </template>
-<style lang="scss" scoped>
-.container {
+<style lang="scss">
+#homeContainer {
   width: 60%;
   margin: 0 auto;
   padding: 4rem 0;
@@ -38,6 +38,11 @@
   padding-left: 0;
   margin-right: auto;
   margin-left: auto;
+}
+p {
+  font-family: 'Noto Serif SC', serif;
+  font-weight: medium;
+  font-size: 0.9rem;
 }
 </style>
 <script type="text/javascript">

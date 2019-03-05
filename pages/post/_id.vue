@@ -20,7 +20,7 @@
             class="postTitle"
             style="font-family: 'Noto Serif SC', serif !important;font-weight: 600;font-size: 2rem;"
           >{{ currentPost.title }}</div>
-          <span style="font-family: sans-serif; font-weight:300; font-size: 0.9rem;">{{ new Date(currentPost.createdAt) | moment("MMM Do, YYYY") }} . {{ readMins }} . Written by <a href="#" style="color:black;">{{ currentPost.author }}</a></span>
+          <span style="font-family: sans-serif; font-weight:300; font-size: 0.9rem; color:grey;">{{ new Date(currentPost.createdAt) | moment("MMM Do, YYYY") }} . {{ readMins }} . Written by <a href="#" style="color:grey;">{{ currentPost.author }}</a></span>
           <span id="postContent" style v-html="currentPost.content"></span>
           <div class="card" style="margin-top: -2rem;margin-bottom: -1rem;">
             <div class="card-body">
@@ -109,11 +109,6 @@
       margin-left: 4rem;
     }
 }
-p {
-  font-family: 'Noto Serif SC', serif;
-  font-weight: medium;
-  font-size: 0.9rem;
-}
 
 #postContent {
   padding: 1rem;
@@ -172,8 +167,8 @@ export default {
     },
     readMins() {
       var readingTime = require('reading-time')
-      console.log(this.currentPost && this.currentPost.content)
-      if(this.currentPost) {
+      console.log(this.currentPost)
+      if(this.currentPost && this.currentPost.content) {
         return readingTime(this.currentPost.content).text
       }else {
         return readingTime("").text

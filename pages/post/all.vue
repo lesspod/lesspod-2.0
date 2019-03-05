@@ -52,7 +52,6 @@
   max-width: 100%;
   height: 43px;
   margin: 0 0 0.5rem 0;
-  font-size: 1rem;
   line-height: 1;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
