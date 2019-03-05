@@ -172,7 +172,7 @@ export default {
     },
     readMins() {
       var readingTime = require('reading-time')
-      console.log(this.currentPost)
+      console.log(this.currentPost && this.currentPost.content)
       if(this.currentPost) {
         return readingTime(this.currentPost.content).text
       }else {
