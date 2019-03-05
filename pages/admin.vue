@@ -161,6 +161,18 @@ export default {
                             // class:''
                         }
                         */
+        },
+        {
+          href: '/logout',
+          title: 'Logout',
+          icon: 'fas fa-power-off'
+          /*
+                        disabled: true
+                        badge: {
+                            text: 'new',
+                            // class:''
+                        }
+                        */
         }
       ]
     }
