@@ -1,6 +1,6 @@
 <template>
   <div>
-    <!-- <Navbar :menus="menus"/> -->
+    <Navbar :menus="menus"/>
     <div id="homeContainer" class="container container-fluid">
       <div
         id="content"
@@ -247,7 +247,6 @@ export default {
     }
   },
   async fetch({ store, params }) {
-    store.dispatch('menus/GET_MENUS') // temporary for debugging
     await store.dispatch('pages/GET_PAGES')
   }
 }

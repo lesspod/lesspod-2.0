@@ -70,6 +70,7 @@
     "serverless-domain-manager": "^3.1.0",
     "serverless-offline": "^4.2.1",
     "serverless-s3-sync": "^1.7.1",
+    "serverless-webpack": "^5.2.0",
     "tailwindcss": "^0.7.4"
   }
 }

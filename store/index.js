@@ -10,7 +10,6 @@ export const mutations = {
 
 export const actions = {
   async nuxtServerInit ({ dispatch }) {
-    // disable for temporary purpose
-    // await dispatch('menus/GET_MENUS')
+    await dispatch('menus/GET_MENUS')
   }
 }

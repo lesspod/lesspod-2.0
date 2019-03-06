@@ -72,6 +72,10 @@ $ npm run dev
 
 # build for production and launch server
 $ npm run build
+$ npm run start
+
+# serverless deployment as per: [https://github.com/jeehyukwon/nuxt-serverless](https://github.com/jeehyukwon/nuxt-serverless)
+$ npm run sls:create // need to do this before deploying
 $ npm run sls:local  // running serverless in offline mode
 
 # generate static project
