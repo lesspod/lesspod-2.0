@@ -48,6 +48,7 @@ export const actions = {
   },
   async GET_POSTS ({ commit }) {
     // process.env.baseUrl
+    console.log('getting posts from: ' + process.env.baseUrl)
     const { data } = await axios.get(process.env.baseUrl + '/api/post/')
     commit('setPosts', data)
     console.log('data in GET_POSTS... ' + JSON.stringify(data))

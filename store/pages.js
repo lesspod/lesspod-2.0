@@ -58,6 +58,7 @@ export const actions = {
     console.log('ADD_PAGE...')
     var result = await axios.post('/api/page', page)
     console.log('ADD_PAGE result: ' + JSON.stringify(result))
+    page._id = result.data._id
     commit('add', page)
   },
   async GET_PAGES({ commit }) {

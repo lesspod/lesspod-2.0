@@ -70,6 +70,7 @@ export default {
   },
   mounted() {
     console.log('app init, my quill instance object is:', this.myQuillEditor)
+    this.currentPage = this.pageData[0]
   },
   computed: {
     menus() {

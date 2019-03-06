@@ -26,14 +26,6 @@
             :to="{ name: 'post-id', params: { id: post._id }}"
           >Read More</nuxt-link>
         </b-card>
-        <!-- <div class="w-full flex flex-wrap overflow-hidden items-center">
-          <br /><br />
-          <div v-for="post in posts" :key="post._id" class="">
-            <a :href="'/post/' + post._id" class="no-underline">
-              {{ post.title }}
-            </a>
-          </div>
-        </div>-->
       </b-card-group>
     </div>
     <div class="page-index ml-10 py-20">
@@ -57,16 +49,6 @@ export default {
     Navbar,
     Footer
   },
-  computed: {
-    menus() {
-      // return this.$store.state.menus.menuItems
-      return this.$store.state.menus.menuItems
-    },
-    posts() {
-      // return this.$store.state.menus.menuItems
-      return this.$store.state.posts.posts
-    }
-  },
   methods: {
     readURL(post) {
       return '/post/' + post._id
@@ -79,10 +61,11 @@ export default {
         title: '',
         content: ''
       }
-    },
-    async fetch({ store, params }) {
-      await store.dispatch('posts/GET_POSTS')
     }
+  },
+  async fetch({ store, params }) {
+    console.log('fetch called in blog.vue')
+    await store.dispatch('posts/GET_POSTS')
   }
 }
 </script>

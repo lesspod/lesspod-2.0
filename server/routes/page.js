@@ -57,8 +57,8 @@ router.post("/", async (req, res) => {
   try {
     let { body } = req;
     let Page = new PageModel();
-    await Page.create(body);
-    return res.send("sucessfully created");
+    let page1 = await Page.create(body);
+    return res.send(page1);
   } catch (e) {
     console.log("error ", e);
     res.send(e);

@@ -4,15 +4,13 @@ export default {
   },
   computed: {
     menus() {
-      // return this.$store.state.menus.menuItems
       return this.$store.state.menus.menuItems
     },
     posts() {
-      // return this.$store.state.menus.menuItems
+      // console.log('posts() in contentProcessing.js')
       return this.$store.state.posts.posts
     },
     pages() {
-      // return this.$store.state.menus.menuItems
       return this.$store.state.pages.pages
     }
   },
