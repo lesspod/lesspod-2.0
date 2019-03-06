@@ -20,7 +20,7 @@ custom:
     certificateName: mydomain.io  # 5. Enter the certificate name in AWS Certificate Manager (us-east-1) for https connection
     createRoute53Record: true
   serverless-offline:
-    port: 4000
+    port: 3000
   s3Sync:
     - bucketName: ${self:provider.environment.ASSETS_BUCKET_NAME}
       localDir: .nuxt/dist/client
