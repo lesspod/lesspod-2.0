@@ -39,6 +39,11 @@ export default {
       return this.$store.state.posts.posts
     }
   },
+  fetch ({ store, redirect }) {
+    if (!store.state.authUser) {
+      return redirect('/login')
+    }
+  },
   data() {
     return {
       form: {

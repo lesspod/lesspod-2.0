@@ -69,6 +69,12 @@ export default {
     onSubmit(evt) {
       evt.preventDefault()
       alert(JSON.stringify(this.form))
+      this.$auth.loginWith('local', {
+        data: {
+          username: this.email,
+          password: this.password
+        }
+      })
     },
     onReset(evt) {
       evt.preventDefault()
