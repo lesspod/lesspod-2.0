@@ -4,7 +4,7 @@
     <div class="container">
       <h4 class="w-full text-center pt-1 pb-1">Dashboard</h4>
       <no-ssr>
-        <sidebar-menu :menu="sidebarMenu"/>
+        <sidebar-menu :menu="sidebarMenu" @itemClick="onItemClick" />
       </no-ssr>
     </div>
     <Footer/>
@@ -46,23 +46,6 @@ export default {
   },
   data() {
     return {
-      form: {
-        email: '',
-        password: '',
-        name: '',
-        food: null,
-        checked: []
-      },
-      foods: [
-        {
-          text: 'Select One',
-          value: null
-        },
-        'Carrots',
-        'Beans',
-        'Tomatoes',
-        'Corn'
-      ],
       show: true,
       sidebarMenu: [
         {
@@ -168,7 +151,7 @@ export default {
                         */
         },
         {
-          href: '/logout',
+          href: '#',
           title: 'Logout',
           icon: 'fas fa-power-off'
           /*
@@ -199,6 +182,12 @@ export default {
       this.$nextTick(() => {
         this.show = true
       })
+    },
+    onItemClick(event, item) {
+      console.log('item clicked: ' + JSON.stringify(item))
+      if(item.title == 'Logout'){
+        this.$nuxt.$store.dispatch('logout')
+      }
     }
   }
 }

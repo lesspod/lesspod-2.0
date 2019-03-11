@@ -53,9 +53,7 @@ export default {
   created() {
     console.log(this.$nuxt._route.params.slug)
     let slug = this.$nuxt._route.params.slug
-    this.currentPage =
-    // make a copy of the current page to local variable
-    JSON.parse(JSON.stringify(
+    var temp = JSON.stringify(
     this.$store.state.pages.pages.filter(function(page) {
       //console.log(page.menuName.toLowerCase())
       return (
@@ -66,7 +64,10 @@ export default {
           .valueOf() == slug
       )
     })[0]
-    ))
+    )
+    if(temp && temp.content) this.currentPage = JSON.parse(temp)
+    // make a copy of the current page to local variable
+
   },
   mounted() {
     console.log('app init, my quill instance object is:', this.myQuillEditor)
@@ -128,7 +129,7 @@ export default {
     // as the name said, it can be async
     // Also, the returned object will be merged with your data object
     return {
-      currentPage: {},
+      currentPage: { content: null},
       currentHTML: '',
       loggedIn: false,
       editorOption: {

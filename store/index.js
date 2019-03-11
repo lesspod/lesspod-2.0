@@ -97,6 +97,7 @@ export const actions = {
     })
     .then((authUser) => {
       commit('SET_USER', authUser)
+      this.$router.push('/admin')
     })
   },
   logout ({ commit }) {
@@ -107,6 +108,7 @@ export const actions = {
     })
     .then(() => {
       commit('SET_USER', null)
+      this.$router.push('/')
     })
   },
   async nuxtServerInit ({ commit, dispatch }, { req }) {

@@ -13,7 +13,7 @@
           <b-form-input
             id="emailInput"
             v-model="form.email"
-            type="email"
+            type="text"
             required
             placeholder="Enter email"
           />
@@ -26,6 +26,7 @@
           <b-form-input
             id="passwordInput"
             type="password"
+            v-model="form.password"
             required
             placeholder="Enter password"
           />
@@ -69,12 +70,16 @@ export default {
     onSubmit(evt) {
       evt.preventDefault()
       alert(JSON.stringify(this.form))
-      this.$auth.loginWith('local', {
-        data: {
-          username: this.email,
-          password: this.password
-        }
-      })
+      this.$store.dispatch('login', {
+          username: this.form.email,
+          password: this.form.password
+      });
+      // this.$auth.loginWith('local', {
+      //   data: {
+      //     username: this.form.email,
+      //     password: this.form.password
+      //   }
+      // })
     },
     onReset(evt) {
       evt.preventDefault()
