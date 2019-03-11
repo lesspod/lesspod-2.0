@@ -14,7 +14,7 @@
       ></div>
       <br>
       <!-- <span>{{ currentPage }}</span> -->
-      <div class="md:flex md:items-center">
+      <div class="md:flex md:items-center" v-show="isLoggedIn()">
         <div class>
           <button class="btn btn-primary" type="button" @click="savePage">Save Page</button>
         </div>

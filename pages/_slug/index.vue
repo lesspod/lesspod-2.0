@@ -13,7 +13,7 @@
         v-quill:myQuillEditor="editorOption"
       ></div><br>
       <!-- <span>{{ currentPage }}</span> -->
-      <div class="md:flex md:items-center">
+      <div class="md:flex md:items-center" v-show="isLoggedIn()">
           <div class>
             <button class="btn btn-primary" type="button" @click="savePage">Save Page</button>
           </div>
@@ -43,9 +43,11 @@
 <script type="text/javascript">
 import Navbar from '~/components/NavbarBS.vue'
 import Footer from '~/components/Footer.vue'
+import contentProcessing from '~/mixins/contentProcessing.js'
 import { mapMultiRowFields } from 'vuex-map-fields'
 // import hljs from 'highlight.js'
 export default {
+  mixins: [contentProcessing],
   components: {
     Navbar,
     Footer
@@ -74,14 +76,6 @@ export default {
     this.currentPage = this.pageData[0]
   },
   computed: {
-    menus() {
-      // return this.$store.state.menus.menuItems
-      return this.$store.state.menus.menuItems
-    },
-    posts() {
-      // return this.$store.state.menus.menuItems
-      return this.$store.state.posts.posts
-    },
     pageData() {
       // return this.$nuxt._route.params.slug
       let slug = this.$nuxt._route.params.slug

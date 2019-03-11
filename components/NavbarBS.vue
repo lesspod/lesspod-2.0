@@ -19,7 +19,10 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav" id="navUl">
-          <li v-for="menu in topLevelMenus" :key="menu.menuName" :class="menuClass(menu)">
+          <li v-for="menu in topLevelMenus"
+            :key="menu.menuName"
+            :class="menuClass(menu)"
+            v-show="showTopMenu(menu)">
             <!-- <a
               v-if="menuClass(menu) == 'nav-item'"
               class="nav-link"
@@ -163,7 +166,9 @@
 }
 </style>
 <script>
+import contentProcessing from '~/mixins/contentProcessing.js'
 export default {
+  mixins: [contentProcessing],
   props: ['menus'],
   computed: {
     topLevelMenus: function() {
@@ -187,16 +192,15 @@ export default {
     hideNewMenuModal() {
       this.$refs.modal1.hide()
     },
+    showTopMenu(menu) {
+      if(((menu.menuName == 'New') && this.isLoggedIn()) || ((menu.menuName == 'Admin') && this.isLoggedIn()))
+      {
+        return true
+      } else if(menu.menuName != 'New' && menu.menuName != 'Admin' ) {
+        return true
+      } else return false
+    },
     addMenu() {
-      // var strHTML = '<li class=\"nav-item\">\r\n<a class=\"nav-link\" href=\"#\">'+ this.menuName +'<\/a>\r\n<\/li>'
-      // var node = document.createRange().createContextualFragment(strHTML)
-      // document.getElementById("navUl").appendChild(node)
-      // this.menus.push({
-      //   menuName: this.menuName,
-      //   underMenu: this.underMenu,
-      //   linkedTo: this.linkedTo
-      // })
-
       var link = ''
 
       console.log('linkedTo: ' + this.linkedTo)

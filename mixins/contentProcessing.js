@@ -18,6 +18,13 @@ export default {
     aCommonMethod: function() {
       console.log('A common method')
     },
+    isLoggedIn: function(){
+      if(this.$store.state.authUser && this.$store.state.authUser.username) {
+        return true
+      }else {
+        return false
+      }
+    },
     html2text(html) {
       if(html) {
         html = html.replace(/<\s*br\/*>/gi, '\n')
