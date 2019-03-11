@@ -2,6 +2,7 @@
   <div>
     <Navbar :menus="menus"/>
     <div id="homeContainer" class="container container-fluid">
+      <span v-html="currentPage.content" v-show="!isLoggedIn()"></span>
       <div
         id="content"
         class="quill-editor"
@@ -11,6 +12,7 @@
         @focus="onEditorFocus($event)"
         @ready="onEditorReady($event)"
         v-quill:myQuillEditor="editorOption"
+        v-if="isLoggedIn()"
       ></div>
       <br>
       <!-- <span>{{ currentPage }}</span> -->

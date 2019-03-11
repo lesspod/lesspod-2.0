@@ -2,6 +2,7 @@
   <div>
     <Navbar :menus="menus"/>
     <div class="container container-fluid">
+      <span style="font-family: 'Noto Serif SC', serif;font-weight: medium;font-size: 0.9rem;" v-html="currentPage.content" v-show="!isLoggedIn()"></span>
       <div
         id="content"
         class="quill-editor"
@@ -11,6 +12,7 @@
         @focus="onEditorFocus($event)"
         @ready="onEditorReady($event)"
         v-quill:myQuillEditor="editorOption"
+        v-if="isLoggedIn()"
       ></div><br>
       <!-- <span>{{ currentPage }}</span> -->
       <div class="md:flex md:items-center" v-show="isLoggedIn()">
@@ -38,6 +40,11 @@
   padding-left: 0;
   margin-right: auto;
   margin-left: auto;
+}
+p {
+  font-family: 'Noto Serif SC', serif;
+  font-weight: medium;
+  font-size: 0.9rem;
 }
 </style>
 <script type="text/javascript">

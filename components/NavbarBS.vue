@@ -169,7 +169,6 @@
 import contentProcessing from '~/mixins/contentProcessing.js'
 export default {
   mixins: [contentProcessing],
-  props: ['menus'],
   computed: {
     topLevelMenus: function() {
       return this.menus.filter(function(menu) {
