@@ -1,8 +1,6 @@
 const express = require("express");
 const consola = require("consola");
 const { Nuxt, Builder } = require("nuxt");
-const routes = require("./routes");
-
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const session = require('express-session');
@@ -32,8 +30,7 @@ async function start() {
     await builder.build();
   }
   initDb();
-  console.log('API routes: ' + JSON.stringify(routes))
-  app.use("/api", [cors(), bodyParser.json()], routes);
+
   app.get("/p/:id", (req, res) => {
     const actualPage = "/post";
     const queryParams = { id: req.params.id };
@@ -43,10 +40,14 @@ async function start() {
   // Sessions to create `req.session`
   app.use(session({
     secret: 'super-secret-key',
-    resave: false,
-    saveUninitialized: false,
+    resave: true,
+    saveUninitialized: true,
     cookie: { maxAge: 60000 }
-  }))
+  }));
+
+  const routes = require("./routes");
+  console.log('API routes: ' + JSON.stringify(routes))
+  app.use("/api", [cors(), bodyParser.json()], routes);
 
   // POST `/api/login` to log in the user and add him to the `req.session.authUser`
   app.post('/api/login', function (req, res) {
@@ -55,7 +56,7 @@ async function start() {
       return res.json({ username: 'demo' })
     }
     res.status(401).json({ error: 'Bad credentials' })
-  })
+  });
 
   // POST `/api/logout` to log out the user and remove it from the `req.session`
   app.post('/api/logout', function (req, res) {

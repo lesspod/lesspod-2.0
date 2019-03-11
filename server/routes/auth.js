@@ -2,9 +2,9 @@ const joi = require("joi");
 const { Router } = require("express");
 const { hashPassword, comparePassword } = require("../utils/password");
 const { generateToken } = require("../utils/token");
-const { signupSchema } = require("../validators/user");
+const { loginSchema, signupSchema } = require("../validators/user");
 const UserModel = require("../models/user");
-
+const session = require('express-session');
 const router = Router();
 
 router.post("/signup", async (req, res) => {
@@ -27,29 +27,44 @@ router.post("/signup", async (req, res) => {
 router.post("/login", async (req, res) => {
   try {
     let { body } = req;
-    const { error, value } = joi.validate(body, signupSchema);
-    if (error) {
-      return res.status(400).send(error.message);
-    }
+    const { error, value } = joi.validate(body, loginSchema);
 
+    if (error) {
+      return res.status(400).send({ error: error.message });
+    }
+    console.log(value)
     const User = new UserModel();
-    const user = await User.getByEmail(value.email);
+    const user = await User.getByEmail(value.username);
 
     if (!user) {
-      return res.status(400).send("invalid email or password");
+      return res.status(400).send({ error: "invalid email or password" });
     }
 
     let isCorrectPassword = comparePassword(value.password, user.password);
     if (!isCorrectPassword) {
-      return res.status(400).send("invalid email or password");
+      // return res.status(400).send("invalid email or password");
+      return res.status(401).json({ error: 'Bad credentials' })
     }
 
     let token = generateToken({ userId: user._id });
 
-    res.json({
-      token,
-      username: user.username
-    });
+    // res.json({
+    //   token,
+    //   username: user.username
+    // });
+
+    if (isCorrectPassword) {
+      if(!req.session) {
+        console.log('session in auth: ' + req.session);
+      }
+      req.session.authUser = { username: user.username };
+      return res.json({
+        token,
+        username: user.username
+      });
+    }
+
+
   } catch (e) {
     console.log(e);
     res.status(400).send(e);

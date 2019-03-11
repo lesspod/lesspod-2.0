@@ -4,7 +4,7 @@ const config = require("../../config");
 const secret = config.jwtSecret;
 
 const generateToken = payload =>
-  jwt.sign(payload, secret, { expiresIn: "30d" });
+  jwt.sign(payload, secret, { expiresIn: "360d" });
 
 const decodeToken = token => jwt.verify(token, secret);
 

@@ -28,7 +28,7 @@
             <b-form-input
               id="loginEmailInput"
               type="email"
-              v-model="form.email"
+              v-model="loginForm.email"
               required
               placeholder="Enter email"
             />
@@ -38,7 +38,7 @@
             <b-form-input
               id="loginPasswordInput"
               type="password"
-              v-model="form.password"
+              v-model="loginForm.password"
               required
               placeholder="Enter password"
             />
@@ -52,13 +52,14 @@
             id="signupFullnameInputGroup"
             label="Full Name:"
             label-for="signupFullnameInput"
+            description="Fullname should be 4 letters or more."
           >
             <b-form-input
               id="signupFullnameInput"
               type="text"
-              v-model="form.email"
+              v-model="signupForm.fullname"
               required
-              placeholder="Enter fullname"
+              placeholder="First Last"
             />
           </b-form-group>
 
@@ -66,14 +67,14 @@
             id="signupEmailInputGroup"
             label="Email address:"
             label-for="signupEmailInput"
-            description="We'll never share your email with anyone else."
+            description="We'll never share your email with anyone else. 4 letters or more."
           >
             <b-form-input
               id="signupEmailInput"
               type="email"
-              v-model="form.email"
+              v-model="signupForm.email"
               required
-              placeholder="Enter email"
+              placeholder="Email"
             />
           </b-form-group>
 
@@ -87,9 +88,9 @@
             <b-form-input
               id="signupPasswordInput"
               type="password"
-              v-model="form.password"
+              v-model="signupForm.password"
               required
-              placeholder="Enter password"
+              placeholder="Password"
             />
           </b-form-group>
           <b-button type="submit" variant="primary" @click="signup()">Create Account</b-button>
@@ -200,10 +201,21 @@ export default {
       }
     },
     login() {
-      alert('Login. Work In Progress...')
+      // alert('Login. Work In Progress...')
+      this.$store.dispatch('login', {
+          username: this.loginForm.email,
+          password: this.loginForm.password
+      })
     },
     signup() {
-      alert('Create Account. Work In Progress...')
+      // alert('Create Account. Work In Progress...')
+      alert(JSON.stringify(this.signupForm))
+      this.$store.dispatch('signup', {
+        fullname: this.signupForm.fullname,
+        username: this.signupForm.email,
+        email: this.signupForm.email,
+        password: this.signupForm.password
+      })
     }
   },
   asyncData(context) {
@@ -211,9 +223,16 @@ export default {
     // as the name said, it can be async
     // Also, the returned object will be merged with your data object
     return {
-      form: {
+      loginForm: {
+        username: '',
+        password: '',
+        checked: []
+      },
+      signupForm: {
+        fullname: '',
+        // username: '',
         email: '',
-        name: '',
+        password: '',
         checked: []
       },
       show: true,

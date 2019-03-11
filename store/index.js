@@ -75,13 +75,42 @@ export const mutations = {
 }
 
 export const actions = {
-  login ({ commit }, { username, password }) {
-    return fetch('/api/login', {
+  signup ({}, { fullname, username, email, password }) {
+    return fetch('/api/auth/signup', {
       // Send the client cookies to the server
       credentials: 'same-origin',
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify({
+        fullname,
+        username,
+        email,
+        password
+      })
+    })
+    .then((res) => {
+      if (res.status === 401) {
+        throw new Error("Couldn't create account")
+      } else {
+        console.log(res)
+        return res
+      }
+    })
+    .then(() => {
+      this.$router.push('/')
+    })
+  },
+  login ({ commit }, { username, password }) {
+    return fetch('/api/auth/login', {
+      // Send the client cookies to the server
+      credentials: 'same-origin',
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
       },
       body: JSON.stringify({
         username,

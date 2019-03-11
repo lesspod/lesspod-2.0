@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 
 const userSchema = mongoose.Schema({
+  fullname: String,
   username: { type: String, index: { unique: true, dropDups: true } },
   email: { type: String, unqiue: true, dropDups: true },
   password: String,
@@ -23,7 +24,8 @@ class User {
   }
 
   getByEmail(email) {
-    return this.User.findOne({ email });
+    console.log('finding user with email: ' + email);
+    return this.User.findOne({ 'email': email.trim() });
   }
 }
 
