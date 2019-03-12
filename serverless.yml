@@ -1,4 +1,4 @@
-service: lesspod-2.0  # 1. Edit whole service name
+service: lesspod-2  # 1. Edit whole service name
 
 provider:
   name: aws
