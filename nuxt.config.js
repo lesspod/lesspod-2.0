@@ -30,7 +30,7 @@ module.exports = {
       {
         rel: 'stylesheet',
         href:
-          'https://fonts.googleapis.com/css?family=Noto+Serif+SC'
+          'https://fonts.googleapis.com/css?family=Lustria'
       },
       // {
       //   rel: 'stylesheet',

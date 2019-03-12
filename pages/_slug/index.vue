@@ -2,7 +2,7 @@
   <div>
     <Navbar :menus="menus"/>
     <div class="container container-fluid">
-      <span style="font-family: 'Noto Serif SC', serif;font-weight: medium;font-size: 0.9rem;" v-html="currentPage.content" v-show="!isLoggedIn()"></span>
+      <span style="font-family: Lustria, serif;font-weight: medium;font-size: 1rem;" v-html="currentPage.content" v-show="!isLoggedIn()"></span>
       <div
         id="content"
         class="quill-editor"
@@ -42,7 +42,7 @@
   margin-left: auto;
 }
 p {
-  font-family: 'Noto Serif SC', serif;
+  font-family: Lustria, Georgia, Serif !important;
   font-weight: medium;
   font-size: 0.9rem;
 }

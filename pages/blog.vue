@@ -18,7 +18,7 @@
           <h5 class="card-title">{{ post.title }}</h5>
           <p
             class="card-text"
-            style="font-size: 0.8rem;"
+            style="font-size: 1rem;"
           >{{html2text(post.content).substring(0,80) + '...'}}</p>
           <!-- <b-button :href="readURL(post)" variant="primary">Read More</b-button> -->
           <nuxt-link

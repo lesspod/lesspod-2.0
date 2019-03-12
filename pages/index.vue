@@ -120,9 +120,9 @@
   margin-left: auto;
 }
 p {
-  font-family: 'Noto Serif SC', serif;
+  font-family: Lustria, serif;
   font-weight: medium;
-  font-size: 0.9rem;
+  font-size: 1rem;
 }
 </style>
 <script type="text/javascript">

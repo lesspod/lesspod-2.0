@@ -30,12 +30,6 @@
               v-quill:myQuillEditor="editorOption"
             ></div>
             <br>
-            <!-- <textarea
-              id="inline-post-content"
-              v-model="content"
-              class=""
-              type="text"
-            />-->
           </div>
         </div>
         <div class="md:flex md:items-center">

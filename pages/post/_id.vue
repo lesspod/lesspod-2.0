@@ -18,7 +18,7 @@
         <div class="col" id="main">
           <div
             class="postTitle"
-            style="font-family: 'Noto Serif SC', serif !important;font-weight: 600;font-size: 2rem;"
+            style="font-family: Lustria, serif !important;font-weight: 600;font-size: 2rem;"
           >{{ currentPost.title }}</div>
           <span style="font-family: sans-serif; font-weight:300; font-size: 0.9rem; color:grey;">{{ new Date(currentPost.createdAt) | moment("MMM Do, YYYY") }} . {{ readMins }} . Written by <a href="#" style="color:grey;">{{ currentPost.author }}</a></span>
           <span id="postContent" style v-html="currentPost.content"></span>
@@ -52,13 +52,6 @@
           </div>
           <br>
           <div class="content" id="disqus_thread"></div>
-          <!-- <form class="w-full max-w-xs">
-            <div class="md:flex md:items-center mb-6"></div>
-            <div class>
-              <div class>
-              </div>
-            </div>
-          </form>-->
         </div>
       </div>
     </div>
@@ -114,7 +107,7 @@
   padding: 1rem;
 }
 .postTitle {
-  font-family: 'Noto Serif SC', serif !important;
+  font-family: Lustria, Georgia, Serif !important;
   font-weight: 600;
   font-size: 3rem;
 }
