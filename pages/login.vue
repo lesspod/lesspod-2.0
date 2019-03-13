@@ -38,6 +38,7 @@
             Reset
           </b-button> -->
       </b-form>
+      <span style="margin-top: 0.7rem;">If you don't have an account, you can <a href="/signup">Create An Account</a>.</span>
     </div>
     <Footer />
   </div>

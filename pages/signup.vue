@@ -4,59 +4,55 @@
     <div class="container">
       <br />
       <h3>Create An Account</h3>
-      <b-form v-if="show" @submit="onSubmit" @reset="onReset">
-        <b-form-group
-          id="fullNameGroup"
-          label="Full Name:"
-          label-for="fullNameInput"
-        >
-          <b-form-input
-            id="fullNameInput"
-            v-model="form.name"
-            type="text"
-            required
-            placeholder="Enter name"
-          />
-        </b-form-group>
-        <b-form-group
-          id="emailInputGroup"
-          label="Email address:"
-          label-for="emailInput"
-        >
-          <b-form-input
-            id="emailInput"
-            v-model="form.email"
-            type="email"
-            required
-            placeholder="Enter email"
-          />
-        </b-form-group>
-        <b-form-group
-          id="passwordInputGroup"
-          label="Password:"
-          label-for="passwordInput"
-        >
-          <b-form-input
-            id="passwordInput"
-            type="password"
-            required
-            placeholder="Enter password"
-          />
-        </b-form-group>
-        <b-form-group id="checkboxGroup">
-          <b-form-checkbox-group id="agreeChecks" v-model="form.checked">
-            <b-form-checkbox value="me">
-              I've read the terms of service.
-            </b-form-checkbox>
-          </b-form-checkbox-group>
-        </b-form-group>
-        <b-button type="submit" variant="primary">
-          Create Account
-        </b-button>
-        <!-- <b-button type="reset" variant="danger">
-            Reset
-          </b-button> -->
-      </b-form>
+      <b-form @submit.prevent>
+          <b-form-group
+            id="signupFullnameInputGroup"
+            label="Full Name:"
+            label-for="signupFullnameInput"
+            description="Fullname should be 4 letters or more."
+          >
+            <b-form-input
+              id="signupFullnameInput"
+              type="text"
+              v-model="signupForm.fullname"
+              required
+              placeholder="First Last"
+            />
+          </b-form-group>
+
+          <b-form-group
+            id="signupEmailInputGroup"
+            label="Email address:"
+            label-for="signupEmailInput"
+            description="We'll never share your email with anyone else. 4 letters or more."
+          >
+            <b-form-input
+              id="signupEmailInput"
+              type="email"
+              v-model="signupForm.email"
+              required
+              placeholder="Email"
+            />
+          </b-form-group>
+
+          <b-form-group
+            id="signupPasswordInputGroup"
+            label="Password:"
+            label-for="signupPasswordInput"
+            description="Your password must be 8-20 characters long, contain letters and numbers, and must not
+            contain spaces, special characters, or emoji."
+          >
+            <b-form-input
+              id="signupPasswordInput"
+              type="password"
+              v-model="signupForm.password"
+              required
+              placeholder="Password"
+            />
+          </b-form-group>
+          <b-button type="submit" variant="primary" @click="signup()">Create Account</b-button>
+        </b-form>
+        <span style="margin-top: 0.7rem;">If you already have an account, you can <a href="/login">Login here</a>.</span>
     </div>
     <Footer />
   </div>
@@ -76,27 +72,27 @@ export default {
   },
   data() {
     return {
-      form: {
+      signupForm: {
+        fullname: '',
+        // username: '',
         email: '',
         password: '',
-        name: '',
-        food: null,
         checked: []
       },
-      foods: [
-        {
-          text: 'Select One',
-          value: null
-        },
-        'Carrots',
-        'Beans',
-        'Tomatoes',
-        'Corn'
-      ],
       show: true
     }
   },
   methods: {
+    signup() {
+      // alert('Create Account. Work In Progress...')
+      alert(JSON.stringify(this.signupForm))
+      this.$store.dispatch('signup', {
+        fullname: this.signupForm.fullname,
+        username: this.signupForm.email,
+        email: this.signupForm.email,
+        password: this.signupForm.password
+      })
+    },
     onSubmit(evt) {
       evt.preventDefault()
       alert(JSON.stringify(this.form))
