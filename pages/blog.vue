@@ -62,10 +62,6 @@ export default {
         content: ''
       }
     }
-  },
-  async fetch({ store, params }) {
-    console.log('fetch called in blog.vue')
-    await store.dispatch('posts/GET_POSTS')
   }
 }
 </script>

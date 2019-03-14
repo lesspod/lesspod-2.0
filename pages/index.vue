@@ -268,6 +268,7 @@ export default {
     }
   },
   async fetch({ store, params }) {
+    store.dispatch('posts/GET_POSTS')
     await store.dispatch('pages/GET_PAGES')
   }
 }
