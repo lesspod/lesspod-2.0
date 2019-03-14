@@ -14,6 +14,8 @@ Our goal is to make it as simple as possible to host serverless websites and blo
 
 [Discussion at Reddit Opensource](https://www.reddit.com/r/opensource/comments/ap1pm4/lesspod_serverless_cms_using_vuejsnuxtjs_and/)
 
+[Discussion at Vuejs Reddit](https://www.reddit.com/r/vuejs/comments/av0v6k/serverless_cms_with_vuejsnuxtjsmongo/)
+
 ## Static websites vs Serverless websites
 
 Static websites can also be deployed without servers (VMs or bare metal) and can be considered as a serverless website. The key difference from development perspective is that a serverless website built with Lesspod can be a dynamic serverless website.
@@ -82,4 +84,5 @@ $ npm run sls:local  // running serverless in offline mode
 $ npm run generate
 ```
 
+We accept pull requests. TIA. Star us if you like the idea!
 For detailed explanation on how things work, checkout [Nuxt.js docs](https://nuxtjs.org).
