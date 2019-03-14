@@ -69,14 +69,22 @@
             </template>
           </li>
         </ul>
-        <form class="form-inline my-2 my-lg-0 form-group has-search form-group-sm pl-2">
-          <span class="fa fa-search form-control-feedback"></span>
-          <input
+        <form class="form-inline my-2 my-md-0 form-group has-search form-group-sm pl-2">
+          <!-- <span class="fa fa-search form-control-feedback" style="z-index:1050;"></span> -->
+          <!-- <input
             class="form-control  form-control-sm mr-sm-2 col-sm-10"
             type="search"
             placeholder="Search"
             aria-label="Search"
-          >
+          > -->
+          <no-ssr>
+            <autocomplete
+              :source="posts"
+              resultsDisplay="title"
+              @selected="searched">
+            </autocomplete>
+          </no-ssr>
+
           <!-- <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button> -->
         </form>
       </div>
@@ -164,12 +172,18 @@
 .navbar {
   margin-bottom: 10rem;
 }
+
+.autocomplete--clear {
+  margin-top: -0.6rem;
+}
 </style>
 <script>
 import contentProcessing from '~/mixins/contentProcessing.js'
+import Autocomplete from 'vuejs-auto-complete'
 export default {
   mixins: [contentProcessing],
   components: {
+    Autocomplete
   },
   computed: {
     topLevelMenus: function() {
@@ -187,6 +201,10 @@ export default {
     }
   },
   methods: {
+    searched(selectedItem) {
+      console.log(selectedItem.selectedObject._id)
+      this.$router.push({ name: 'post-id', params: { id: selectedItem.selectedObject._id} })
+    },
     showNewMenuModal() {
       this.$refs.modal1.show()
     },
