@@ -83,3 +83,5 @@ dist
 # IDE
 .idea
 .eslintrc.js
+
+/static/sw.js

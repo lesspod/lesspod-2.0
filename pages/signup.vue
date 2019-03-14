@@ -74,7 +74,6 @@ export default {
     return {
       signupForm: {
         fullname: '',
-        // username: '',
         email: '',
         password: '',
         checked: []
@@ -100,10 +99,10 @@ export default {
     onReset(evt) {
       evt.preventDefault()
       /* Reset our form values */
-      this.form.email = ''
-      this.form.name = ''
-      this.form.food = null
-      this.form.checked = []
+      this.signupForm.email = ''
+      this.signupForm.fullname = ''
+      this.signupForm.password = ''
+      this.signupForm.checked = []
       /* Trick to reset/clear native browser form validation state */
       this.show = false
       this.$nextTick(() => {

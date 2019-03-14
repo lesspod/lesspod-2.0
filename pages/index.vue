@@ -123,6 +123,8 @@ p {
   font-family: Lustria, serif;
   font-weight: medium;
   font-size: 1rem;
+  margin-block-end: 0rem;
+  margin-bottom: 0rem;
 }
 </style>
 <script type="text/javascript">
@@ -268,8 +270,8 @@ export default {
     }
   },
   async fetch({ store, params }) {
-    store.dispatch('posts/GET_POSTS')
-    await store.dispatch('pages/GET_PAGES')
+    // store.dispatch('posts/GET_POSTS')
+    // await store.dispatch('pages/GET_PAGES')
   }
 }
 </script>

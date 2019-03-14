@@ -75,7 +75,11 @@ export const actions = {
     })
   },
   async nuxtServerInit ({ commit, dispatch }, { req }) {
-    await dispatch('menus/GET_MENUS')
+    await Promise.all([
+      dispatch('menus/GET_MENUS'),
+      dispatch('posts/GET_POSTS'),
+      dispatch('pages/GET_PAGES')
+    ])
     if (req.session && req.session.authUser) {
       commit('SET_USER', req.session.authUser)
     }
