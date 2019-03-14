@@ -169,6 +169,8 @@
 import contentProcessing from '~/mixins/contentProcessing.js'
 export default {
   mixins: [contentProcessing],
+  components: {
+  },
   computed: {
     topLevelMenus: function() {
       return this.menus.filter(function(menu) {
@@ -260,7 +262,9 @@ export default {
     return {
       menuName: '',
       underMenu: '',
-      linkedTo: ''
+      linkedTo: '',
+      items: ["Anton", "Andrey", "Sasha", "Vladimir", "Dima"],
+      selected: null
     }
   }
 }
