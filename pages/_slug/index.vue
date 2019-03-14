@@ -2,11 +2,11 @@
   <div>
     <Navbar :menus="menus"/>
     <div class="container container-fluid">
-      <span style="font-family: Lustria, serif;font-weight: medium;font-size: 1rem;" v-html="currentPage.content" v-show="!isLoggedIn()"></span>
+      <span style="font-family: Lustria, serif;font-weight: medium;font-size: 1rem;" v-html="currentPage1.content" v-show="!isLoggedIn()"></span>
       <div
         id="content"
         class="quill-editor"
-        :content="currentPage.content"
+        :content="currentPage1.content"
         @change="onEditorChange($event)"
         @blur="onEditorBlur($event)"
         @focus="onEditorFocus($event)"
@@ -62,7 +62,7 @@ export default {
   created() {
     console.log(this.$nuxt._route.params.slug)
     let slug = this.$nuxt._route.params.slug
-    var temp = JSON.stringify(
+    var temp =
     this.$store.state.pages.pages.filter(function(page) {
       //console.log(page.menuName.toLowerCase())
       return (
@@ -73,14 +73,13 @@ export default {
           .valueOf() == slug
       )
     })[0]
-    )
-    if(temp && temp.content) this.currentPage = JSON.parse(temp)
+    if(temp && temp.content) this.currentPage1 = JSON.parse(JSON.stringify(temp))
     // make a copy of the current page to local variable
 
   },
   mounted() {
     console.log('app init, my quill instance object is:', this.myQuillEditor)
-    this.currentPage = this.pageData[0]
+    this.currentPage1 = JSON.parse(JSON.stringify(this.pageData[0]))
   },
   computed: {
     pageData() {
@@ -101,7 +100,7 @@ export default {
     },
     pageContent() {
       // return this.$nuxt._route.params.slug
-      return this.content
+      return this.currentPage1.content
     }
   },
   methods: {
@@ -119,9 +118,9 @@ export default {
       this.currentHTML = html
     },
     savePage() {
-      if(this.currentPage.content != this.currentHTML) {
-          this.currentPage.content = this.currentHTML
-          this.$store.dispatch('pages/UPDATE_PAGE', this.currentPage)
+      if(this.currentPage1.content != this.currentHTML) {
+          this.currentPage1.content = this.currentHTML
+          this.$store.dispatch('pages/UPDATE_PAGE', this.currentPage1)
       }
     }
   },
@@ -130,7 +129,7 @@ export default {
     // as the name said, it can be async
     // Also, the returned object will be merged with your data object
     return {
-      currentPage: { content: null},
+      currentPage1: { content: null},
       currentHTML: '',
       loggedIn: false,
       editorOption: {
