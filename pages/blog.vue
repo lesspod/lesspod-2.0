@@ -34,7 +34,7 @@
     <Footer/>
   </div>
 </template>
-<style>
+<style scoped>
 .container {
   padding: 4rem 0;
 }

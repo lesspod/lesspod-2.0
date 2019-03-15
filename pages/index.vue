@@ -137,6 +137,9 @@
     margin-left: 4.55rem;
     width: 80%;
   }
+  .navbar-brand {
+    margin-left: 4rem;
+  }
 }
 
 /* // Extra large devices (large desktops, 1200px and up) */
@@ -145,6 +148,9 @@
       margin-right: 1rem;
       margin-left: 12rem;
       width: 70%;
+    }
+    .navbar-brand {
+      margin-left: 8rem;
     }
 }
 #mainContent {
@@ -162,6 +168,7 @@
   margin-right: auto;
   margin-left: auto;
 }
+
 p {
   font-family: 'Lustria', Serif !important;
   font-weight: medium;

@@ -58,7 +58,11 @@
     <Footer/>
   </div>
 </template>
-<style lang="css" scoped>
+<style lang="scss" scoped>
+
+#main {
+  padding-top: 4rem;
+}
 
 /* Extra small devices (portrait phones, less than 576px) */
 @media (max-width: 575.98px) {
@@ -103,7 +107,7 @@
 @media (min-width: 1200px) {
     #main {
       margin-right: 15rem;
-      margin-left: 3rem;
+      margin-left: 3.5rem;
       padding-right: 6rem;
       font-family: 'Lustria', Georgia, Serif !important;
     }
