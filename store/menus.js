@@ -3,14 +3,14 @@ export const state = () => ({
   menuItems: [
     { menuName: 'Admin', underMenu: '', linkedTo: '/admin'},
     { menuName: 'Home', underMenu: '', linkedTo: '/'},
-    { menuName: 'Features', underMenu: '', linkedTo: 'https://lesspod.com'},
-    { menuName: 'Pricing', underMenu: '', linkedTo: '/pricing'},
+    // { menuName: 'Features', underMenu: '', linkedTo: 'https://lesspod.com'},
+    // { menuName: 'Pricing', underMenu: '', linkedTo: '/pricing'},
     { menuName: 'Blog', underMenu: '', linkedTo: '/blog'},
     { menuName: 'New', underMenu: '', linkedTo: '/'},
     { menuName: 'Post', underMenu: 'New', linkedTo: '/post/new'},
-    { menuName: 'Menu', underMenu: 'New', linkedTo: ''},
-    { menuName: 'Key Features', underMenu: 'Features', linkedTo: '/key-features'},
-    { menuName: 'All Features', underMenu: 'Features', linkedTo: '/all-features'}
+    { menuName: 'Menu', underMenu: 'New', linkedTo: ''}
+    // { menuName: 'Key Features', underMenu: 'Features', linkedTo: '/key-features'},
+    // { menuName: 'All Features', underMenu: 'Features', linkedTo: '/all-features'}
   ],
   currentMenu: {}
 })

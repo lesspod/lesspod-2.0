@@ -1,11 +1,11 @@
 import axios from 'axios'
 export const state = () => ({
   posts: [
-    { _id: '5c73755d8d37x1457000bf01', title: 'Just one good.', content: '', author: ''},
-    { _id: '5c73755d8d37x1457000bf02', title: 'Why the world is great?', content: '', author: ''},
-    { _id: '5c73755d8d37x1457000bf03', title: 'Just another blog post', content: '', author: ''},
-    { _id: '5c73755d8d37x1457000bf04', title: 'How about some fun facts?', content: '', author: ''},
-    { _id: '5c73755d8d37x1457000bf05', title: '10 ways to attain nirvana', content: '', author: ''}
+    // { _id: '5c73755d8d37x1457000bf01', title: 'Just one good.', content: '', author: ''},
+    // { _id: '5c73755d8d37x1457000bf02', title: 'Why the world is great?', content: '', author: ''},
+    // { _id: '5c73755d8d37x1457000bf03', title: 'Just another blog post', content: '', author: ''},
+    // { _id: '5c73755d8d37x1457000bf04', title: 'How about some fun facts?', content: '', author: ''},
+    // { _id: '5c73755d8d37x1457000bf05', title: '10 ways to attain nirvana', content: '', author: ''}
   ],
   currentPost: []
 })
