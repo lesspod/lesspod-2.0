@@ -1,7 +1,7 @@
 <template>
   <div>
     <Navbar :menus="menus"/>
-    <div id="homeContainer" class="container container-fluid">
+    <div id="mainContent" class="container container-fluid">
       <span v-html="currentPage.content" v-show="!isLoggedIn()"></span>
       <div
         id="content"
@@ -103,8 +103,51 @@
   </div>
 </template>
 <style lang="scss">
-#homeContainer {
-  width: 97%;
+/* Extra small devices (portrait phones, less than 576px) */
+@media (max-width: 575.98px) {
+    #mainContent {
+      margin-right: 0.75rem;
+      margin-left: 0.75rem;
+      width: 97%;
+    }
+}
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) and (max-width: 767.98px) {
+    #mainContent {
+      margin-right: 1rem;
+      margin-left: 1rem;
+      width: 97%;
+    }
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) and (max-width: 991.98px) {
+  #mainContent {
+    margin-right: 3rem;
+    margin-left: 3rem;
+    width: 97%;
+  }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  #mainContent {
+    margin-right: 4.5rem;
+    margin-left: 4.55rem;
+    width: 80%;
+  }
+}
+
+/* // Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+    #mainContent {
+      margin-right: 1rem;
+      margin-left: 12rem;
+      width: 70%;
+    }
+}
+#mainContent {
   margin: 0 auto;
   padding: 4rem 0;
   .quill-editor {
@@ -114,8 +157,8 @@
   }
 }
 .container-fluid {
-  padding-right: 0;
-  padding-left: 0;
+  padding-right: 4rem;
+  padding-left: 4rem;
   margin-right: auto;
   margin-left: auto;
 }

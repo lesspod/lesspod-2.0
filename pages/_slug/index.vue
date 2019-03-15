@@ -1,8 +1,8 @@
 <template>
   <div>
     <Navbar :menus="menus"/>
-    <div class="container container-fluid">
-      <span id="main" style="font-family: Lustria, serif;font-weight: medium; font-size: 1rem;" v-html="currentPage1.content" v-show="!isLoggedIn()"></span>
+    <div id="mainContent" class="container container-fluid">
+      <span style="font-family: Lustria, serif;font-weight: medium; font-size: 1rem;" v-html="currentPage1.content" v-show="!isLoggedIn()"></span>
       <div
         id="content"
         class="quill-editor"
@@ -27,45 +27,62 @@
 <style lang="scss" scoped>
 /* Extra small devices (portrait phones, less than 576px) */
 @media (max-width: 575.98px) {
-    #main {
+    #mainContent {
       margin-right: 0.75rem;
       margin-left: 0.75rem;
+      width: 97%;
     }
 }
 
 /* Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) and (max-width: 767.98px) {
-    #main {
+    #mainContent {
       margin-right: 1rem;
       margin-left: 1rem;
+      width: 97%;
     }
 }
 
 /* Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) and (max-width: 991.98px) {
-  #main {
+  #mainContent {
     margin-right: 3rem;
     margin-left: 3rem;
+    width: 97%;
   }
 }
 
 /* Large devices (desktops, 992px and up) */
 @media (min-width: 992px) and (max-width: 1199.98px) {
-  #main {
+  #mainContent {
     margin-right: 4.5rem;
     margin-left: 4.55rem;
+    width: 80%;
   }
 }
 
 /* // Extra large devices (large desktops, 1200px and up) */
 @media (min-width: 1200px) {
-    #main {
-      margin-right: 6rem;
-      margin-left: 1rem;
+    #mainContent {
+      margin-right: 1rem;
+      margin-left: 12rem;
+      width: 70%;
     }
-    .share-sidebar {
-      margin-left: 4rem;
-    }
+}
+#mainContent {
+  margin: 0 auto;
+  padding: 4rem 0;
+  .quill-editor {
+    min-height: 200px;
+    max-height: 400px;
+    overflow-y: auto;
+  }
+}
+.container-fluid {
+  padding-right: 4rem;
+  padding-left: 4rem;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 #postContent {
