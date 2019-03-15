@@ -104,7 +104,7 @@
 </template>
 <style lang="scss">
 #homeContainer {
-  width: 60%;
+  width: 97%;
   margin: 0 auto;
   padding: 4rem 0;
   .quill-editor {

@@ -11,18 +11,18 @@
           img-top
           :key="post._id"
           tag="article"
-          style="max-width: 15rem;min-width: 12rem;"
+          style="max-width: 20rem;min-width: 15rem;"
           class="mb-2"
         >
           <!-- <b-card-title style="font-weight: 600;font-size: 1.3rem;">{{ post.title }}</b-card-title> -->
-          <h5 class="card-title">{{ post.title }}</h5>
+          <h6 class="card-title">{{ post.title }}</h6>
           <p
             class="card-text"
             style="font-size: 1rem;"
           >{{html2text(post.content).substring(0,80) + '...'}}</p>
           <!-- <b-button :href="readURL(post)" variant="primary">Read More</b-button> -->
           <nuxt-link
-            class="btn btn-success"
+            class="btn btn-success mt-2"
             :to="{ name: 'post-id', params: { id: post._id }}"
           >Read More</nuxt-link>
         </b-card>

@@ -2,7 +2,7 @@
   <div>
     <Navbar :menus="menus"/>
     <div class="container container-fluid">
-      <span style="font-family: Lustria, serif;font-weight: medium;font-size: 1rem;" v-html="currentPage1.content" v-show="!isLoggedIn()"></span>
+      <span id="main" style="font-family: Lustria, serif;font-weight: medium; font-size: 1rem;" v-html="currentPage1.content" v-show="!isLoggedIn()"></span>
       <div
         id="content"
         class="quill-editor"
@@ -25,22 +25,68 @@
   </div>
 </template>
 <style lang="scss" scoped>
-.container {
-  width: 60%;
-  margin: 0 auto;
-  padding: 4rem 0;
-  .quill-editor {
-    min-height: 200px;
-    max-height: 400px;
-    overflow-y: auto;
+/* Extra small devices (portrait phones, less than 576px) */
+@media (max-width: 575.98px) {
+    #main {
+      margin-right: 0.75rem;
+      margin-left: 0.75rem;
+    }
+}
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) and (max-width: 767.98px) {
+    #main {
+      margin-right: 1rem;
+      margin-left: 1rem;
+    }
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) and (max-width: 991.98px) {
+  #main {
+    margin-right: 3rem;
+    margin-left: 3rem;
   }
 }
-.container-fluid {
-  padding-right: 0;
-  padding-left: 0;
-  margin-right: auto;
-  margin-left: auto;
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  #main {
+    margin-right: 4.5rem;
+    margin-left: 4.55rem;
+  }
 }
+
+/* // Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+    #main {
+      margin-right: 6rem;
+      margin-left: 1rem;
+    }
+    .share-sidebar {
+      margin-left: 4rem;
+    }
+}
+
+#postContent {
+  padding: 1rem;
+}
+// .container {
+//   width: 60%;
+//   margin: 0 auto;
+//   padding: 4rem 0;
+//   .quill-editor {
+//     min-height: 200px;
+//     max-height: 400px;
+//     overflow-y: auto;
+//   }
+// }
+// .container-fluid {
+//   padding-right: 0;
+//   padding-left: 0;
+//   margin-right: auto;
+//   margin-left: auto;
+// }
 p {
   font-family: Lustria, Georgia, Serif !important;
   font-weight: medium;
