@@ -26,6 +26,7 @@ export const mutations = {
   },
   add(state, menuItem) {
     state.menuItems.push(menuItem)
+    this.$toast.success('Menu added successfully.', { duration: 2000 })
     // axios.post('/api/menu', menuItem)
   },
   remove(state, menuName) {
@@ -35,6 +36,7 @@ export const mutations = {
     const { result } = axios.delete(process.env.baseUrl + '/api/menu/' + menuItem[0]._id)
     console.log('menu deleted...' + result)
     state.menuItems.splice(state.menuItems.indexOf(menuItem[0], 1))
+    this.$toast.success('Menu removed successfully.', { duration: 2000 })
   }
 }
 

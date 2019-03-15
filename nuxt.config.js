@@ -105,8 +105,12 @@ module.exports = {
     ["@nuxtjs/axios"],
     ["bootstrap-vue/nuxt", { css: false }],
     ["@nuxtjs/pwa"],
-    ['@nuxtjs/auth']
+    ['@nuxtjs/auth'],
+    ['@nuxtjs/toast']
   ],
+  toast: {
+    position: 'top-center'
+  },
   /*
    ** Axios module configuration
    */

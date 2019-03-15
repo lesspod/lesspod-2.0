@@ -34,6 +34,7 @@ export const actions = {
       }
     })
     .then(() => {
+      this.$toast.success('Account created successfully.', { duration: 2000 })
       this.$router.push('/')
     })
   },
@@ -55,6 +56,7 @@ export const actions = {
       if (res.status === 401) {
         throw new Error('Bad credentials')
       } else {
+        this.$toast.success('Successfully logged in.', { duration: 2000 })
         return res.json()
       }
     })
@@ -71,6 +73,7 @@ export const actions = {
     })
     .then(() => {
       commit('SET_USER', null)
+      this.$toast.success('Logout successful.', { duration: 2000 })
       this.$router.push('/')
     })
   },

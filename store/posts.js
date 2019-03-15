@@ -26,9 +26,11 @@ export const mutations = {
         state.posts[i] = post
       }
     }
+    this.$toast.success('Post updated successfully.', { duration: 2000 })
   },
   add(state, post) {
     state.posts.push(post)
+    this.$toast.success('Post added successfully.', { duration: 2000 })
   },
   // add(state, post) {
   //   state.posts.push(post)
@@ -36,6 +38,7 @@ export const mutations = {
   // },
   remove(state, post) {
     state.posts.splice(state.posts.indexOf(post), 1)
+    this.$toast.success('Post removed successfully.', { duration: 2000 })
   }
 }
 

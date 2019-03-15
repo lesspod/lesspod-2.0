@@ -37,6 +37,7 @@ export const mutations = {
   },
   add(state, page) {
     state.pages.push(page)
+    this.$toast.success('Page added successfully.', { duration: 2000 })
     // axios.post('/api/page', page)
   },
   update(state, page) {
@@ -46,9 +47,11 @@ export const mutations = {
         state.pages[i] = page
       }
     }
+    this.$toast.success('Page updated successfully.', { duration: 2000 })
   },
   remove(state, page) {
     state.pages.splice(state.pages.indexOf(page), 1)
+    this.$toast.success('Page deleted successfully.', { duration: 2000 })
   },
   updateField
 }
@@ -76,7 +79,7 @@ export const actions = {
   async UPDATE_PAGE ({ commit }, page) {
     console.log('UPDATE_PAGE...')
     var result = await axios.put('/api/page/' + page._id, page)
-    console.log('UPDATE_PAGE result: ' + JSON.stringify(result))
+    // console.log('UPDATE_PAGE result: ' + JSON.stringify(result))
     commit('update', page)
   },
   async DELETE_PAGE({ commit }, page) {
