@@ -163,7 +163,7 @@
   margin-left: auto;
 }
 p {
-  font-family: Lustria, serif;
+  font-family: 'Lustria', Serif !important;
   font-weight: medium;
   font-size: 1rem;
   margin-block-end: 0rem;

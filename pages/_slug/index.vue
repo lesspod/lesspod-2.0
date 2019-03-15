@@ -104,7 +104,7 @@
 //   margin-right: auto;
 //   margin-left: auto;
 // }
-p {
+#postContent > p, p {
   font-family: Lustria, Georgia, Serif !important;
   font-weight: medium;
   font-size: 0.9rem;

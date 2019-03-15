@@ -1,7 +1,7 @@
 <template>
   <div>
     <Navbar :menus="menus"/>
-    <div class="container container-fluid">
+    <div id="main" class="container container-fluid">
       <div class="row">
         <div class="col-sm-1 px-1 share-sidebar">
           <div class="py-1 sticky-top flex-grow-1" style="top:6rem;">
@@ -15,14 +15,14 @@
             </div>
           </div>
         </div>
-        <div class="col" id="main">
+        <div class="col">
           <div
             class="postTitle"
-            style="font-family: Lustria, serif !important;font-weight: 600;font-size: 2rem;"
+            style=""
           >{{ currentPost.title }}</div>
           <span style="font-family: sans-serif; font-weight:300; font-size: 0.9rem; color:grey;">{{ new Date(currentPost.createdAt) | moment("MMM Do, YYYY") }} . {{ readMins }} . Written by <a href="#" style="color:grey;">{{ currentPost.author }}</a></span>
-          <span id="postContent" style v-html="currentPost.content"></span>
-          <div class="card" style="margin-top: -2rem;margin-bottom: -1rem;">
+          <span id="postContent" v-html="currentPost.content"></span>
+          <div class="card" style="margin-bottom: -1rem;">
             <div class="card-body">
               <div class="row">
                 <div class="col-md-3">
@@ -58,13 +58,15 @@
     <Footer/>
   </div>
 </template>
-<style lang="css">
+<style lang="css" scoped>
 
 /* Extra small devices (portrait phones, less than 576px) */
 @media (max-width: 575.98px) {
     #main {
       margin-right: 0.75rem;
       margin-left: 0.75rem;
+      margin-top: 1rem;
+      font-family: 'Lustria', Georgia, Serif !important;
     }
 }
 
@@ -73,6 +75,8 @@
     #main {
       margin-right: 1rem;
       margin-left: 1rem;
+      margin-top: 4rem;
+      font-family: 'Lustria', Georgia, Serif !important;
     }
 }
 
@@ -81,35 +85,41 @@
   #main {
     margin-right: 3rem;
     margin-left: 3rem;
+    padding-top: 4rem;
+    font-family: 'Lustria', Georgia, Serif !important;
   }
 }
 
 /* Large devices (desktops, 992px and up) */
 @media (min-width: 992px) and (max-width: 1199.98px) {
   #main {
-    margin-right: 4.5rem;
+    margin-right: 4.55rem;
     margin-left: 4.55rem;
+    font-family: 'Lustria', Georgia, Serif !important;
   }
 }
 
 /* // Extra large devices (large desktops, 1200px and up) */
 @media (min-width: 1200px) {
     #main {
-      margin-right: 6rem;
-      margin-left: 1rem;
+      margin-right: 15rem;
+      margin-left: 3rem;
+      padding-right: 6rem;
+      font-family: 'Lustria', Georgia, Serif !important;
     }
     .share-sidebar {
       margin-left: 4rem;
     }
 }
 
-#postContent {
-  padding: 1rem;
+#postContent > p, #main {
+  font-family: 'Lustria', Georgia, Serif !important;
 }
 .postTitle {
-  font-family: Lustria, Georgia, Serif !important;
+  font-family: 'Lustria', Georgia, Serif;
   font-weight: 600;
-  font-size: 3rem;
+  font-size: 2rem;
+  margin-top: 0rem;
 }
 </style>
 <script type="text/javascript">
