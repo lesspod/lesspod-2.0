@@ -2,7 +2,7 @@
   <div>
     <Navbar :menus="menus"/>
     <div class="container">
-      <br />
+      <br /><br><br>
       <h3>Let's Login</h3>
       <b-form v-if="show" @submit="onSubmit" @reset="onReset">
         <b-form-group
