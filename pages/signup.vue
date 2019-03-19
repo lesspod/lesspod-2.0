@@ -2,7 +2,7 @@
   <div>
     <Navbar :menus="menus"/>
     <div class="container">
-      <br />
+      <br /> <br><br>
       <h3>Create An Account</h3>
       <b-form @submit.prevent>
           <b-form-group

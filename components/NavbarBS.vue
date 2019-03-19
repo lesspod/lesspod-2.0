@@ -2,8 +2,9 @@
   <span>
     <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
       <a class="navbar-brand" href="#">
-        <img src="/icon.png" alt="Logo" style="width: 40px;margin-right:0.25rem;">
-        <img src="/type.png" alt="Logo" style="height: 40px;width: auto;">
+        <!-- <img src="/icon.png" alt="Logo" style="width: 40px;margin-right:0.25rem;"> -->
+        <!-- <img src="/type.png" alt="Logo" style="height: 40px;width: auto;"> -->
+        <img src="/soi.png" alt="Logo" style="height: 40px;width: auto;">
       </a>
       <!-- <a class="navbar-brand" href="/">Lesspod</a> -->
       <button
@@ -68,8 +69,11 @@
               </div>
             </template>
           </li>
+          <li class="nav-item">
+            <a href="#" id="appointment" class="btn btn-outline-primary btn-sm ">Appointment</a>
+          </li>
         </ul>
-        <form class="form-inline my-2 my-md-0 form-group has-search form-group-sm pl-2">
+        <form class="form-inline my-2 my-md-0 my-sm-0 form-group has-search form-group-sm pl-2" style="width:10rem;">
           <!-- <span class="fa fa-search form-control-feedback" style="z-index:1050;"></span> -->
           <!-- <input
             class="form-control  form-control-sm mr-sm-2 col-sm-10"
@@ -87,6 +91,11 @@
 
           <!-- <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button> -->
         </form>
+        &nbsp;&nbsp;
+        <span class="fab fa-facebook fa-lg"></span>
+        &nbsp;<span class="fab fa-twitter-square fa-lg"></span>
+        &nbsp;<span class="fab fa-linkedin fa-lg"></span>
+        &nbsp;<span class="fas fa-map-marker-alt fa-lg"></span>
       </div>
     </nav>
     <b-modal id="modal1" ref="modal1" title="Add New Menu">
@@ -167,6 +176,11 @@
   text-align: center;
   pointer-events: none;
   color: #aaa;
+}
+
+#appointment {
+  margin-top: 0.2rem;
+  font-size: 0.9rem;
 }
 
 .navbar {
