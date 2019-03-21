@@ -173,7 +173,7 @@ p {
   font-family: 'Lustria', Serif !important;
   font-weight: normal;
   font-stretch: 100%;
-  font-size: 21px;
+  font-size: 1rem;
   margin-block-end: 0rem;
   margin-bottom: 0rem;
 }

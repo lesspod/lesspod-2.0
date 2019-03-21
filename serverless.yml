@@ -17,9 +17,9 @@ custom:
   webpack:
     # webpackConfig: ./folder/my-webpack.config.js
   customDomain:
-    domainName: lp2mum.youdium.com  # 4. Specify a new domain name to be created
+    domainName: lesspod.org  # 4. Specify a new domain name to be created
     stage: ${opt:stage, 'dev'}
-    certificateName: youdium.com  # 5. Enter the certificate name in AWS Certificate Manager (us-east-1) for https connection
+    certificateName: lesspod.org  # 5. Enter the certificate name in AWS Certificate Manager (us-east-1) for https connection
     createRoute53Record: true
   serverless-offline:
     port: 3000
