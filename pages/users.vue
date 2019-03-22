@@ -92,6 +92,18 @@ export default {
                         */
         },
         {
+          href: '/seo',
+          title: 'SEO',
+          icon: 'fab fa-google'
+          /*
+                        disabled: true
+                        badge: {
+                            text: 'new',
+                            // class:''
+                        }
+                        */
+        },
+        {
           title: 'Theme Settings',
           icon: 'fas fa-pen-nib',
           child: [
