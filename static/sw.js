@@ -1,4 +1,4 @@
-importScripts('https://cdn.jsdelivr.net/npm/workbox-cdn@4.0.0-0/workbox/workbox-sw.js')
+importScripts('https://cdn.jsdelivr.net/npm/workbox-cdn@4.1.1/workbox/workbox-sw.js')
 
 // --------------------------------------------------
 // Configure
