@@ -24,16 +24,16 @@
             :key="menu.menuName"
             :class="menuClass(menu)"
             v-show="showTopMenu(menu)">
-            <!-- <a
+            <a
               v-if="menuClass(menu) == 'nav-item'"
               class="nav-link"
               :href="menuHref(menu)"
-            >{{ menu.menuName }}</a>-->
-            <nuxt-link
+            >{{ menu.menuName }}</a>
+            <!-- <nuxt-link
               v-if="menuClass(menu) == 'nav-item'"
               class="nav-link"
               :to="{ path: menuHref(menu), params: {}}"
-            >{{ menu.menuName }}</nuxt-link>
+            >{{ menu.menuName }}</nuxt-link> -->
             <template v-else>
               <a
                 class="nav-link b-nav-dropdown dropdown-toggle"
@@ -62,7 +62,7 @@
                     class="dropdown-item"
                     :key="menu1.menuName"
                     :href="menuHref(menu1)"
-                    target="_self"
+                    target="_blank"
                     v-else
                   >{{ menu1.menuName }}</a>
                 </template>
@@ -284,6 +284,7 @@ export default {
     },
     menuHref: function(menu1) {
       if (menu1 && menu1.linkedTo && menu1.linkedTo.length > 0) {
+        console.log('linkedTo : ' + menu1.linkedTo.toString())
         return menu1.linkedTo.toString()
       } else {
         return '#'
