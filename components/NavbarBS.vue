@@ -2,9 +2,9 @@
   <span>
     <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
       <a class="navbar-brand" href="#">
-        <!-- <img src="/icon.png" alt="Logo" style="width: 40px;margin-right:0.25rem;"> -->
-        <!-- <img src="/type.png" alt="Logo" style="height: 40px;width: auto;"> -->
-        <img src="/soi.png" alt="Logo" style="height: 40px;width: auto;">
+        <img src="/icon.png" alt="Logo" style="width: 40px;margin-right:0.25rem;">
+        <img src="/type.png" alt="Logo" style="height: 40px;width: auto;">
+        <!-- <img src="/soi.png" alt="Logo" style="height: 40px;width: auto;"> -->
       </a>
       <!-- <a class="navbar-brand" href="/">Lesspod</a> -->
       <button
@@ -72,6 +72,7 @@
           <li class="nav-item">
             <a href="#" id="appointment" class="btn btn-outline-success btn-sm ">Appointment</a>
           </li>
+
         </ul>
         <form class="form-inline my-2 my-md-0 my-sm-0 form-group has-search form-group-sm pl-2" style="width:10rem;">
           <!-- <span class="fa fa-search form-control-feedback" style="z-index:1050;"></span> -->

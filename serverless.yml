@@ -4,10 +4,10 @@ provider:
   name: aws
   runtime: nodejs8.10
   stage: ${opt:stage, 'dev'}
-  region: ap-south-1 # 2. Edit AWS region name
+  region: ${opt:region, 'us-east-1'} # 2. Edit AWS region name
   environment:
     NODE_ENV: production
-    BUCKET_NAMESPACE: lp2mum  # 3. Specify a new AWS S3 bucket namespace for bundled assets and static assets (should be unique)
+    BUCKET_NAMESPACE: lp2mumabc  # 3. Specify a new AWS S3 bucket namespace for bundled assets and static assets (should be unique)
     ASSETS_BUCKET_NAME: ${self:provider.environment.BUCKET_NAMESPACE}-assets-${opt:stage, 'dev'}
     STATIC_BUCKET_NAME: ${self:provider.environment.BUCKET_NAMESPACE}-static-${opt:stage, 'dev'}
     ASSETS_BUCKET_URL: https://s3.${self:provider.region}.amazonaws.com/${self:provider.environment.ASSETS_BUCKET_NAME}
@@ -17,10 +17,12 @@ custom:
   webpack:
     # webpackConfig: ./folder/my-webpack.config.js
   customDomain:
-    domainName: lp2mum.youdium.com  # 4. Specify a new domain name to be created
+    domainName: 'lesspod.org'  # 4. Specify a new domain name to be created
     stage: ${opt:stage, 'dev'}
-    certificateName: youdium.com  # 5. Enter the certificate name in AWS Certificate Manager (us-east-1) for https connection
+    basePath: ''
+    certificateName: 'lesspod.org'  # 5. Enter the certificate name in AWS Certificate Manager (us-east-1) for https connection
     createRoute53Record: true
+    #endpointType: 'regional'
   serverless-offline:
     port: 3000
   s3Sync:

@@ -3,7 +3,56 @@
     <Navbar :menus="menus"/>
     <div class="container">
       <br><br><br>
-      <h4 class="w-full text-center pt-1 pb-1">Dashboard</h4>
+      <h4 class="w-full text-center pt-1 pb-1">Trashed Items</h4>
+      <h5 class="w-full text-center pt-1 pb-1">Trashed Posts (temp content)</h5>
+      <b-card-group deck class="mb-3">
+        <b-card
+          v-for="post in posts"
+          :key="post._id"
+          :title="post.title"
+          tag="article"
+          style="max-width: 15rem;min-width: 12rem;"
+          class="mb-2"
+        >
+          <p class="card-text block-ellipsis">{{html2text(post.content)}}</p>
+          <!-- <b-button href="#" variant="success">Edit</b-button> -->
+          <!-- <b-button :href="editUrl(post)" variant="success">Edit</b-button> -->
+          <!-- <nuxt-link class="btn btn-success" :to="{ name: 'post-edit-id', params: { id: post._id }}">Edit</nuxt-link> -->
+          <b-button type="button" class="btn btn-success">Restore</b-button>
+        </b-card>
+        <!-- <div class="w-full flex flex-wrap overflow-hidden items-center">
+          <br /><br />
+          <div v-for="post in posts" :key="post._id" class="">
+            <a :href="'/post/' + post._id" class="no-underline">
+              {{ post.title }}
+            </a>
+          </div>
+        </div>-->
+      </b-card-group>
+      <h5 class="w-full text-center pt-1 pb-1">Trashed Pages (temp content)</h5>
+      <b-card-group deck class="mb-3">
+        <b-card
+          v-for="page in pages"
+          :key="page._id"
+          :title="page.title"
+          tag="article"
+          style="max-width: 15rem;min-width: 12rem;"
+          class="mb-2"
+        >
+          <p class="card-text">
+            {{ html2text(page.content).substring(0,80) + '...'}}
+          </p>
+          <b-button type="button" class="btn btn-success" @click="selectedPage=page">Restore</b-button>
+        </b-card>
+        <!-- <div class="w-full flex flex-wrap overflow-hidden items-center">
+          <br /><br />
+          <div v-for="post in posts" :key="post._id" class="">
+            <a :href="'/post/' + post._id" class="no-underline">
+              {{ post.title }}
+            </a>
+          </div>
+        </div> -->
+      </b-card-group>
       <no-ssr>
         <sidebar-menu :menu="sidebarMenu" @itemClick="onItemClick" />
       </no-ssr>
@@ -24,8 +73,10 @@
 <script>
 import Navbar from '../components/NavbarBS.vue'
 import Footer from '../components/Footer.vue'
+import contentProcessing from '~/mixins/contentProcessing.js'
 // import { SidebarMenu } from 'vue-sidebar-menu'
 export default {
+  mixins: [contentProcessing],
   components: {
     Navbar,
     Footer

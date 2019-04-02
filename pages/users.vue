@@ -3,7 +3,7 @@
     <Navbar :menus="menus"/>
     <div class="container">
       <br><br><br>
-      <h4 class="w-full text-center pt-1 pb-1">Dashboard</h4>
+      <h4 class="w-full text-center pt-1 pb-1">User Management</h4>
       <no-ssr>
         <sidebar-menu :menu="sidebarMenu" @itemClick="onItemClick" />
       </no-ssr>

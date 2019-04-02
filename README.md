@@ -16,6 +16,11 @@ Our goal is to make it as simple as possible to host serverless websites and blo
 
 [Discussion at Vuejs Reddit](https://www.reddit.com/r/vuejs/comments/av0v6k/serverless_cms_with_vuejsnuxtjsmongo/)
 
+Demo Lesspod:
+[www.lesspod.org](https://www.lesspod.org)
+Username: demo@lesspod.com
+Password: lesspod1234
+
 ## Static websites vs Serverless websites
 
 Static websites can also be deployed without servers (VMs or bare metal) and can be considered as a serverless website. The key difference from development perspective is that a serverless website built with Lesspod can be a dynamic serverless website.

@@ -85,3 +85,4 @@ dist
 .eslintrc.js
 
 /static/sw.js
+static/sw.js
