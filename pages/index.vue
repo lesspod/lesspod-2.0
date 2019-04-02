@@ -118,7 +118,7 @@
     .appointmentFooter {
       position: fixed;
       bottom: 0;
-      background: green;
+      background: #1BB886;
       color: white;
       margin: 0 auto !important;
       text-align: center !important;
@@ -138,7 +138,7 @@
     .appointmentFooter {
       position: fixed;
       bottom: 0;
-      background: green;
+      background: #1BB886;
       color: white;
       margin: 0 auto !important;
       text-align: center !important;
@@ -158,7 +158,7 @@
   .appointmentFooter {
       position: fixed;
       bottom: 0;
-      background: green;
+      background: #1BB886;
       color: white;
       margin: 0 auto !important;
       text-align: center !important;
