@@ -162,6 +162,60 @@
   </span>
 </template>
 <style>
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) and (max-width: 767.98px) {
+    #mainContent {
+      margin-right: 1rem;
+      margin-left: 1rem;
+      width: 97%;
+    }
+    .appointmentFooter {
+      position: fixed;
+      bottom: 0;
+      background: #1BB886;
+      color: white;
+      margin: 0 auto !important;
+      text-align: center !important;
+      width: 100% !important;
+      height: 40px;
+      line-height: 40px;
+    }
+}
+ /* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) and (max-width: 991.98px) {
+  #mainContent {
+    margin-right: 3rem;
+    margin-left: 3rem;
+    width: 97%;
+  }
+  .appointmentFooter {
+      position: fixed;
+      bottom: 0;
+      background: #1BB886;
+      color: white;
+      margin: 0 auto !important;
+      text-align: center !important;
+      width: 100% !important;
+      height: 40px;
+      line-height: 40px;
+    }
+}
+ /* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  .navbar-brand {
+    margin-left: 4rem;
+  }
+}
+ /* // Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+     .navbar-brand {
+      margin-left: 8rem;
+    }
+    .appointmentFooter {
+      display: none;
+    }
+}
+
 .has-search .form-control {
   padding-left: 2rem;
 }
