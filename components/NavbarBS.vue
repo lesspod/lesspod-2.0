@@ -70,7 +70,7 @@
             </template>
           </li>
           <li class="nav-item">
-            <a href="#" id="appointment" class="btn btn-outline-primary btn-sm ">Appointment</a>
+            <a href="#" id="appointment" class="btn btn-outline-success btn-sm ">Appointment</a>
           </li>
         </ul>
         <form class="form-inline my-2 my-md-0 my-sm-0 form-group has-search form-group-sm pl-2" style="width:10rem;">

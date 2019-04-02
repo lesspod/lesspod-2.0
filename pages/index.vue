@@ -100,6 +100,10 @@
       </div>
     </div>
     <Footer/>
+    <div class="appointmentFooter">
+      <span class="far fa-calendar-plus fa-lg"></span>&nbsp;&nbsp;
+      Book Appointment
+    </div>
   </div>
 </template>
 <style lang="scss">
@@ -110,6 +114,18 @@
       margin-left: 0.75rem;
       width: 97%;
     }
+
+    .appointmentFooter {
+      position: fixed;
+      bottom: 0;
+      background: green;
+      color: white;
+      margin: 0 auto !important;
+      text-align: center !important;
+      width: 100% !important;
+      height: 40px;
+      line-height: 40px;
+    }
 }
 
 /* Small devices (landscape phones, 576px and up) */
@@ -118,6 +134,17 @@
       margin-right: 1rem;
       margin-left: 1rem;
       width: 97%;
+    }
+    .appointmentFooter {
+      position: fixed;
+      bottom: 0;
+      background: green;
+      color: white;
+      margin: 0 auto !important;
+      text-align: center !important;
+      width: 100% !important;
+      height: 40px;
+      line-height: 40px;
     }
 }
 
@@ -128,6 +155,17 @@
     margin-left: 3rem;
     width: 97%;
   }
+  .appointmentFooter {
+      position: fixed;
+      bottom: 0;
+      background: green;
+      color: white;
+      margin: 0 auto !important;
+      text-align: center !important;
+      width: 100% !important;
+      height: 40px;
+      line-height: 40px;
+    }
 }
 
 /* Large devices (desktops, 992px and up) */
@@ -140,6 +178,9 @@
   .navbar-brand {
     margin-left: 4rem;
   }
+  .appointmentFooter {
+    display: none;
+  }
 }
 
 /* // Extra large devices (large desktops, 1200px and up) */
@@ -151,6 +192,9 @@
     }
     .navbar-brand {
       margin-left: 8rem;
+    }
+    .appointmentFooter {
+      display: none;
     }
 }
 #mainContent {
