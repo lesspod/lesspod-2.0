@@ -1,7 +1,7 @@
 <template>
   <div>
     <Navbar :menus="menus"/>
-    <div class="container">
+    <div class="container container-fluid">
       <h4 class="w-full text-center pt-1 pb-1">All Blog Posts</h4>
       <b-card-group deck class="mb-3">
         <b-card
@@ -35,8 +35,15 @@
   </div>
 </template>
 <style scoped>
-.container {
+#mainContent {
+  margin: 0 auto;
   padding: 4rem 0;
+}
+.container-fluid {
+  padding-right: 4rem;
+  padding-left: 4rem;
+  margin-right: auto;
+  margin-left: auto;
 }
 </style>
 <script type="text/javascript">

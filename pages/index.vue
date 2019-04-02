@@ -175,9 +175,6 @@
     margin-left: 4.55rem;
     width: 80%;
   }
-  .navbar-brand {
-    margin-left: 4rem;
-  }
   .appointmentFooter {
     display: none;
   }
@@ -189,9 +186,6 @@
       margin-right: 1rem;
       margin-left: 12rem;
       width: 70%;
-    }
-    .navbar-brand {
-      margin-left: 8rem;
     }
     .appointmentFooter {
       display: none;
