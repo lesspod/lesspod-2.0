@@ -20,10 +20,12 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav" id="navUl">
-          <li v-for="menu in topLevelMenus"
+          <li
+            v-for="menu in topLevelMenus"
             :key="menu.menuName"
             :class="menuClass(menu)"
-            v-show="showTopMenu(menu)">
+            v-show="showTopMenu(menu)"
+          >
             <a
               v-if="menuClass(menu) == 'nav-item'"
               class="nav-link"
@@ -33,7 +35,7 @@
               v-if="menuClass(menu) == 'nav-item'"
               class="nav-link"
               :to="{ path: menuHref(menu), params: {}}"
-            >{{ menu.menuName }}</nuxt-link> -->
+            >{{ menu.menuName }}</nuxt-link>-->
             <template v-else>
               <a
                 class="nav-link b-nav-dropdown dropdown-toggle"
@@ -70,36 +72,108 @@
             </template>
           </li>
           <li class="nav-item">
-
-            <a href="#" id="appointment" class="btn btn-outline-success btn-sm "><span class="far fa-calendar-plus fa-lg"></span>&nbsp;&nbsp;Appointment</a>
+            <a href="#bookAppointment" role="button" data-toggle="modal" id="appointment" class="btn btn-outline-success btn-sm">
+              <span class="far fa-calendar-plus fa-lg"></span>&nbsp;&nbsp;Appointment
+            </a>
           </li>
-
         </ul>
-        <form class="form-inline my-2 my-md-0 my-sm-0 form-group has-search form-group-sm pl-2" style="width:10rem;">
+        <form
+          class="form-inline my-2 my-md-0 my-sm-0 form-group has-search form-group-sm pl-2"
+          style="width:10rem;"
+        >
           <!-- <span class="fa fa-search form-control-feedback" style="z-index:1050;"></span> -->
           <!-- <input
             class="form-control  form-control-sm mr-sm-2 col-sm-10"
             type="search"
             placeholder="Search"
             aria-label="Search"
-          > -->
+          >-->
           <no-ssr>
-            <autocomplete
-              :source="posts"
-              resultsDisplay="title"
-              @selected="searched">
-            </autocomplete>
+            <autocomplete :source="posts" resultsDisplay="title" @selected="searched"></autocomplete>
           </no-ssr>
 
           <!-- <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button> -->
-        </form>
-        &nbsp;&nbsp;
+        </form>&nbsp;&nbsp;
         <span class="fab fa-facebook fa-lg"></span>
-        &nbsp;<span class="fab fa-twitter-square fa-lg"></span>
-        &nbsp;<span class="fab fa-linkedin fa-lg"></span>
-        &nbsp;<span class="fas fa-map-marker-alt fa-lg"></span>
+        &nbsp;
+        <span class="fab fa-twitter-square fa-lg"></span>
+        &nbsp;
+        <span class="fab fa-linkedin fa-lg"></span>
+        &nbsp;
+        <span class="fas fa-map-marker-alt fa-lg"></span>
       </div>
     </nav>
+    <div class="modal" id="bookAppointment" tabindex="-1" role="dialog" aria-hidden="true">
+      <div class="modal-dialog modal-full" role="document">
+        <div class="modal-content">
+          <div class="modal-header justify-content-center ">
+            <h5 class="modal-title">Make An Appointment</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+          <div class="modal-body p-4" id="result">
+            <b-form @submit="onSubmit" @reset="onReset" v-if="show">
+              <b-form-group id="input-group-2" label="Full Name:" label-for="input-2">
+                <b-form-input
+                  id="input-2"
+                  v-model="form.name"
+                  required
+                  placeholder="Enter name"
+                ></b-form-input>
+              </b-form-group>
+
+              <b-form-group id="input-group-3" label="Mobile Number:" label-for="input-3">
+                <b-form-input
+                  id="input-3"
+                  v-model="form.mobile"
+                  required
+                  placeholder="Enter mobile number"
+                ></b-form-input>
+              </b-form-group>
+
+              <b-form-group
+                id="input-group-1"
+                label="Email address:"
+                label-for="input-1"
+              >
+                <b-form-input
+                  id="input-1"
+                  v-model="form.email"
+                  type="email"
+                  required
+                  placeholder="Enter email"
+                ></b-form-input>
+              </b-form-group>
+
+
+
+              <!-- <b-form-group id="input-group-3" label="Food:" label-for="input-3">
+                <b-form-select
+                  id="input-3"
+                  v-model="form.food"
+                  :options="foods"
+                  required
+                ></b-form-select>
+              </b-form-group>
+
+              <b-form-group id="input-group-4">
+                <b-form-checkbox-group v-model="form.checked" id="checkboxes-4">
+                  <b-form-checkbox value="me">Check me out</b-form-checkbox>
+                  <b-form-checkbox value="that">Check that out</b-form-checkbox>
+                </b-form-checkbox-group>
+              </b-form-group>
+
+              <b-button type="submit" variant="primary">Submit</b-button>
+              <b-button type="reset" variant="danger">Reset</b-button> -->
+            </b-form>
+          </div>
+          <div class="modal-footer justify-content-center ">
+            <button type="button" class="btn btn-success" data-dismiss="modal">Book Appointment</button>
+          </div>
+        </div>
+      </div>
+    </div>
     <b-modal id="modal1" ref="modal1" title="Add New Menu">
       <b-container fluid>
         <form class="w-full max-w-xs">
@@ -166,22 +240,22 @@
 <style>
 /* Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) and (max-width: 767.98px) {
-    #mainContent {
-      margin-right: 1rem;
-      margin-left: 1rem;
-      width: 97%;
-    }
-    .appointmentFooter {
-      position: fixed;
-      bottom: 0;
-      background: #1BB886;
-      color: white;
-      margin: 0 auto !important;
-      text-align: center !important;
-      width: 100% !important;
-      height: 40px;
-      line-height: 40px;
-    }
+  #mainContent {
+    margin-right: 1rem;
+    margin-left: 1rem;
+    width: 97%;
+  }
+  .appointmentFooter {
+    position: fixed;
+    bottom: 0;
+    background: #1bb886;
+    color: white;
+    margin: 0 auto !important;
+    text-align: center !important;
+    width: 100% !important;
+    height: 40px;
+    line-height: 40px;
+  }
 }
 
 /* Medium devices (tablets, 768px and up) */
@@ -192,16 +266,16 @@
     width: 97%;
   }
   .appointmentFooter {
-      position: fixed;
-      bottom: 0;
-      background: #1BB886;
-      color: white;
-      margin: 0 auto !important;
-      text-align: center !important;
-      width: 100% !important;
-      height: 40px;
-      line-height: 40px;
-    }
+    position: fixed;
+    bottom: 0;
+    background: #1bb886;
+    color: white;
+    margin: 0 auto !important;
+    text-align: center !important;
+    width: 100% !important;
+    height: 40px;
+    line-height: 40px;
+  }
 }
 
 /* Large devices (desktops, 992px and up) */
@@ -213,13 +287,12 @@
 
 /* // Extra large devices (large desktops, 1200px and up) */
 @media (min-width: 1200px) {
-
-    .navbar-brand {
-      margin-left: 8rem;
-    }
-    .appointmentFooter {
-      display: none;
-    }
+  .navbar-brand {
+    margin-left: 8rem;
+  }
+  .appointmentFooter {
+    display: none;
+  }
 }
 .has-search .form-control {
   padding-left: 2rem;
@@ -276,7 +349,10 @@ export default {
   methods: {
     searched(selectedItem) {
       console.log(selectedItem.selectedObject._id)
-      this.$router.push({ name: 'post-id', params: { id: selectedItem.selectedObject._id} })
+      this.$router.push({
+        name: 'post-id',
+        params: { id: selectedItem.selectedObject._id }
+      })
     },
     showNewMenuModal() {
       this.$refs.modal1.show()
@@ -285,10 +361,12 @@ export default {
       this.$refs.modal1.hide()
     },
     showTopMenu(menu) {
-      if(((menu.menuName == 'New') && this.isLoggedIn()) || ((menu.menuName == 'Admin') && this.isLoggedIn()))
-      {
+      if (
+        (menu.menuName == 'New' && this.isLoggedIn()) ||
+        (menu.menuName == 'Admin' && this.isLoggedIn())
+      ) {
         return true
-      } else if(menu.menuName != 'New' && menu.menuName != 'Admin' ) {
+      } else if (menu.menuName != 'New' && menu.menuName != 'Admin') {
         return true
       } else return false
     },
@@ -354,8 +432,17 @@ export default {
       menuName: '',
       underMenu: '',
       linkedTo: '',
-      items: ["Anton", "Andrey", "Sasha", "Vladimir", "Dima"],
-      selected: null
+      items: ['Anton', 'Andrey', 'Sasha', 'Vladimir', 'Dima'],
+      selected: null,
+      form: {
+        name: '',
+        email: '',
+        mobile: '',
+        food: null,
+        checked: []
+      },
+      // foods: [{ text: 'Select One', value: null }, 'Carrots', 'Beans', 'Tomatoes', 'Corn'],
+      show: true
     }
   }
 }

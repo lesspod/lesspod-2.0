@@ -101,8 +101,10 @@
     </div>
     <Footer/>
     <div class="appointmentFooter">
+      <a href="#bookAppointment" role="button" data-toggle="modal" style="color:white;text-decoration:none;" >
       <span class="far fa-calendar-plus fa-lg"></span>&nbsp;&nbsp;
       Book Appointment
+      </a>
     </div>
   </div>
 </template>
