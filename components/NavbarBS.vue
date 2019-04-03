@@ -322,6 +322,15 @@
 .autocomplete--clear {
   margin-top: -0.6rem;
 }
+
+p {
+  font-family: 'Lustria', Serif !important;
+  font-weight: normal;
+  font-stretch: 100%;
+  font-size: 1rem;
+  margin-block-end: 0rem;
+  margin-bottom: 0rem;
+}
 </style>
 <script>
 import contentProcessing from '~/mixins/contentProcessing.js'
@@ -347,6 +356,23 @@ export default {
     }
   },
   methods: {
+    onSubmit(evt) {
+        evt.preventDefault()
+        alert(JSON.stringify(this.form))
+      },
+      onReset(evt) {
+        evt.preventDefault()
+        // Reset our form values
+        this.form.email = ''
+        this.form.name = ''
+        // this.form.food = null
+        // this.form.checked = []
+        // Trick to reset/clear native browser form validation state
+        this.show = false
+        this.$nextTick(() => {
+          this.show = true
+        })
+      },
     searched(selectedItem) {
       console.log(selectedItem.selectedObject._id)
       this.$router.push({
