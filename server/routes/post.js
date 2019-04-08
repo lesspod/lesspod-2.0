@@ -2,6 +2,7 @@ const { Router } = require("express");
 const PostModel = require("../models/post");
 const authMiddleware = require("../middlewares/authMiddleware");
 
+
 const router = Router();
 
 router.get("/", async (req, res) => {
@@ -68,6 +69,10 @@ router.put("/:id", async (req, res) => {
 router.post("/", async (req, res) => {
   try {
     let { body } = req;
+    
+    body.author = req.session.authUser.fullName || 'anonymous'; //added author name as per session
+
+    
     let Post = new PostModel();
     await Post.create(body);
     return res.send("sucessfully created");
