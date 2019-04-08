@@ -6,13 +6,16 @@ const authMiddleware = async (req, res, next) => {
     let excluded = false;
     // if its an excluded path, get out of the middelware!
 
-    const details = decodeToken(req.headers.authorization);
+    // const details = decodeToken(req.headers.authorization);
+
+    const details = decodeToken(req.session.authUser.token);    
     req.user = details;
     next();
   } catch (e) {
     console.log("error: ", e);
     return res.status(400).send("bruh, send me the right token?");
   }
+
 };
 
 module.exports = authMiddleware;

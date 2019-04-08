@@ -66,11 +66,11 @@ router.put("/:id", async (req, res) => {
   }
 });
 
-router.post("/", async (req, res) => {
+router.post("/", authMiddleware,async (req, res) => {
   try {
     let { body } = req;
     
-    body.author = req.session.authUser.fullName || 'anonymous'; //added author name as per session
+    body.author = req.session.authUser.fullName; //added author name as per session
 
     
     let Post = new PostModel();

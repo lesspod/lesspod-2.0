@@ -48,6 +48,7 @@ router.post("/login", async (req, res) => {
 
     let token = generateToken({ userId: user._id });
 
+
     // res.json({
     //   token,
     //   username: user.username
@@ -57,13 +58,16 @@ router.post("/login", async (req, res) => {
       if(!req.session) {
         console.log('session in auth: ' + req.session);
       }
-      req.session.authUser = { username: user.username, fullName : user.fullname };   //grabbed the fullname of user here
+
+      req.session.token = token;  // grabbing the token here
+
+      req.session.authUser = { username: user.username, fullName : user.fullname, token : token };   //grabbed the fullname of user here
       return res.json({
         token,
         username: user.username
       });
     }
-
+    res.end();
 
   } catch (e) {
     console.log(e);
