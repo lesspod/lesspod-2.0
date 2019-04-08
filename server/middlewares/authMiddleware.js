@@ -10,6 +10,11 @@ const authMiddleware = async (req, res, next) => {
 
     const details = decodeToken(req.session.authUser.token);    
     req.user = details;
+
+    if(details.userId != req.session.authUser.id){    //for checking if the token is tempered
+      throw new Error("unauthorised token");
+    }
+
     next();
   } catch (e) {
     console.log("error: ", e);

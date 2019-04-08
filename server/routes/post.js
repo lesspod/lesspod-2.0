@@ -71,7 +71,8 @@ router.post("/", authMiddleware,async (req, res) => {
     let { body } = req;
     
     body.author = req.session.authUser.fullName; //added author name as per session
-
+    
+    body.createdBy = req.session.authUser.id;    //associating with user model
     
     let Post = new PostModel();
     await Post.create(body);
