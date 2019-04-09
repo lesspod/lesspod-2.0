@@ -2,6 +2,7 @@ const { Router } = require("express");
 const PostModel = require("../models/post");
 const authMiddleware = require("../middlewares/authMiddleware");
 
+
 const router = Router();
 
 router.get("/", async (req, res) => {
@@ -16,39 +17,57 @@ router.get("/", async (req, res) => {
   }
 });
 
-router.get("/:id", async (req, res) => {
+// router.get("/:id", async (req, res) => {
+//   try {
+//     let { id } = req.params;
+//     let Post = new PostModel();
+//     let result = await Post.getById(id);
+//     res.send(result);
+//   } catch (e) {
+//     res.send(e);
+//   }
+// });
+
+router.put("/:id", authMiddleware, async (req, res) => {
+
   try {
     let { id } = req.params;
-    let Post = new PostModel();
-    let result = await Post.getById(id);
-    res.send(result);
-  } catch (e) {
-    res.send(e);
-  }
-});
 
-router.put("/:id", async (req, res) => {
-
-  try {
-    let { id } = req.params;
     let { body } = req;
-    console.log('updating a page (routes)... ' + id + ', body= ' + body);
+
     let Post = new PostModel();
+
+    let post1 = await Post.getById(id);
+    
+    if(post1.createdBy != req.session.authUser.id){
+      throw new Error('unauthorised updation');
+    }
+    
+    console.log('updating a page (routes)... ' + id + ', body= ' + body);
+    
     let result = await Post.update(id, body);
     res.send(result);
   } catch (e) {
+    console.log(e);
     res.send(e);
   }
 });
 
-router.delete("/:id", async (req, res) => {
+router.delete("/:id", authMiddleware,async (req, res) => {
   try {
     let { id } = req.params;
+
     let Post = new PostModel();
     let post1 = await Post.getById(id);
+
+    if(post1.createdBy != req.session.authUser.id){
+      throw new Error('unauthorised deletion');
+    }
+    
     let result = post1.delete(post1._id);
-    res.send(result)
+    res.send(result);
   } catch (e) {
+    console.log(e);
     res.send(e);
   }
 });
@@ -65,9 +84,15 @@ router.put("/:id", async (req, res) => {
   }
 });
 
-router.post("/", async (req, res) => {
+router.post("/", authMiddleware,async (req, res) => {
   try {
     let { body } = req;
+    
+    body.author = req.session.authUser.fullName; //added author name as per session
+
+    body.createdBy = req.session.authUser.id;    //associating with user model
+
+    
     let Post = new PostModel();
     await Post.create(body);
     return res.send("sucessfully created");
