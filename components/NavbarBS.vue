@@ -72,6 +72,9 @@
             </template>
           </li>
           <li class="nav-item">
+            <span class="nav-link" style="font-weight:500;color:black;">080 43029757</span>
+          </li>
+          <li class="nav-item">
             <a href="#bookAppointment" role="button" data-toggle="modal" id="appointment" class="btn btn-outline-success btn-sm">
               <span class="far fa-calendar-plus fa-lg"></span>&nbsp;&nbsp;Appointment
             </a>
@@ -134,7 +137,7 @@
 
               <b-form-group
                 id="input-group-1"
-                label="Email address:"
+                label="Email address (optional):"
                 label-for="input-1"
               >
                 <b-form-input
@@ -245,17 +248,6 @@
     margin-left: 1rem;
     width: 97%;
   }
-  .appointmentFooter {
-    position: fixed;
-    bottom: 0;
-    background: #1bb886;
-    color: white;
-    margin: 0 auto !important;
-    text-align: center !important;
-    width: 100% !important;
-    height: 40px;
-    line-height: 40px;
-  }
 }
 
 /* Medium devices (tablets, 768px and up) */
@@ -264,17 +256,6 @@
     margin-right: 3rem;
     margin-left: 3rem;
     width: 97%;
-  }
-  .appointmentFooter {
-    position: fixed;
-    bottom: 0;
-    background: #1bb886;
-    color: white;
-    margin: 0 auto !important;
-    text-align: center !important;
-    width: 100% !important;
-    height: 40px;
-    line-height: 40px;
   }
 }
 
@@ -289,9 +270,6 @@
 @media (min-width: 1200px) {
   .navbar-brand {
     margin-left: 8rem;
-  }
-  .appointmentFooter {
-    display: none;
   }
 }
 .has-search .form-control {
