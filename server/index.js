@@ -52,11 +52,13 @@ async function start() {
   // POST `/api/logout` to log out the user and remove it from the `req.session`
   app.post('/api/logout', function (req, res) {
     delete req.session.authUser
+    console.log('logged out!!!!')
     res.json({ ok: true })
   })
 
   app.get('/api/current_user', (req, res) => {
-    res.json(req.session.authUser);
+    console.log(req.session.authUser, 'current')
+    res.send(req.session.authUser);
   });
 
   // Give nuxt middleware to express

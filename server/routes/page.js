@@ -27,35 +27,53 @@ router.get("/:id", async (req, res) => {
   }
 });
 
-router.put("/:id", async (req, res) => {
+router.put("/:id", authMiddleware,async (req, res) => {
 
   try {
     let { id } = req.params;
     let { body } = req;
-    console.log('updating a page (routes)... ' + id + ', body= ' + body);
     let Page = new PageModel();
+
+    let page1 = await Page.getById(id);
+
+    if(page1.createdBy != req.session.authUser.id){         //authorising the creator
+      throw new Error('unauthorised updation!!!!');
+    }
+
+    console.log('updating a page (routes)... ' + id + ', body= ' + body);
     let result = await Page.update(id, body);
     res.send(result);
   } catch (e) {
+    console.log(e);
     res.send(e);
   }
 });
 
-router.delete("/:id", async (req, res) => {
+router.delete("/:id", authMiddleware,async (req, res) => {
   try {
     let { id } = req.params;
     let Page = new PageModel();
     let page1 = await Page.getById(id);
+
+    if(page1.createdBy != req.session.authUser.id){           //authorising the creator
+      throw new Error('unauthorised deletion!!!!');
+    }
+
     let result = page1.delete(page1._id);
     res.send(result);
   } catch (e) {
+    console.log(e);
     res.send(e);
   }
 });
 
-router.post("/", async (req, res) => {
+router.post("/", authMiddleware,async (req, res) => {
   try {
     let { body } = req;
+
+    body.createdBy = req.session.authUser.id;           
+    body.author = req.session.authUser.fullname;
+
     let Page = new PageModel();
     let page1 = await Page.create(body);
     return res.send(page1);
