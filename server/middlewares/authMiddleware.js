@@ -6,7 +6,18 @@ const authMiddleware = async (req, res, next) => {
     let excluded = false;
     // if its an excluded path, get out of the middelware!
 
-    const details = decodeToken(req.headers.authorization);
+    // const details = decodeToken(req.headers.authorization);
+
+    if(!req.session.authUser){
+      throw new Error('You must login first!!!');
+    }
+
+    const details = decodeToken(req.session.authUser.token);
+    
+    if(details.userId != req.session.authUser.id){        //cheking if the token is tempered
+      throw new Error('Unauthorised token ');
+    }
+    
     req.user = details;
     next();
   } catch (e) {
