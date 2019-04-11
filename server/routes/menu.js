@@ -27,33 +27,50 @@ router.get("/:id", async (req, res) => {
   }
 });
 
-router.delete("/:id", async (req, res) => {
+router.delete("/:id", authMiddleware,async (req, res) => {
   try {
     let { id } = req.params;
     let Menu = new MenuModel();
     let menu1 = await Menu.getById(id);
+
+    if(menu1.createdBy != req.session.authUser.id){           //check for authenticity
+      throw new Error('unauthorised deletion!!!!!!');       
+    }
+
     let result = menu1.delete(menu1._id);
     res.send(result)
   } catch (e) {
+    console.log(e);
     res.send(e);
   }
 });
 
-router.put("/:id", async (req, res) => {
+router.put("/:id", authMiddleware,async (req, res) => {
   try {
     let { id } = req.params;
     let { body } = req;
     let Menu = new MenuModel();
+    
+    let menu1 = await Menu.getById(id);
+
+    if(menu1.createdBy != req.session.authUser.id){         //check for authenticity
+      throw new Error('unauthorised updation!!!!!!!!');
+    }
+
     await Menu.update(id, body);
     res.send("updated successfully")
   } catch (e) {
+    console.log(e);
     res.send(e);
   }
 });
 
-router.post("/", async (req, res) => {
+router.post("/", authMiddleware,async (req, res) => {        //authMiddleware
   try {
     let { body } = req;
+
+    body.createdBy = req.session.authUser.id;     //associating with user model
+    
     let Menu = new MenuModel();
     await Menu.create(body);
     return res.send("sucessfully created");
