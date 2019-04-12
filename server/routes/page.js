@@ -1,6 +1,7 @@
 const { Router } = require("express");
 const PageModel = require("../models/page");
 const authMiddleware = require("../middlewares/authMiddleware");
+const addTrashedPage = require("../utils/addTrashedPage");
 
 const router = Router();
 
@@ -59,7 +60,8 @@ router.delete("/:id", authMiddleware,async (req, res) => {
       throw new Error('unauthorised deletion!!!!');
     }
 
-    let result = page1.delete(page1._id);
+    let result =await page1.delete(page1._id);
+    addTrashedPage(result);
     res.send(result);
   } catch (e) {
     console.log(e);
