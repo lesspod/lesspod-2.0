@@ -2,6 +2,8 @@ const { Router } = require("express");
 const PostModel = require("../models/post");
 const authMiddleware = require("../middlewares/authMiddleware");
 
+const addTrashedPost = require("../utils/addTrashedPost");
+
 const router = Router();
 
 router.get("/", async (req, res) => {
@@ -58,7 +60,14 @@ router.delete("/:id", authMiddleware,async (req, res) => {
       throw new Error('unauthorised deletion');
     }
 
-    let result = post1.delete(post1._id);
+    addTrashedPost(post1);
+
+    let result = await post1.delete(post1._id);       //added await here
+
+    // console.log('result from router/pages')
+    // console.log(result);
+
+    // addTrashedPost(result);
     res.send(result)
   } catch (e) {
     console.log(e);

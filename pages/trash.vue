@@ -18,7 +18,10 @@
           <!-- <b-button href="#" variant="success">Edit</b-button> -->
           <!-- <b-button :href="editUrl(post)" variant="success">Edit</b-button> -->
           <!-- <nuxt-link class="btn btn-success" :to="{ name: 'post-edit-id', params: { id: post._id }}">Edit</nuxt-link> -->
-          <b-button type="button" class="btn btn-success">Restore</b-button>
+          
+          <b-button type="button" class="btn btn-success" @click="restore(post)">Restore</b-button>
+          <b-button type="button" class="btn btn-success" @click="deleteTrashPost(post)">Delete</b-button>
+        
         </b-card>
         <!-- <div class="w-full flex flex-wrap overflow-hidden items-center">
           <br /><br />
@@ -42,7 +45,12 @@
           <p class="card-text">
             {{ html2text(page.content).substring(0,80) + '...'}}
           </p>
-          <b-button type="button" class="btn btn-success" @click="selectedPage=page">Restore</b-button>
+          <!-- <b-button type="button" class="btn btn-success" @click="selectedPage=page">Restore</b-button> -->
+
+          <b-button type="button" class="btn btn-success" @click="restore(page)">Restore</b-button>
+
+          <b-button type="button" class="btn btn-success" @click="deleteTrashPage(page)">Delete</b-button>
+
         </b-card>
         <!-- <div class="w-full flex flex-wrap overflow-hidden items-center">
           <br /><br />
@@ -88,7 +96,13 @@ export default {
     },
     posts() {
       // return this.$store.state.menus.menuItems
-      return this.$store.state.posts.posts
+      console.log(this.$store.state.trash.posts, 'heyssssss');
+      return this.$store.state.trash.trashPosts
+    },
+    pages() {
+      console.log(this.$store.state.trash.trashPages, 'yessssssssssss')
+      return this.$store.state.trash.trashPages
+
     }
   },
   fetch ({ store, redirect }) {
@@ -235,6 +249,19 @@ export default {
       if(item.title == 'Logout'){
         this.$nuxt.$store.dispatch('logout')
       }
+    },
+    restore(page) {
+      console.log(page);
+    },
+    async deleteTrashPage(page) {
+      console.log('deleting.... ' + JSON.stringify(page))
+      
+      await this.$store.dispatch('trash/DELETE_TRASHED_PAGE', page)
+    },
+    async deleteTrashPost(post) {
+      console.log('deleting.... ' + JSON.stringify(post))
+      
+      await this.$store.dispatch('trash/DELETE_TRASHED_POST', post)
     }
   }
 }
