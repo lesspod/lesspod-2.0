@@ -22,7 +22,7 @@
         </div>
       </div>
 
-      <div>
+      <div v-show="!isLoggedIn()">
         <br>
         <hr>
         <b-form @submit.prevent>

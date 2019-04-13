@@ -1,6 +1,28 @@
 <template>
   <div>
     <Navbar :menus="menus"/>
+
+    <b-modal id="del-prompt" centered title="Delete Permanently"
+      @ok="deleteTrashPost(selectedTrashedPost)"
+      ok-title="Delete" ok-variant="danger">
+      <p class="my-4">You will nerver be able to restore this post.<br/> <b>
+        <!-- <template v-if="this.selectedTrashedPost">
+          {{ this.selectedTrashedPost.title }}        
+        </template> -->
+      </b> </p>
+    </b-modal>
+
+    <b-modal id="del-promptPage" centered title="Delete Permanently"
+      @ok="deleteTrashPage(selectedTrashedPage)"
+      ok-title="Delete" ok-variant="danger">
+      <p class="my-4">You will nerver be able to restore this page.<br/> <b>
+        <!-- <template v-if="this.selectedTrashedPage">
+          {{ this.selectedTrashedPage.title }}  
+        </template> -->
+      </b> </p>
+    </b-modal>
+
+
     <div class="container">
       <br><br><br>
       <h4 class="w-full text-center pt-1 pb-1">Trashed Items</h4>
@@ -20,7 +42,8 @@
           <!-- <nuxt-link class="btn btn-success" :to="{ name: 'post-edit-id', params: { id: post._id }}">Edit</nuxt-link> -->
           
           <b-button type="button" class="btn btn-success" @click="restore(post)">Restore</b-button>
-          <b-button type="button" class="btn btn-success" @click="deleteTrashPost(post)">Delete</b-button>
+          <!-- <b-button type="button" class="btn btn-success" @click="deleteTrashPost(post)">Delete</b-button> -->
+          <b-button type="button" class="btn btn-danger" @click="selectedTrashedPost=post" v-b-modal.del-prompt>Delete</b-button>
         
         </b-card>
         <!-- <div class="w-full flex flex-wrap overflow-hidden items-center">
@@ -49,7 +72,7 @@
 
           <b-button type="button" class="btn btn-success" @click="restore(page)">Restore</b-button>
 
-          <b-button type="button" class="btn btn-success" @click="deleteTrashPage(page)">Delete</b-button>
+          <b-button type="button" class="btn btn-danger" @click="selectedTrashedPage=page" v-b-modal.del-promptPage>Delete</b-button>
 
         </b-card>
         <!-- <div class="w-full flex flex-wrap overflow-hidden items-center">
@@ -262,7 +285,23 @@ export default {
       console.log('deleting.... ' + JSON.stringify(post))
       
       await this.$store.dispatch('trash/DELETE_TRASHED_POST', post)
+    },
+    async fetch({ store, params }) {
+    await store.dispatch('trash/GET_TRASH_POSTS')
+  },
+  mounted() {
+    window.localStorage.clear();
+  },
+  asyncData(context) {
+    // called every time before loading the component
+    // as the name said, it can be async
+    // Also, the returned object will be merged with your data object
+    return {
+      title: '',
+      content: '',
+      selectedPost: {}
     }
   }
-}
+  }
+  }
 </script>
