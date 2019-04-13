@@ -41,7 +41,7 @@
           <!-- <b-button :href="editUrl(post)" variant="success">Edit</b-button> -->
           <!-- <nuxt-link class="btn btn-success" :to="{ name: 'post-edit-id', params: { id: post._id }}">Edit</nuxt-link> -->
           
-          <b-button type="button" class="btn btn-success" @click="restore(post)">Restore</b-button>
+          <b-button type="button" class="btn btn-success" @click="restorePost(post)">Restore</b-button>
           <!-- <b-button type="button" class="btn btn-success" @click="deleteTrashPost(post)">Delete</b-button> -->
           <b-button type="button" class="btn btn-danger" @click="selectedTrashedPost=post" v-b-modal.del-prompt>Delete</b-button>
         
@@ -70,7 +70,7 @@
           </p>
           <!-- <b-button type="button" class="btn btn-success" @click="selectedPage=page">Restore</b-button> -->
 
-          <b-button type="button" class="btn btn-success" @click="restore(page)">Restore</b-button>
+          <b-button type="button" class="btn btn-success" @click="restorePage(page)">Restore</b-button>
 
           <b-button type="button" class="btn btn-danger" @click="selectedTrashedPage=page" v-b-modal.del-promptPage>Delete</b-button>
 
@@ -273,8 +273,13 @@ export default {
         this.$nuxt.$store.dispatch('logout')
       }
     },
-    restore(page) {
-      console.log(page);
+    async restorePost(post) {
+      console.log('restoring.... ' + JSON.stringify(post))
+      await this.$store.dispatch('trash/RESTORE_TRASHED_POST', post)
+    },
+    async restorePage(page) {
+      console.log('restoring.... ' + JSON.stringify(page))
+      await this.$store.dispatch('trash/RESTORE_TRASHED_PAGE', page)
     },
     async deleteTrashPage(page) {
       console.log('deleting.... ' + JSON.stringify(page))

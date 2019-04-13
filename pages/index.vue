@@ -2,7 +2,7 @@
   <div>
     <Navbar :menus="menus"/>
     <div id="mainContent" class="container container-fluid">
-      <span v-html="currentPage.content" v-show="!isLoggedIn()"></span>
+      <span v-html="currentPage.content" v-show="isLoggedIn()"></span>
       <div
         id="content"
         class="quill-editor"
@@ -23,6 +23,7 @@
       </div>
 
       <div v-show="!isLoggedIn()">
+        
         <br>
         <hr>
         <b-form @submit.prevent>
@@ -35,6 +36,7 @@
               placeholder="Enter email"
             />
           </b-form-group>
+          
 
           <b-form-group id="loginPasswordInput" label="Password:" label-for="loginPasswordInput">
             <b-form-input
@@ -49,7 +51,9 @@
         </b-form>
         <br>
         <hr>
-        <b-form @submit.prevent>
+
+         <span style="margin-top: 0.7rem;">If you don't have an account, you can <a href="/signup">Create An Account</a>.</span>
+        <!--<b-form @submit.prevent>
           <b-form-group
             id="signupFullnameInputGroup"
             label="Full Name:"
@@ -96,7 +100,7 @@
             />
           </b-form-group>
           <b-button type="submit" variant="primary" @click="signup()">Create Account</b-button>
-        </b-form>
+        </b-form> -->
       </div>
     </div>
     <Footer/>

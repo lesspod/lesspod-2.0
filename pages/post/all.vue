@@ -5,7 +5,7 @@
     <b-modal id="del-prompt" centered title="Move to trash"
       @ok="deletePost(selectedPost)"
       ok-title="Delete" ok-variant="danger">
-      <p class="my-4">You can restore from this post from trash  <b>
+      <p class="my-4">You can restore this post from trash  <b>
         <template v-if="this.selectedPost">
         {{ this.selectedPost.title }}
         </template>
@@ -27,8 +27,13 @@
           <p class="card-text block-ellipsis">{{html2text(post.content)}}</p>
           <!-- <b-button href="#" variant="success">Edit</b-button> -->
           <!-- <b-button :href="editUrl(post)" variant="success">Edit</b-button> -->
-          <nuxt-link class="btn btn-success" :to="{ name: 'post-edit-id', params: { id: post._id }}">Edit</nuxt-link>
-          <b-button type="button" class="btn btn-danger" @click="selectedPost=post" v-b-modal.del-prompt>Delete</b-button>
+          
+          <div>
+            <div class="d-flex justify-content-around">
+            <nuxt-link class="btn btn-success" :to="{ name: 'post-edit-id', params: { id: post._id }}">Edit</nuxt-link>
+            <b-button type="button" class="btn btn-danger" @click="selectedPost=post" v-b-modal.del-prompt>Delete</b-button>
+          </div>
+          </div>
         </b-card>
         <!-- <div class="w-full flex flex-wrap overflow-hidden items-center">
           <br /><br />
@@ -46,6 +51,7 @@
     <Footer/>
   </div>
 </template>
+
 <style>
 .two-line-ellipsis {
   /* padding-left:2vw; */
@@ -70,6 +76,7 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
 </style>
 <script type="text/javascript">
 import Navbar from '~/components/NavbarBS.vue'

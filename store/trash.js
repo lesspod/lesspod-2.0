@@ -30,6 +30,14 @@ export const mutations = {
   removeTrashedPost(state, post) {
     state.trashPosts.splice(state.trashPosts.indexOf(post), 1)
     this.$toast.success('Post removed successfully.', { duration: 2000 })
+  },
+  restoreTrashedPost(state, post) {
+    state.trashPosts.splice(state.trashPosts.indexOf(post), 1)
+    this.$toast.success('Post restored successfully.', { duration: 2000 })
+  },
+  restoreTrashedPage(state, page) {
+    state.trashPages.splice(state.trashPages.indexOf(page), 1)
+    this.$toast.success('Page restored successfully.', { duration: 2000 })
   }
 }
 
@@ -63,5 +71,17 @@ export const actions = {
     const {result} = await axios.delete(process.env.baseUrl + '/api/trashPage/' + trashedPage._id)
     console.log('page deleted...' + result)
     commit('remove', trashedPage)
-  }
+  },
+  
+  async RESTORE_TRASHED_POST({ commit }, trashedPost) {
+    const { result } = await axios.post(process.env.baseUrl + '/api/restore/post/' + trashedPost._id)
+    console.log('post deleted...' + result)
+    commit('restoreTrashedPost', trashedPost)
+  },
+
+  async RESTORE_TRASHED_PAGE({ commit }, trashedPage) {
+    const { result } = await axios.post(process.env.baseUrl + '/api/restore/page/' + trashedPage._id)
+    console.log('page deleted...' + result)
+    commit('restoreTrashedPage', trashedPage)
+  },
 }
