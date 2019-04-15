@@ -6,6 +6,10 @@ export const mutations = {
   SET_USER: function (state, user) {
     state.authUser = user
   },
+  RESET_USER: function (state, payLoad) {
+    state.authUser = payLoad;
+    localStorage.clear();
+  }
 }
 
 export const actions = {
@@ -72,7 +76,7 @@ export const actions = {
       method: 'POST'
     })
     .then(() => {
-      commit('SET_USER', null)
+      commit('RESET_USER', null)
       this.$toast.success('Logout successful.', { duration: 2000 })
       this.$router.push('/')
     })
@@ -80,10 +84,10 @@ export const actions = {
   async nuxtServerInit ({ commit, dispatch }, { req }) {
     await Promise.all([
       dispatch('menus/GET_MENUS'),
-      dispatch('posts/GET_POSTS'),
-      dispatch('pages/GET_PAGES'),
+      // dispatch('posts/GET_MY_POSTS'),
+      dispatch('pages/GET_BLOGS'),
       dispatch('trash/GET_TRASH_POSTS'),
-      dispatch('trash/GET_TRASH_PAGES')
+      dispatch('trash/GET_TRASH_PAGES'),
     ])
     if (req.session && req.session.authUser) {
       commit('SET_USER', req.session.authUser)

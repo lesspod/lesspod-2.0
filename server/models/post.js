@@ -6,7 +6,11 @@ const postSchema = mongoose.Schema({
   author: String,
   createdBy: String,
   createdAt: Number,
-  updatedAt: Number
+  updatedAt: Number,
+  isPublished : {
+    type  : Boolean,
+    default : false
+  }
 });
 
 const formatPost = {
@@ -25,6 +29,18 @@ class Post {
 
     let newPost = new this.Post(post);
     return newPost.save();
+  }
+
+  getPublishedPosts({ limit, skip } = { limit: 100, skip: 0 }) {
+    return this.Post.find({isPublished : true}, formatPost)
+      .limit(limit)
+      .skip(skip);
+  }
+
+  getMyPosts({ limit, skip } = { limit: 100, skip: 0 }, createdBy) {
+    return this.Post.find({createdBy}, formatPost)
+      .limit(limit)
+      .skip(skip);
   }
 
   get({ limit, skip } = { limit: 100, skip: 0 }) {
