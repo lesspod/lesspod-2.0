@@ -107,8 +107,7 @@ export default {
   },
   data(){
     return{
-      selectedPost : {},
-      isPublished : false
+      selectedPost : {}
     }
   },
   methods: {
@@ -147,14 +146,14 @@ export default {
         // var post = {
         //   isPublished : isPublished
         // }
-      //   this.$store.commit('posts/update', post)
+        // this.$store.commit('posts/update', post)
 
       return this.$router.push('/blog')
       
-    },
-    isPublished(post){
-      return post.isPublished;
     }
+    // isPublished(post){
+    //   return post.isPublished;
+    // }
   },
   asyncData(context) {
     // called every time before loading the component

@@ -1,6 +1,7 @@
 const { Router } = require("express");
 const MenuModel = require("../models/menu");
 const authMiddleware = require("../middlewares/authMiddleware");
+const addTrashedMenu = require("../utils/addTrashedMenu");
 
 const router = Router();
 
@@ -27,18 +28,28 @@ router.get("/:id", async (req, res) => {
   }
 });
 
-router.delete("/:id", authMiddleware,async (req, res) => {
+router.delete("/:menuName", authMiddleware,async (req, res) => {
   try {
-    let { id } = req.params;
+    let { menuName } = req.params;
     let Menu = new MenuModel();
-    let menu1 = await Menu.getById(id);
+    let menu1 = await Menu.getByMenuName(menuName);
+    
 
-    if(menu1.createdBy != req.session.authUser.id){           //check for authenticity
-      throw new Error('unauthorised deletion!!!!!!');       
-    }
+      if(menu1.createdBy != req.session.authUser.id){           //check for authenticity
+        throw new Error('unauthorised deletion!!!!!!');       
+      }
+  
+      let result = menu1.delete(menu1._id);
+      addTrashedMenu(menu1)
+      res.send(result)
+    
+    // if(menu1.createdBy != req.session.authUser.id){           //check for authenticity
+    //   throw new Error('unauthorised deletion!!!!!!');       
+    // }
 
-    let result = menu1.delete(menu1._id);
-    res.send(result)
+    // let result = menu1.delete(menu1._id);
+    // addTrashedMenu(menu1)
+    // res.send(result)
   } catch (e) {
     console.log(e);
     res.send(e);

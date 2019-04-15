@@ -1,5 +1,5 @@
 const { Router } = require("express");
-const TrashedPageModel = require("../models/trashedPage");
+const TrashedMenuModel = require("../models/trashedMenu");
 const authMiddleware = require("../middlewares/authMiddleware");
 
 const router = Router();
@@ -7,7 +7,7 @@ const router = Router();
 router.get("/", async (req, res) => {
   try {
     let { limit, skip } = req.query;
-    let Trash= new TrashedPageModel();
+    let Trash= new TrashedMenuModel();
     let result = await Trash.get({ limit, skip });
     console.log("result", result);
     res.send(result);
@@ -18,23 +18,24 @@ router.get("/", async (req, res) => {
 });
 
 
-router.delete("/:id", async (req, res) => {
+router.delete("/:menuName", async (req, res) => {
   try {
-    let { id } = req.params;
-    let Trash = new TrashedPageModel();
+    let { menuName } = req.params;
+    let Trash = new TrashedMenuModel();
 
-    let trash1 = Trash.getTrashedPageById(id);
+    let trash1 =await Trash.getTrashedMenuMenuName(menuName);
 
-    console.log('trash Pge', trash1)
+    console.log('trash Pge!!!!!');
+    console.log(trash1);
 
     // if(post1.createdBy != req.session.authUser.id){             //check for authenticity before deletion
     //   throw new Error('unauthorised deletion');
     // }
 
-    let result = await Trash.delete(id);
+    let result = await Trash.delete(trash1._id);
     res.send(result)
   } catch (e) {
-    console.log(e);
+    // console.log(e);
     res.send(e);
   }
 });

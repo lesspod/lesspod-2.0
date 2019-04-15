@@ -8,6 +8,7 @@ const menu = require("./menu");
 const postTrash = require("./postTrash"); 
 const pageTrash = require("./pageTrash");
 const restore = require("./restore");
+const menuTrash = require("./menuTrash");
 
 const router = Router();
 // register routes
@@ -17,6 +18,7 @@ router.use("/page", page);
 router.use("/menu", menu);
 router.use("/trash", postTrash);
 router.use("/trashPage", pageTrash);
+router.use("/trashMenu", menuTrash);
 router.use("/restore", restore);
 
 module.exports = router;

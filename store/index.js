@@ -88,6 +88,7 @@ export const actions = {
       dispatch('pages/GET_BLOGS'),
       dispatch('trash/GET_TRASH_POSTS'),
       dispatch('trash/GET_TRASH_PAGES'),
+      dispatch('trash/GET_TRASH_MENUS')
     ])
     if (req.session && req.session.authUser) {
       commit('SET_USER', req.session.authUser)

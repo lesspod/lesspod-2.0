@@ -8,7 +8,6 @@ const authMiddleware = async (req, res, next) => {
 
     // const details = decodeToken(req.headers.authorization);
 
-    console.log(req.session.authUser)
 
     if(!req.session.authUser){
       throw new Error('You must login first!!!');

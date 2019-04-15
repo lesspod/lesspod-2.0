@@ -2,8 +2,10 @@ const { Router } = require("express");
 
 const TrashedPageModel = require("../models/trashedPage");
 const TrashedPostModel = require("../models/trashedPost");
+const TrashedMenuModel = require("../models/trashedMenu");
 const PostModel = require("../models/post");
 const PageModel = require("../models/page");
+const MenuModel = require("../models/menu");
 const authMiddleware = require("../middlewares/authMiddleware");
 
 const router = Router();
@@ -74,5 +76,37 @@ router.post('/page/:id', async(req, res) => {
     
 });
 
+router.post('/menu/:menuName', async(req, res) => {
+
+    try {
+        
+        let {menuName} = req.params;
+    
+        let TrashMenu = new TrashedMenuModel();
+    
+        let menu = await TrashMenu.getTrashedMenuMenuName(menuName);
+    
+        let restoredMenu = {
+            menuName: menu.menuName,
+            underMenu: menu.underMenu,
+            linkedTo: menu.linkedTo,
+            createdBy: menu.createdBy,
+            createdAt: menu.createdAt,
+            updatedAt: menu.updatedAt
+        }
+        
+        let Menu = new MenuModel();
+        await Menu.create(restoredMenu);
+    
+        let result =await TrashMenu.delete(menu._id);
+    
+        console.log("successfully restored!!");
+        res.send("successfully restored!!");
+        } catch (e) {
+            console.log(e);
+            res.send("error");
+        }
+    
+});
 
 module.exports = router;

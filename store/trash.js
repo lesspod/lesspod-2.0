@@ -23,9 +23,19 @@ export const mutations = {
     if(data) state.trashPages = data
   },
 
+  setTrashMenus(state, data) {
+    console.log('setting trashed menus ' + JSON.stringify(data))
+    
+    if(data) state.trashMenus = data
+  },
+
   remove(state, post) {
     state.trashPages.splice(state.trashPages.indexOf(post), 1)
     this.$toast.success('Post removed successfully.', { duration: 2000 })
+  },
+  removeTrashedMenu(state, menu){
+    state.trashMenus.splice(state.trashMenus.indexOf(menu), 1)
+    this.$toast.success('Menu removed successfully.', { duration: 2000 })
   },
   removeTrashedPost(state, post) {
     state.trashPosts.splice(state.trashPosts.indexOf(post), 1)
@@ -38,6 +48,10 @@ export const mutations = {
   restoreTrashedPage(state, page) {
     state.trashPages.splice(state.trashPages.indexOf(page), 1)
     this.$toast.success('Page restored successfully.', { duration: 2000 })
+  },
+  restoreTrashedMenu(state, menu) {
+    state.trashMenus.splice(state.trashMenus.indexOf(menu), 1)
+    this.$toast.success('Menu restored successfully.', { duration: 2000 })
   }
 }
 
@@ -50,6 +64,14 @@ export const actions = {
     console.log('data from gettarsh posts action', data)
     commit('setTrashPosts', data)            //line 15
     console.log('data in GET_TRASH_POSTS... ' + JSON.stringify(data))
+  },
+
+  async GET_TRASH_MENUS ({ commit }) {
+    // process.env.baseUrl
+    console.log('getting trashmenus from: ' + process.env.baseUrl)
+    const { data } = await axios.get(process.env.baseUrl + '/api/trashMenu');  //
+    commit('setTrashMenus', data)            //line 15
+    console.log('data in GET_TRASH_MENUS... ' + JSON.stringify(data))
   },
 
   async GET_TRASH_PAGES ({ commit }) {
@@ -70,7 +92,16 @@ export const actions = {
     console.log('ssaksaksaksaksaksakskasnaskansaskasnkasnksnka',trashedPage._id)
     const {result} = await axios.delete(process.env.baseUrl + '/api/trashPage/' + trashedPage._id)
     console.log('page deleted...' + result)
+    console.log('dekho is bhai')
     commit('remove', trashedPage)
+  },
+  
+  async DELETE_TRASHED_MENU({ commit }, menuName) {
+    console.log('ssaksaksaksaksaksakskasnaskansaskasnkasnksnka',menuName)
+    const {result} = await axios.delete(process.env.baseUrl + '/api/trashMenu/' + menuName)
+    console.log('Menu deleted...' + result)
+    console.log('dekho is bhai')
+    commit('removeTrashedMenu', result)
   },
   
   async RESTORE_TRASHED_POST({ commit }, trashedPost) {
@@ -84,4 +115,10 @@ export const actions = {
     console.log('page deleted...' + result)
     commit('restoreTrashedPage', trashedPage)
   },
+  
+  async RESTORE_TRASHED_MENU({ commit }, menuName) {
+    const { result } = await axios.post(process.env.baseUrl + '/api/restore/menu/' + menuName)
+    console.log('menu Restored...' + result)
+    commit('restoreTrashedMenu', result)
+  }
 }
