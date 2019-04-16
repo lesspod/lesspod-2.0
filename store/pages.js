@@ -59,7 +59,7 @@ export const mutations = {
 export const actions = {
   async ADD_PAGE ({ commit }, page) {
     console.log('ADD_PAGE...')
-    var result = await axios.post('/api/page', page)
+    var result = await axios.post(process.env.baseUrl + '/api/page', page)
     console.log('ADD_PAGE result: ' + JSON.stringify(result))
     page._id = result.data._id
     commit('add', page)
@@ -78,7 +78,7 @@ export const actions = {
   },
   async UPDATE_PAGE ({ commit }, page) {
     console.log('UPDATE_PAGE...')
-    var result = await axios.put('/api/page/' + page._id, page)
+    var result = await axios.put(process.env.baseUrl + '/api/page/' + page._id, page)
     // console.log('UPDATE_PAGE result: ' + JSON.stringify(result))
     commit('update', page)
   },

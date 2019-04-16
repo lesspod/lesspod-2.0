@@ -34,6 +34,8 @@
           </div>
         </div>
         <div class="md:flex md:items-center">
+          <toggle-button :state="false" :width="100" :speed = "500" :height="40" v-model="isPublished" :sync="true" @change="toggled(isPublished)"
+               :labels="{checked: 'Publish', unchecked: 'later'}"/>
           <div class>
             <button class="btn btn-primary" type="button" @click="savePost">Save Post</button>
           </div>
@@ -79,6 +81,11 @@ export default {
       return this.$store.state.posts.currentPost
     }
   },
+  data(){
+    return ({
+      isPublished : false
+    })
+  },
   methods: {
     savePost: function() {
       var titl = document.getElementById('inline-post-title')
@@ -94,7 +101,7 @@ export default {
           _id: this.post_id,
           title: titl,
           content: cont,
-          author: 'Rajan Chandi'
+          isPublished : this.isPublished
         }
 
         // this.$axios.put('/api/post/' + this.post_id, post)
@@ -110,7 +117,8 @@ export default {
         this.$axios.post('/api/post', {
           title: this.title,
           content: this.content,
-          author: this.author
+          author: this.author,
+          isPublished : this.isPublished
         })
         var id = Math.floor(Math.random() * 100 + 4)
         // this.posts.push({ _id: id, title: this.title })
@@ -137,6 +145,9 @@ export default {
     onEditorChange({ editor, html, text }) {
       console.log('editor change!', editor, html, text)
       this.content = html
+    },
+    toggled(isPublished){
+      console.log(isPublished, 'ISPUBLISED');
     }
   },
   async asyncData(context) {
