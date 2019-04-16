@@ -40,9 +40,9 @@ async function start() {
   // Sessions to create `req.session`
   app.use(session({
     secret: 'super-secret-key',
-    resave: false,
-    saveUninitialized: true,
-    cookie: { maxAge: 6000000000 }
+    resave: true,
+    saveUninitialized: false,
+    cookie: { maxAge: 1000 * 60 * 60 }
   }));
 
   const routes = require("./routes");
@@ -52,12 +52,14 @@ async function start() {
   // POST `/api/logout` to log out the user and remove it from the `req.session`
   app.post('/api/logout', function (req, res) {
     delete req.session.authUser
+    console.log('logged out!!!!')
     res.json({ ok: true })
   })
 
-  app.get('/api/current_user', (req, res) =>{
+  app.get('/api/current_user', (req, res) => {
+    console.log(req.session.authUser, 'current')
     res.send(req.session.authUser);
-  })
+  });
 
   // Give nuxt middleware to express
   app.use(nuxt.render);

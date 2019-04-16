@@ -2,7 +2,7 @@
   <div>
     <Navbar :menus="menus"/>
     <div class="container">
-      <br /><br><br>
+      <br /><br><br><br>
       <h3>Let's Login</h3>
       <b-form v-if="show" @submit="onSubmit" @reset="onReset">
         <b-form-group
@@ -37,6 +37,7 @@
         <!-- <b-button type="reset" variant="danger">
             Reset
           </b-button> -->
+          <br/>
       </b-form>
       <span style="margin-top: 0.7rem;">If you don't have an account, you can <a href="/signup">Create An Account</a>.</span>
     </div>
@@ -44,7 +45,10 @@
   </div>
 </template>
 
-<style></style>
+<style>
+
+
+</style>
 
 <script>
 import Navbar from '../components/NavbarBS.vue'

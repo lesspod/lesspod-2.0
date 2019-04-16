@@ -58,13 +58,13 @@ router.post("/login", async (req, res) => {
       if(!req.session) {
         console.log('session in auth: ' + req.session);
       }
+      req.session.authUser = {
+        username: user.username,
+        fullname : user.fullname,
+        id : user._id,
+        token : token
+      };  //grabbing info about user
 
-
-      req.session.authUser = { 
-        username: user.username, 
-        fullName : user.fullname, 
-        token : token,
-        id : user._id };   //grabbed the info of user here
       return res.json({
         token,
         username: user.username

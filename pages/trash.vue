@@ -1,6 +1,28 @@
 <template>
   <div>
     <Navbar :menus="menus"/>
+
+    <b-modal id="del-prompt" centered title="Delete Permanently"
+      @ok="deleteTrashPost(selectedTrashedPost)"
+      ok-title="Delete" ok-variant="danger">
+      <p class="my-4">You will nerver be able to restore this post.<br/> <b>
+        <!-- <template v-if="this.selectedTrashedPost">
+          {{ this.selectedTrashedPost.title }}        
+        </template> -->
+      </b> </p>
+    </b-modal>
+
+    <b-modal id="del-promptPage" centered title="Delete Permanently"
+      @ok="deleteTrashPage(selectedTrashedPage)"
+      ok-title="Delete" ok-variant="danger">
+      <p class="my-4">You will nerver be able to restore this page.<br/> <b>
+        <!-- <template v-if="this.selectedTrashedPage">
+          {{ this.selectedTrashedPage.title }}  
+        </template> -->
+      </b> </p>
+    </b-modal>
+
+
     <div class="container">
       <br><br><br>
       <h4 class="w-full text-center pt-1 pb-1">Trashed Items</h4>
@@ -18,7 +40,11 @@
           <!-- <b-button href="#" variant="success">Edit</b-button> -->
           <!-- <b-button :href="editUrl(post)" variant="success">Edit</b-button> -->
           <!-- <nuxt-link class="btn btn-success" :to="{ name: 'post-edit-id', params: { id: post._id }}">Edit</nuxt-link> -->
-          <b-button type="button" class="btn btn-success">Restore</b-button>
+          
+          <b-button type="button" class="btn btn-success" @click="restorePost(post)">Restore</b-button>
+          <!-- <b-button type="button" class="btn btn-success" @click="deleteTrashPost(post)">Delete</b-button> -->
+          <b-button type="button" class="btn btn-danger" @click="selectedTrashedPost=post" v-b-modal.del-prompt>Delete</b-button>
+        
         </b-card>
         <!-- <div class="w-full flex flex-wrap overflow-hidden items-center">
           <br /><br />
@@ -42,7 +68,12 @@
           <p class="card-text">
             {{ html2text(page.content).substring(0,80) + '...'}}
           </p>
-          <b-button type="button" class="btn btn-success" @click="selectedPage=page">Restore</b-button>
+          <!-- <b-button type="button" class="btn btn-success" @click="selectedPage=page">Restore</b-button> -->
+
+          <b-button type="button" class="btn btn-success" @click="restorePage(page)">Restore</b-button>
+
+          <b-button type="button" class="btn btn-danger" @click="selectedTrashedPage=page" v-b-modal.del-promptPage>Delete</b-button>
+
         </b-card>
         <!-- <div class="w-full flex flex-wrap overflow-hidden items-center">
           <br /><br />
@@ -88,7 +119,13 @@ export default {
     },
     posts() {
       // return this.$store.state.menus.menuItems
-      return this.$store.state.posts.posts
+      console.log(this.$store.state.trash.posts, 'heyssssss');
+      return this.$store.state.trash.trashPosts
+    },
+    pages() {
+      console.log(this.$store.state.trash.trashPages, 'yessssssssssss')
+      return this.$store.state.trash.trashPages
+
     }
   },
   fetch ({ store, redirect }) {
@@ -235,7 +272,41 @@ export default {
       if(item.title == 'Logout'){
         this.$nuxt.$store.dispatch('logout')
       }
+    },
+    async restorePost(post) {
+      console.log('restoring.... ' + JSON.stringify(post))
+      await this.$store.dispatch('trash/RESTORE_TRASHED_POST', post)
+    },
+    async restorePage(page) {
+      console.log('restoring.... ' + JSON.stringify(page))
+      await this.$store.dispatch('trash/RESTORE_TRASHED_PAGE', page)
+    },
+    async deleteTrashPage(page) {
+      console.log('deleting.... ' + JSON.stringify(page))
+      
+      await this.$store.dispatch('trash/DELETE_TRASHED_PAGE', page)
+    },
+    async deleteTrashPost(post) {
+      console.log('deleting.... ' + JSON.stringify(post))
+      
+      await this.$store.dispatch('trash/DELETE_TRASHED_POST', post)
+    },
+    async fetch({ store, params }) {
+    await store.dispatch('trash/GET_TRASH_POSTS')
+  },
+  mounted() {
+    window.localStorage.clear();
+  },
+  asyncData(context) {
+    // called every time before loading the component
+    // as the name said, it can be async
+    // Also, the returned object will be merged with your data object
+    return {
+      title: '',
+      content: '',
+      selectedPost: {}
     }
   }
-}
+  }
+  }
 </script>

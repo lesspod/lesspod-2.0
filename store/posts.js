@@ -30,7 +30,7 @@ export const mutations = {
   },
   add(state, post) {
     state.posts.push(post)
-    this.$toast.success('Post added successfully.', { duration: 2000 })
+    this.$toast.success('Post added successfully.', { duration: 2000 }) 
   },
   // add(state, post) {
   //   state.posts.push(post)
