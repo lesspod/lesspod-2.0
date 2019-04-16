@@ -37,6 +37,10 @@ class Menu {
     return this.Menu.findOne({ _id }, formatMenu);
   }
 
+  getByMenuName(menuName){
+    return this.Menu.findOne({ menuName }, formatMenu);
+  }
+
   delete(_id) {
     return this.Menu.remove({ _id });
   }

@@ -94,7 +94,8 @@ module.exports = {
     { src: '~plugins/nuxt-quill-plugin.js', ssr: false },
     { src: '~/plugins/vuex-persist', ssr: false },
     { src: '~/plugins/vue-sidebar-menu', ssr: false },
-    { src: '~/plugins/vue-moment', ssr: true }
+    { src: '~/plugins/vue-moment', ssr: true },
+    {src: '~/plugins/toggle-button.js', ssr: false}
   ],
 
   /*

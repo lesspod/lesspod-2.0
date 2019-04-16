@@ -1,12 +1,14 @@
 <template>
-  <div>
+  <div >
     <Navbar :menus="menus"/>
 
     <b-modal id="del-prompt" centered title="Move to trash"
       @ok="deletePost(selectedPost)"
       ok-title="Delete" ok-variant="danger">
       <p class="my-4">You can restore this post from trash  <b>
+        <br>
         <template v-if="this.selectedPost">
+          title :
         {{ this.selectedPost.title }}
         </template>
       </b> </p>
@@ -17,7 +19,7 @@
       <h4 class="w-full text-center pt-1 pb-1">Admin Posts</h4>
       <b-card-group deck class="mb-3">
         <b-card
-          v-for="post in posts"
+          v-for="post in myPosts"
           :key="post._id"
           :title="post.title"
           tag="article"
@@ -28,11 +30,16 @@
           <!-- <b-button href="#" variant="success">Edit</b-button> -->
           <!-- <b-button :href="editUrl(post)" variant="success">Edit</b-button> -->
           
-          <div>
+         
             <div class="d-flex justify-content-around">
             <nuxt-link class="btn btn-success" :to="{ name: 'post-edit-id', params: { id: post._id }}">Edit</nuxt-link>
             <b-button type="button" class="btn btn-danger" @click="selectedPost=post" v-b-modal.del-prompt>Delete</b-button>
+            
           </div>
+          <br/>
+          <div class="d-flex justify-content-around">
+            <toggle-button :value="initialValue(post)" :width="120" :height="35" v-model="isPublished" :sync="true" @change="toggled(isPublished, post)"
+               :labels="{checked: 'Published', unchecked: 'Tap to publish'}"/>
           </div>
         </b-card>
         <!-- <div class="w-full flex flex-wrap overflow-hidden items-center">
@@ -88,7 +95,20 @@ export default {
     Navbar,
     Footer
   },
+  fetch ({ store, redirect }) {
+    if (!store.state.authUser) {
+      return redirect('/login')
+    }
+  },
+  async fetch({ store, params }) {
+    await store.dispatch('posts/GET_MY_POSTS')
+  },
   computed: {
+  },
+  data(){
+    return{
+      selectedPost : {}
+    }
   },
   methods: {
     addPost: function() {
@@ -99,13 +119,41 @@ export default {
       this.posts.push({ _id: id, title: this.title })
       this.title = ''
     },
+    initialValue(post){
+      return this.isPublished = post.isPublished;
+    },
     editUrl(post) {
       return process.env.baseUrl + '/post/edit/' + post._id
     },
     async deletePost(post) {
       console.log('deleting.... ' + JSON.stringify(post))
       await this.$store.dispatch('posts/DELETE_POST', post)
+    },
+    async toggled(isPublished, post){
+      console.log(isPublished, 'ISPUBLISED');
+      post.isPublished = isPublished;
+
+        this.$store.dispatch('posts/UPDATE_POST', post)
+
+      // var result = await this.$axios.put('/api/post/' + post._id, post)
+      // this.$axios.post('/api/post', {
+      //     title: this.title,
+      //     content: this.content,
+      //     author: this.author
+      //   })
+        // var id = Math.floor(Math.random() * 100 + 4)
+        // // // this.posts.push({ _id: id, title: this.title })
+        // var post = {
+        //   isPublished : isPublished
+        // }
+        // this.$store.commit('posts/update', post)
+
+      return this.$router.push('/blog')
+      
     }
+    // isPublished(post){
+    //   return post.isPublished;
+    // }
   },
   asyncData(context) {
     // called every time before loading the component
@@ -115,9 +163,6 @@ export default {
       title: '',
       content: ''
     }
-  },
-  async fetch({ store, params }) {
-    await store.dispatch('posts/GET_POSTS')
   }
 }
 </script>

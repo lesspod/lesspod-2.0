@@ -11,9 +11,11 @@ export const state = () => ({
 })
 
 export const mutations = {
-  setPosts(state, data) {
-    console.log('setting posts... ' + JSON.stringify(data))
-    if(data) state.posts = data
+  setMyPosts(state, data) {
+    if(data) state.myPosts = data
+  },
+  setBlogs(state, data) {
+    if(data) state.blogs = data
   },
   setPost(state, data) {
     console.log('setting current post... ' + JSON.stringify(data))
@@ -49,13 +51,21 @@ export const actions = {
     console.log('ADD_POST result: ' + JSON.stringify(result))
     commit('add', post)
   },
-  async GET_POSTS ({ commit }) {
+  async GET_MY_POSTS ({ commit }) {
     // process.env.baseUrl
     console.log('getting posts from: ' + process.env.baseUrl)
-    const { data } = await axios.get(process.env.baseUrl + '/api/post/')
-    commit('setPosts', data)
-    console.log('data in GET_POSTS... ' + JSON.stringify(data))
+    const  {data}  = await axios.get(process.env.baseUrl + '/api/post/myPosts')
+    commit('setMyPosts', data)
+    console.log('data in GET_MY_POSTS... ' + JSON.stringify(data))
   },
+  
+  async GET_BLOGS({ commit }) {
+    console.log('getting posts from: ' + process.env.baseUrl)
+    const  {data}  = await axios.get(process.env.baseUrl + '/api/post/published')
+    commit('setBlogs', data)
+    console.log('data in GET_BLOGS... ' + JSON.stringify(data))
+  },
+
   async GET_POST ({ commit }, post_id) {
     // process.env.baseUrl
     const { data } = await axios.get(process.env.baseUrl + '/api/post/' + post_id)

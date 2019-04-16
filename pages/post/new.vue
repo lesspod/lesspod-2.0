@@ -32,7 +32,14 @@
             <br>
           </div>
         </div>
+        
         <div class="md:flex md:items-center">
+          <div class="d-flex justify-content-start">
+
+            <toggle-button :state="false" :width="100" :speed = "500" :height="40" v-model="isPublished" :sync="true" @change="toggled(isPublished)"
+               :labels="{checked: 'Publish', unchecked: 'later'}"/>
+          </div>
+
           <div class>
             <button class="btn btn-primary" type="button" @click="addPost">Add Post</button>
           </div>
@@ -78,6 +85,11 @@ export default {
       return this.$store.state.posts.posts
     }
   },
+  data(){
+    return{
+      isPublished : true
+    }
+  },
   methods: {
     async addPost() {
       console.log('addPost called. Title: ' + this.title)
@@ -91,7 +103,7 @@ export default {
           // _id: id,
           title: this.title,
           content: this.content,
-          author: 'Rajan Chandi'
+          isPublished: this.isPublished
         }
         await this.$store.dispatch('posts/ADD_POST', post)
         this.title = ''
@@ -110,7 +122,13 @@ export default {
     onEditorChange({ editor, html, text }) {
       // console.log('editor change!', editor, html, text)
       this.content = html
+    },
+    toggled(isPublished){
+      console.log(isPublished, 'ISPUBLISED');
     }
+    // isPublished(){
+    //   return false;
+    // }
   },
   asyncData(context) {
     // called every time before loading the component

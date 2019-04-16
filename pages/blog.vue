@@ -5,7 +5,7 @@
       <h4 class="w-full text-center pt-1 pb-1">All Blog Posts</h4>
       <b-card-group deck class="mb-3">
         <b-card
-          v-for="post in posts"
+          v-for="post in blogs"
           :img-src="'https://loremflickr.com/320/240/' + post.title.substr(0,post.title.indexOf(' '))"
           img-alt="Image"
           img-top
@@ -65,7 +65,7 @@ export default {
   },
   async fetch({ store, params }) {
     console.log('fetch called in blog.vue')
-    await store.dispatch('posts/GET_POSTS')
+    await store.dispatch('posts/GET_BLOGS')
   }
 }
 </script>

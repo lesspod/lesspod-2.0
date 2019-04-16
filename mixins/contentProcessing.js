@@ -12,18 +12,30 @@ export default {
     },
     pages() {
       return this.$store.state.pages.pages
+    },
+    myPosts(){
+      return this.$store.state.posts.myPosts
+    },
+    blogs(){
+      
+        return this.$store.state.posts.blogs
+      
     }
   },
   methods: {
     aCommonMethod: function() {
       console.log('A common method')
     },
-    isLoggedIn: function(){
-      if(this.$store.state.authUser && this.$store.state.authUser.username) {
-        return true
-      }else {
-        return false
-      }
+    isLoggedIn:  function(){
+      
+        if(this.$store.state.authUser && this.$store.state.authUser.username) {
+          // console.log("dispatching get my posts")
+          // await dispatch('posts/GET_MY_POSTS');
+          return true;
+        }else {
+          return false;
+        }
+      
     },
     html2text(html) {
       if(html) {

@@ -6,11 +6,26 @@ const addTrashedPost = require("../utils/addTrashedPost");
 
 const router = Router();
 
-router.get("/", async (req, res) => {
+router.get("/published", async (req, res) => {
   try {
     let { limit, skip } = req.query;
     let Post = new PostModel();
-    let result = await Post.get({ limit, skip });
+    let result = await Post.getPublishedPosts({ limit, skip });
+    // console.log("result", result);
+    console.log("checking the session",req.session);
+    res.send(result);
+  } catch (e) {
+    res.send(e);
+  }
+});
+
+router.get("/myPosts", authMiddleware,async (req, res) => {
+  try {
+    let { limit, skip } = req.query;
+    let Post = new PostModel();
+    // let result = await Post.getMyPosts({ limit, skip }, req.session.authUser.id);
+    
+    let result = await Post.getMyPosts({ limit, skip }, req.session.authUser.id);
     console.log("result", result);
     res.send(result);
   } catch (e) {

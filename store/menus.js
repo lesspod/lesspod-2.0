@@ -61,6 +61,9 @@ export const actions = {
     console.log('data in GET_MENU... ' + JSON.stringify(data))
   },
   async DELETE_MENU({ commit }, menuName) {
+    const { result } = await axios.delete(process.env.baseUrl + '/api/menu/' + menuName)
+    console.log('menu deleted...' + result)
+    // commit('remove', page)
     commit('remove', menuName)
   }
 }

@@ -82,7 +82,7 @@ export default {
     },
     async deletePage(page) {
       console.log('deleting.... ' + JSON.stringify(page))
-      this.$store.dispatch('menus/DELETE_MENU', page.menuName)
+      await this.$store.dispatch('menus/DELETE_MENU', page.menuName)
       await this.$store.dispatch('pages/DELETE_PAGE', page)
     }
   },

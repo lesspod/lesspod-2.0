@@ -279,12 +279,14 @@ export default {
     },
     async restorePage(page) {
       console.log('restoring.... ' + JSON.stringify(page))
-      await this.$store.dispatch('trash/RESTORE_TRASHED_PAGE', page)
+      await this.$store.dispatch('trash/RESTORE_TRASHED_MENU', page.menuName);
+      await this.$store.dispatch('trash/RESTORE_TRASHED_PAGE', page);
     },
+   
     async deleteTrashPage(page) {
       console.log('deleting.... ' + JSON.stringify(page))
-      
-      await this.$store.dispatch('trash/DELETE_TRASHED_PAGE', page)
+      await this.$store.dispatch('trash/DELETE_TRASHED_MENU', page.menuName);
+      await this.$store.dispatch('trash/DELETE_TRASHED_PAGE', page);
     },
     async deleteTrashPost(post) {
       console.log('deleting.... ' + JSON.stringify(post))
