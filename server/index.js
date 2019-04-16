@@ -46,9 +46,11 @@ async function start() {
   }));
 
   const routes = require("./routes");
-  console.log('API routes: ' + JSON.stringify(routes))
+
   app.use("/api", [cors(), bodyParser.json()], routes);
 
+  console.log('API routes: ' + routes);
+  
   // POST `/api/logout` to log out the user and remove it from the `req.session`
   app.post('/api/logout', function (req, res) {
     delete req.session.authUser

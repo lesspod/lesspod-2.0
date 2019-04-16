@@ -43,7 +43,7 @@ export const mutations = {
 export const actions = {
   async ADD_MENU ({ commit }, menu) {
     console.log('ADD_MENU...')
-    var result = await axios.post('/api/menu', menu)
+    var result = await axios.post(process.env.baseUrl + '/api/menu', menu)
     console.log('ADD_MENU result: ' + JSON.stringify(result))
     commit('add', menu)
   },
