@@ -41,6 +41,14 @@ export const mutations = {
   remove(state, post) {
     state.posts.splice(state.posts.indexOf(post), 1)
     this.$toast.success('Post removed successfully.', { duration: 2000 })
+  },
+  removeBlog(state, post){
+    state.blogs.splice(state.posts.indexOf(post), 1)
+    this.$toast.success('Blog removed successfully.', { duration: 2000 })
+  },
+  addBlog(state, post){
+    state.blogs.push(post);
+    this.$toast.success('Blog posted successfully.', { duration: 2000 })
   }
 }
 
@@ -76,7 +84,12 @@ export const actions = {
     console.log('UPDATE_POST...')
     var result = await axios.put('/api/post/' + post._id, post)
     console.log('UPDATE_POST result: ' + JSON.stringify(result))
-    commit('update', post)
+    if(post.isPublished == true){
+      commit('addBlog', post);
+    } else{
+      commit('removeBlog', post);
+    }
+    commit('update', post);
   },
   async DELETE_POST({ commit }, post) {
     const { result } = await axios.delete(process.env.baseUrl + '/api/post/' + post._id)
