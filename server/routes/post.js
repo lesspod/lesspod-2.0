@@ -24,7 +24,7 @@ router.get("/myPosts", authMiddleware,async (req, res) => {
     let { limit, skip } = req.query;
     let Post = new PostModel();
     // let result = await Post.getMyPosts({ limit, skip }, req.session.authUser.id);
-    
+
     let result = await Post.getMyPosts({ limit, skip }, req.session.authUser.id);
     console.log("result", result);
     res.send(result);
@@ -32,16 +32,16 @@ router.get("/myPosts", authMiddleware,async (req, res) => {
     res.send(e);
   }
 });
-// router.get("/:id", async (req, res) => {
-//   try {
-//     let { id } = req.params;
-//     let Post = new PostModel();
-//     let result = await Post.getById(id);
-//     res.send(result);
-//   } catch (e) {
-//     res.send(e);
-//   }
-// });
+router.get("/:id", async (req, res) => {
+  try {
+    let { id } = req.params;
+    let Post = new PostModel();
+    let result = await Post.getById(id);
+    res.send(result);
+  } catch (e) {
+    res.send(e);
+  }
+});
 
 router.put("/:id", authMiddleware,async (req, res) => {
 

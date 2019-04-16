@@ -32,7 +32,7 @@ export const mutations = {
   },
   add(state, post) {
     state.posts.push(post)
-    this.$toast.success('Post added successfully.', { duration: 2000 }) 
+    this.$toast.success('Post added successfully.', { duration: 2000 })
   },
   // add(state, post) {
   //   state.posts.push(post)
@@ -72,7 +72,7 @@ export const actions = {
     commit('setMyPosts', data)
     console.log('data in GET_MY_POSTS... ' + JSON.stringify(data))
   },
-  
+
   async GET_BLOGS({ commit }) {
     console.log('getting posts from: ' + process.env.baseUrl)
     const  {data}  = await axios.get(process.env.baseUrl + '/api/post/published')
@@ -82,6 +82,7 @@ export const actions = {
 
   async GET_POST ({ commit }, post_id) {
     // process.env.baseUrl
+    console.log('POST_URL: ' + process.env.baseUrl + '/api/post/' + post_id)
     const { data } = await axios.get(process.env.baseUrl + '/api/post/' + post_id)
     commit('setPost', data)
     console.log('data in GET_POST... ' + JSON.stringify(data))

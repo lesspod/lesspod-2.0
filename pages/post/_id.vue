@@ -20,7 +20,7 @@
             class="postTitle"
             style=""
           >{{ currentPost.title }}</div>
-          <span style="font-family: sans-serif; font-weight:300; font-size: 0.9rem; color:grey;">{{ new Date(currentPost.createdAt) | moment("MMM Do, YYYY") }} . {{ readMins }} . Written by <a href="#" style="color:grey;">{{ currentPost.author }}</a></span>
+          <span style="font-family: sans-serif; font-weight:300; font-size: 0.9rem; color:grey;">{{  new Date(currentPost.createdAt) | moment("MMM Do, YYYY") }} . {{ readMins }} . Written by <a href="#" style="color:grey;">{{ currentPost.author }}</a></span>
           <span id="postContent" v-html="currentPost.content"></span>
           <div class="card" style="margin-bottom: -1rem;">
             <div class="card-body">
@@ -164,7 +164,11 @@ export default {
   computed: {
     currentPost() {
       // return this.$store.state.menus.menuItems
-      return this.$store.state.posts.currentPost
+      if(this.$store.state.posts.currentPost){
+        return this.$store.state.posts.currentPost
+      }else {
+        return null;
+      }
     },
     readMins() {
       var readingTime = require('reading-time')
