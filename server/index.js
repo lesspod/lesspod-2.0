@@ -3,7 +3,8 @@ const consola = require("consola");
 const { Nuxt, Builder } = require("nuxt");
 const cors = require("cors");
 const bodyParser = require("body-parser");
-const session = require('express-session');
+// const session = require('express-session');
+const session = require("cookie-session");
 const mongoose = require("mongoose");
 const initDb = require("./db");
 
@@ -36,20 +37,37 @@ async function start() {
     const queryParams = { id: req.params.id };
     app.render(req, res, actualPage, queryParams);
   });
+  
+  
+  
   // app.get('*', (req, res) => nuxt(req, res))
+
+
   // Sessions to create `req.session`
+  // app.use(session({
+  //   secret: 'super-secret-key',
+  //   resave: true,
+  //   saveUninitialized: false,
+  //   cookie: { maxAge: 1000 * 60 * 60 }
+  // }));
+
+  
   app.use(session({
+    name : 'session',
     secret: 'super-secret-key',
-    resave: true,
-    saveUninitialized: false,
-    cookie: { maxAge: 1000 * 60 * 60 }
-  }));
+    maxAge: 1000 * 60 * 60 
+    }));
+
+  
+
 
   const routes = require("./routes");
 
   app.use("/api", [cors(), bodyParser.json()], routes);
 
-  console.log('API routes: ' + routes);
+  console.log('API routes: ' + JSON.stringify(routes.stack));
+  // console.log('Api routes', routes);
+
   
   // POST `/api/logout` to log out the user and remove it from the `req.session`
   app.post('/api/logout', function (req, res) {
