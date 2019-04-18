@@ -55,19 +55,21 @@ router.post("/login", async (req, res) => {
     // });
 
     if (isCorrectPassword) {
-      if(!req.session) {
-        console.log('session in auth: ' + req.session);
-      }
-      req.session.authUser = {
-        username: user.username,
-        fullname : user.fullname,
-        id : user._id,
-        token : token
-      };  //grabbing info about user
-
+      // if(!req.session) {
+      //   console.log('session in auth: ' + req.session);
+      // // }
+      // req.session.authUser = {
+      //   username: user.username,
+      //   fullname : user.fullname,
+      //   id : user._id,
+      //   token : token
+      // };  //grabbing info about user
+ 
       return res.json({
         token,
-        username: user.username
+        username: user.username,
+        userId : user._id,
+        fullname : user.fullname
       });
     }
     res.end();

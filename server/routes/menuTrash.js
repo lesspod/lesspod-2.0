@@ -40,17 +40,7 @@ router.delete("/:menuName", async (req, res) => {
   }
 });
 
-// router.put("/:id", async (req, res) => {
-//   try {
-//     let { id } = req.params;
-//     let { body } = req;
-//     let Post = new PostModel();
-//     await Post.update(id, body);
-//     res.send("updated successfully")
-//   } catch (e) {
-//     res.send(e);
-//   }
-// });
+
 
 router.post("/", async (req, res) => {
   try {

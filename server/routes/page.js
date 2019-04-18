@@ -37,7 +37,7 @@ router.put("/:id", authMiddleware,async (req, res) => {
 
     let page1 = await Page.getById(id);
 
-    if(page1.createdBy != req.session.authUser.id){         //authorising the creator
+    if(page1.createdBy != req.user.userId){         //authorising the creator
       throw new Error('unauthorised updation!!!!');
     }
 
@@ -56,10 +56,10 @@ router.delete("/:id", authMiddleware,async (req, res) => {
     let Page = new PageModel();
     let page1 = await Page.getById(id);
 
-    if(page1.createdBy != req.session.authUser.id){           //authorising the creator
+    if(page1.createdBy != req.user.userId){           //authorising the creator
       throw new Error('unauthorised deletion!!!!');
     }
-
+    
     let result =await page1.delete(page1._id);
     addTrashedPage(result);
     res.send(result);
@@ -73,8 +73,8 @@ router.post("/", authMiddleware,async (req, res) => {
   try {
     let { body } = req;
 
-    body.createdBy = req.session.authUser.id;           
-    body.author = req.session.authUser.fullname;
+    body.createdBy = req.user.userId;           
+    body.author = req.user.fullname;
 
     let Page = new PageModel();
     let page1 = await Page.create(body);
