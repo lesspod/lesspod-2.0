@@ -25,7 +25,7 @@ router.get("/myPosts", authMiddleware,async (req, res) => {
     let Post = new PostModel();
     // let result = await Post.getMyPosts({ limit, skip }, req.session.authUser.id);
 
-    let result = await Post.getMyPosts({ limit, skip }, req.session.authUser.id);
+    let result = await Post.getMyPosts({ limit, skip }, req.user.userId);
     console.log("result", result);
     res.send(result);
   } catch (e) {
@@ -52,7 +52,11 @@ router.put("/:id", authMiddleware,async (req, res) => {
     let Post = new PostModel();
     let post1 = await Post.getById(id);
 
-    if(post1.createdBy != req.session.authUser.id){             //check for authenticity before updation
+    // if(post1.createdBy != req.session.authUser.id){             //check for authenticity before updation
+    //   throw new Error('unauthorised updation');
+    // }
+
+    if(post1.createdBy != req.user.userId){             //check for authenticity before updation
       throw new Error('unauthorised updation');
     }
 
@@ -73,10 +77,10 @@ router.delete("/:id", authMiddleware,async (req, res) => {
     let Post = new PostModel();
     let post1 = await Post.getById(id);
 
-    if(post1.createdBy != req.session.authUser.id){             //check for authenticity before deletion
+    if(post1.createdBy != req.user.userId){             //check for authenticity before deletion
       throw new Error('unauthorised deletion');
     }
-
+    
     addTrashedPost(post1);
 
     let result = await post1.delete(post1._id);       //added await here
@@ -108,8 +112,8 @@ router.post("/", authMiddleware,async (req, res) => {
   try {
     let { body } = req;
 
-    body.author = req.session.authUser.fullname;       //saving the author name
-    body.createdBy = req.session.authUser.id;         //association with user model
+    body.author = req.user.fullname;       //saving the author name
+    body.createdBy = req.user.userId;         //association with user model
 
     let Post = new PostModel();
     await Post.create(body);

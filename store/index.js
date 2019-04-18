@@ -1,3 +1,6 @@
+const Cookie = require('js-cookie') 
+const cookieparser = require('cookieparser')
+
 export const state = () => ({
   authUser: null
 })
@@ -5,8 +8,10 @@ export const state = () => ({
 export const mutations = {
   SET_USER: function (state, user) {
     state.authUser = user
+    Cookie.set('auth', user)
   },
   RESET_USER: function (state, payLoad) {
+    Cookie.remove('auth');
     state.authUser = payLoad;
     localStorage.clear();
   }
@@ -90,8 +95,20 @@ export const actions = {
       dispatch('trash/GET_TRASH_PAGES'),
       dispatch('trash/GET_TRASH_MENUS')
     ])
-    if (req.session && req.session.authUser) {
-      commit('SET_USER', req.session.authUser)
+    // if (req.session && req.session.authUser) {
+    //   commit('SET_USER', req.session.authUser)
+    // }
+
+    let auth = null
+    if (req.headers.cookie) {
+      const parsed = cookieparser.parse(req.headers.cookie)
+      try {
+        auth = JSON.parse(parsed.auth)
+      } catch (err) {
+        // No valid cookie found
+        console.log('not valid cookie')
+      }
     }
+    commit('SET_USER', auth)
   }
 }
