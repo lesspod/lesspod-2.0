@@ -33,23 +33,14 @@ router.delete("/:menuName", authMiddleware,async (req, res) => {
     let { menuName } = req.params;
     let Menu = new MenuModel();
     let menu1 = await Menu.getByMenuName(menuName);
-    
 
-      if(menu1.createdBy != req.session.authUser.id){           //check for authenticity
-        throw new Error('unauthorised deletion!!!!!!');       
-      }
+    if(menu1.createdBy != req.user.userId){           //check for authenticity
+      throw new Error('unauthorised deletion!!!!!!');       
+    }
   
-      let result = menu1.delete(menu1._id);
-      addTrashedMenu(menu1)
-      res.send(result)
-    
-    // if(menu1.createdBy != req.session.authUser.id){           //check for authenticity
-    //   throw new Error('unauthorised deletion!!!!!!');       
-    // }
-
-    // let result = menu1.delete(menu1._id);
-    // addTrashedMenu(menu1)
-    // res.send(result)
+    let result = menu1.delete(menu1._id);
+    addTrashedMenu(menu1)
+    res.send(result)    
   } catch (e) {
     console.log(e);
     res.send(e);
@@ -64,7 +55,7 @@ router.put("/:id", authMiddleware,async (req, res) => {
     
     let menu1 = await Menu.getById(id);
 
-    if(menu1.createdBy != req.session.authUser.id){         //check for authenticity
+    if(menu1.createdBy != req.user.userId){         //check for authenticity
       throw new Error('unauthorised updation!!!!!!!!');
     }
 
@@ -80,7 +71,7 @@ router.post("/", authMiddleware,async (req, res) => {        //authMiddleware
   try {
     let { body } = req;
 
-    body.createdBy = req.session.authUser.id;     //associating with user model
+    body.createdBy = req.user.userId;     //associating with user model
     
     let Menu = new MenuModel();
     await Menu.create(body);

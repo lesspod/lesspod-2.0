@@ -1,4 +1,5 @@
 const { decodeToken } = require("../utils/token");
+const cookieparser = require('cookieparser')
 
 const authMiddleware = async (req, res, next) => {
   try {
@@ -8,18 +9,32 @@ const authMiddleware = async (req, res, next) => {
 
     // const details = decodeToken(req.headers.authorization);
 
+    const parsed = cookieparser.parse(req.headers.cookie)
 
-    if(!req.session.authUser){
+    console.log(parsed);
+
+    console.log('____________________________')
+    auth = JSON.parse(parsed.auth)
+    console.log(auth);
+
+
+    if(!auth){
       throw new Error('You must login first!!!');
     }
 
-    const details = decodeToken(req.session.authUser.token);
+    const details = decodeToken(auth.token);
 
-    if(details.userId != req.session.authUser.id){        //cheking if the token is tempered
+    if(details.userId != auth.userId){        //cheking if the token is tempered
       throw new Error('Unauthorised token ');
     }
 
     req.user = details;
+    req.user.username = auth.username;
+    req.user.fullname = auth.fullname;  
+      //   fullname : user.fullname,
+      //   id : user._id,
+      //   token : token
+    console.log(details)
 
     next();
   } catch (e) {
