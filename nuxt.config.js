@@ -107,7 +107,8 @@ module.exports = {
     ["bootstrap-vue/nuxt", { css: false }],
     ["@nuxtjs/pwa"],
     ['@nuxtjs/auth'],
-    ['@nuxtjs/toast']
+    ['@nuxtjs/toast'],
+    ['nuxt-babel']
   ],
   toast: {
     position: 'top-center'
