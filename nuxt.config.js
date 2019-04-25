@@ -84,8 +84,14 @@ module.exports = {
   css: [
     'quill/dist/quill.snow.css',
     'quill/dist/quill.bubble.css',
-    'quill/dist/quill.core.css'
+    'quill/dist/quill.core.css',
+    '~assets/style/main.css'
   ],
+
+  transition : {
+    name : 'fade',
+    mode : 'out-in'
+  },
 
   /*
    ** Plugins to load before mounting the App

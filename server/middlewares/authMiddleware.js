@@ -9,23 +9,28 @@ const authMiddleware = async (req, res, next) => {
 
     // const details = decodeToken(req.headers.authorization);
 
+    if(!req.headers.cookie){
+      console.log('please login')
+      return res.send("You must login first!!!");
+    }
+    
     const parsed = cookieparser.parse(req.headers.cookie)
-
     console.log(parsed);
 
+    if(!parsed.auth){
+      console.log('please login')
+      return res.send("You must login first!!!");
+    }
+    
     console.log('____________________________')
     auth = JSON.parse(parsed.auth)
+    
     console.log(auth);
-
-
-    if(!auth){
-      throw new Error('You must login first!!!');
-    }
-
+    
     const details = decodeToken(auth.token);
 
     if(details.userId != auth.userId){        //cheking if the token is tempered
-      throw new Error('Unauthorised token ');
+      return res.send("bruh, send me the right token?");
     }
 
     req.user = details;
@@ -41,6 +46,8 @@ const authMiddleware = async (req, res, next) => {
     console.log("error: ", e);
     return res.status(400).send("bruh, send me the right token?");
   }
+ 
+  
 
 };
 
