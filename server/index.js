@@ -76,7 +76,7 @@ async function start() {
 
   
   app.post('/api/logout', function (req, res) {
-    delete req.headers.cookie
+    delete req.headers
     console.log('logged out!!!!')
     res.json({ ok: true })
   })

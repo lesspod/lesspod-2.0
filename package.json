@@ -20,16 +20,7 @@
     "test": "ava",
     "check-licenses": "apache2-license-checker"
   },
-  "ava": {
-    "require": [
-      "babel-register"
-    ]
-  },
-  "babel": {
-    "presets": [
-      "env"
-    ]
-  },
+  
   "dependencies": {
     "@nuxtjs/auth": "^4.5.3",
     "@nuxtjs/axios": "^5.4.1",

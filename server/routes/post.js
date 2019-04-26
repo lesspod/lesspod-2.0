@@ -120,7 +120,7 @@ router.post("/", authMiddleware,async (req, res) => {
     return res.send("sucessfully created");
   } catch (e) {
     console.log("error ", e);
-    res.send(e);
+    res.send("some error");
   }
 });
 

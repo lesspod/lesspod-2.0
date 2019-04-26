@@ -1,5 +1,5 @@
 import test from 'ava'
-import { Nuxt, Builder } from 'nuxt'
+const { Nuxt, Builder } = require("nuxt");
 import { resolve } from 'path'
 
 // We keep a reference to Nuxt so we can close

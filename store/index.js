@@ -11,7 +11,9 @@ export const mutations = {
     Cookie.set('auth', user)
   },
   RESET_USER: function (state, payLoad) {
+    
     Cookie.remove('auth');
+    Cookie.remove('authOP');
     state.authUser = payLoad;
     localStorage.clear();
   }

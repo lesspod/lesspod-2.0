@@ -28,19 +28,17 @@ export default {
     },
     isLoggedIn:  function(){
       
-        // if(this.$store.state.authUser && this.$store.state.authUser.username) {
-        //   // console.log("dispatching get my posts")
-        //   // await dispatch('posts/GET_MY_POSTS');
-        //   return true;
-        // }else {
-        //   return false;
-        // }
-
-        if(this.$store.state.auth && this.$store.state.auth.token){
+        if(this.$store.state.authUser && this.$store.state.authUser.username) {
           return true;
-        } else{
+        }else {
           return false;
         }
+
+        // if(this.$store.state.auth && this.$store.state.auth.token){
+        //   return true;
+        // } else{
+        //   return false;
+        // }
       
     },
     html2text(html) {

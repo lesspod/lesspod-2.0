@@ -55,6 +55,10 @@ export const mutations = {
       state.blogs.splice(state.posts.indexOf(post), 1)
       this.$toast.success('Blog removed successfully.', { duration: 2000 })
     }
+  },
+  pleaseLogIn(state, result){
+    this.$toast.success('Please login', { duration: 2000 })
+    this.$router.push('/login')
   }
 }
 
@@ -63,7 +67,10 @@ export const actions = {
     console.log('ADD_POST...')
     var result = await axios.post(process.env.baseUrl + '/api/post', post)
     console.log('ADD_POST result: ' + JSON.stringify(result))
-    commit('add', post)
+    if(result.data == "sucessfully created")
+      commit('add', post)
+    else
+      commit('pleaseLogIn', result);
   },
   async GET_MY_POSTS ({ commit }) {
     // process.env.baseUrl
@@ -102,5 +109,6 @@ export const actions = {
     const { result } = await axios.delete(process.env.baseUrl + '/api/post/' + post._id)
     console.log('post deleted...' + result)
     commit('remove', post)
+    commit('removeBlog', post)
   }
 }

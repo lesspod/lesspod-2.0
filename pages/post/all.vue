@@ -96,20 +96,20 @@ export default {
     Footer
   },
   fetch ({ store, redirect }) {
-    if (!store.state.authUser) {
+    if (!store.state.authUser && !store.state.authUser.token) {
       return redirect('/login')
     }
   },
   async fetch({ store, params }) {
     await store.dispatch('posts/GET_MY_POSTS')
   },
-  computed: {
+computed: {
   },
   data(){
     return{
       selectedPost : {}
     }
-  },
+  },  
   methods: {
     addPost: function() {
       alert(
