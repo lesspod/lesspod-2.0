@@ -17,10 +17,13 @@
     "sls:delete": "sls remove && sls delete_domain",
     "sls:deploy": "npm run build && sls deploy",
     "test1": "mocha && npm run check-licenses",
-    "test": "ava",
+    "test": "ava --timeout=2m",
     "check-licenses": "apache2-license-checker"
   },
-  
+
+"ava" : {
+  "setupFiles": ["./setupFile.js"]
+},
   "dependencies": {
     "@nuxtjs/auth": "^4.5.3",
     "@nuxtjs/axios": "^5.4.1",
