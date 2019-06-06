@@ -16,6 +16,7 @@ const host = process.env.HOST || "127.0.0.1";
 const port = process.env.PORT || 3000;
 
 const dev = process.env.NODE_ENV !== "production";
+
 // import 'vue-sidebar-menu/dist/vue-sidebar-menu.css'
 
 app.set("port", port);
@@ -23,6 +24,8 @@ app.set("port", port);
 // Import and Set Nuxt.js options
 let config = require("../nuxt.config.js");
 config.dev = !(process.env.NODE_ENV === "production");
+
+// config.dev = false;
 
 async function start() {
   // Init Nuxt.js
@@ -69,7 +72,7 @@ async function start() {
   app.use("/api", [cors(), bodyParser.json()], routes);
 
   console.log('API routes: ' + JSON.stringify(routes.stack));
-  // console.log('Api routes', routes);
+  console.log('Api routes', routes);
 
   
   // POST `/api/logout` to log out the user and remove it from the `req.session`
@@ -96,13 +99,17 @@ async function start() {
   app.use(nuxt.render);
 
   // Listen the server
-  app.listen(port, host);
-  consola.ready({
-    message: `Server listening on http://${host}:${port}`,
-    badge: true
-  });
+  // app.listen(port, host);
+  // consola.ready({
+  //   message: `Server listening on http://${host}:${port}`,
+  //   badge: true
+  // });
+
+  module.exports = app;
 }
 start();
+
+
 
 // const express = require('express')
 // const next = require('next')

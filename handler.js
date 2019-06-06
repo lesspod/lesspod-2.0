@@ -3,6 +3,8 @@ const serverless = require("serverless-http");
 const express = require("express");
 const nuxtConfig = require("./nuxt.config");
 
+const app = require('./server/index');
+
 const config = {
   ...nuxtConfig,
   dev: false
@@ -10,7 +12,6 @@ const config = {
 
 const nuxt = new Nuxt(config);
 
-const app = express();
 
 app.use("/_nuxt", (req, res) =>
   res.redirect(process.env.ASSETS_BUCKET_URL + req.path)

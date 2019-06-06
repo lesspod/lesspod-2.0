@@ -11,9 +11,10 @@ router.get("/", async (req, res) => {
     let Page = new PageModel();
     let result = await Page.get({ limit, skip });
     console.log("result", result);
+
     res.send(result);
   } catch (e) {
-    res.send(e);
+    res.send('error' + e,);
   }
 });
 

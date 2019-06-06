@@ -74,14 +74,14 @@ export const actions = {
   },
   async GET_MY_POSTS ({ commit }) {
     // process.env.baseUrl
-    console.log('getting posts from: ' + process.env.baseUrl)
+    console.log('getting posts from: ' + process.env.baseUrl + '/api/post/myPosts')
     const  {data}  = await axios.get(process.env.baseUrl + '/api/post/myPosts')
     commit('setMyPosts', data)
     console.log('data in GET_MY_POSTS... ' + JSON.stringify(data))
   },
 
   async GET_BLOGS({ commit }) {
-    console.log('getting posts from: ' + process.env.baseUrl)
+    console.log('getting posts from: ' + process.env.baseUrl + '/api/post/published')
     const  {data}  = await axios.get(process.env.baseUrl + '/api/post/published')
     commit('setBlogs', data)
     console.log('data in GET_BLOGS... ' + JSON.stringify(data))
