@@ -101,7 +101,7 @@ export default {
     }
   },
   async fetch({ store, params }) {
-    await store.dispatch('posts/GET_MY_POSTS')
+    await store.dispatch('posts/GET_MY_POSTS', store.state.authUser)
   },
 computed: {
   },

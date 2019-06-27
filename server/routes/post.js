@@ -19,13 +19,14 @@ router.get("/published", async (req, res) => {
   }
 });
 
-router.get("/myPosts", authMiddleware,async (req, res) => {
+router.get("/myPosts/:userId", async (req, res) => {
   try {
     let { limit, skip } = req.query;
+    let { userId } = req.params;
     let Post = new PostModel();
     // let result = await Post.getMyPosts({ limit, skip }, req.session.authUser.id);
 
-    let result = await Post.getMyPosts({ limit, skip }, req.user.userId);
+    let result = await Post.getMyPosts({ limit, skip }, userId);
     console.log("result", result);
     res.send(result);
   } catch (e) {

@@ -103,7 +103,8 @@ export default {
           // _id: id,
           title: this.title,
           content: this.content,
-          isPublished: this.isPublished
+          isPublished: this.isPublished,
+          auth: this.$store.state.authUser
         }
         await this.$store.dispatch('posts/ADD_POST', post)
         this.title = ''

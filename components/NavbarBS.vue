@@ -310,7 +310,7 @@ export default {
         title: this.menuName,
         menuName: this.menuName,
         content: 'content for ' + this.menuName,
-        author: 'Rajan Chandi'
+        auth: this.$store.state.authUser
       }
       this.$store.dispatch('pages/ADD_PAGE', page)
       console.log(JSON.stringify(page))
@@ -318,7 +318,8 @@ export default {
       var menuItem = {
         menuName: this.menuName,
         underMenu: this.underMenu,
-        linkedTo: link
+        linkedTo: link,
+        auth: this.$store.state.authUser
       }
       this.$store.dispatch('menus/ADD_MENU', menuItem)
       console.log(JSON.stringify(this.menus))

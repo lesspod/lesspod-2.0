@@ -72,10 +72,10 @@ export const actions = {
     else
       commit('pleaseLogIn', result);
   },
-  async GET_MY_POSTS ({ commit }) {
+  async GET_MY_POSTS ({ commit }, authUser) {
     // process.env.baseUrl
-    console.log('getting posts from: ' + process.env.baseUrl + '/api/post/myPosts')
-    const  {data}  = await axios.get(process.env.baseUrl + '/api/post/myPosts')
+    console.log('getting posts from: ' + process.env.baseUrl + '/api/post/myPosts/' + authUser.userId)
+    const  {data}  = await axios.get(process.env.baseUrl + '/api/post/myPosts/' + authUser.userId)
     commit('setMyPosts', data)
     console.log('data in GET_MY_POSTS... ' + JSON.stringify(data))
   },

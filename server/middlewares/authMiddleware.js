@@ -12,23 +12,27 @@ const authMiddleware = async (req, res, next) => {
 
     console.log('heyaaaaaa!!!!!!!!!!!!!!@@@@@@@@@@@@@@@@@@@@@@')
 
+    if(req.body.auth.token){
+      auth = req.body.auth;
+    } else{
+        if(!req.headers.cookie){
+          console.log('oopar wala')
+          console.log('please login')
+          return res.send("ooparYou must login first!!!");
+        }
+      
+      const parsed = cookieparser.parse(req.headers.cookie)
+      console.log(parsed);
 
-    if(!req.headers.cookie){
-      console.log('oopar wala')
-      console.log('please login')
-      return res.send("ooparYou must login first!!!");
+      if(!parsed.auth){
+        console.log('please login')
+        return res.send("beechYou must login first!!!");
+      }
+      
+      console.log('____________________________')
+      auth = JSON.parse(parsed.auth)
     }
     
-    const parsed = cookieparser.parse(req.headers.cookie)
-    console.log(parsed);
-
-    if(!parsed.auth){
-      console.log('please login')
-      return res.send("beechYou must login first!!!");
-    }
-    
-    console.log('____________________________')
-    auth = JSON.parse(parsed.auth)
     
     console.log(auth);
 
