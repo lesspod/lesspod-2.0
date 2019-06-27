@@ -9,9 +9,14 @@ const authMiddleware = async (req, res, next) => {
 
     // const details = decodeToken(req.headers.authorization);
 
+
+    console.log('heyaaaaaa!!!!!!!!!!!!!!@@@@@@@@@@@@@@@@@@@@@@')
+
+
     if(!req.headers.cookie){
+      console.log('oopar wala')
       console.log('please login')
-      return res.send("You must login first!!!");
+      return res.send("ooparYou must login first!!!");
     }
     
     const parsed = cookieparser.parse(req.headers.cookie)
@@ -19,15 +24,22 @@ const authMiddleware = async (req, res, next) => {
 
     if(!parsed.auth){
       console.log('please login')
-      return res.send("You must login first!!!");
+      return res.send("beechYou must login first!!!");
     }
     
     console.log('____________________________')
     auth = JSON.parse(parsed.auth)
     
     console.log(auth);
+
+    if(!auth.token){
+      console.log('please login')
+      return res.send("neechYou must login first!!!");
+    }
     
     const details = decodeToken(auth.token);
+
+    console.log(details)
 
     if(details.userId != auth.userId){        //cheking if the token is tempered
       return res.send("bruh, send me the right token?");

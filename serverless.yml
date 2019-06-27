@@ -1,10 +1,10 @@
-service: lesspod-33  # 1. Edit whole service name
+service: lesspod-22  # 1. Edit whole service name
 
 provider:
   name: aws
   runtime: nodejs8.10
   stage: ${opt:stage, 'dev'}
-  region: ${opt:region, 'us-east-2'} # 2. Edit AWS region name
+  region: ${opt:region, 'us-east-1'} # 2. Edit AWS region name
   environment:
     NODE_ENV: production
     BUCKET_NAMESPACE: lp2mumabcdxyz23  # 3. Specify a new AWS S3 bucket namespace for bundled assets and static assets (should be unique)
@@ -12,7 +12,7 @@ provider:
     STATIC_BUCKET_NAME: ${self:provider.environment.BUCKET_NAMESPACE}-static-${opt:stage, 'dev'}
     ASSETS_BUCKET_URL: https://s3.${self:provider.region}.amazonaws.com/${self:provider.environment.ASSETS_BUCKET_NAME}
     STATIC_BUCKET_URL: https://s3.${self:provider.region}.amazonaws.com/${self:provider.environment.STATIC_BUCKET_NAME}
-
+    
 custom:
   webpack:
     # webpackConfig: ./folder/my-webpack.config.js
@@ -23,6 +23,12 @@ custom:
       localDir: .nuxt/dist/client
     - bucketName: ${self:provider.environment.STATIC_BUCKET_NAME}
       localDir: static
+  customDomain:
+    domainName: 'sampark.tech'
+    basePath: ''
+    certificateName: 'sampark.tech'
+    stage: 'dev'
+    createRoute53Record: true
 
 package:
   exclude:
@@ -32,7 +38,7 @@ package:
 
 functions:
   nuxt-renderer:
-    handler: handler.render
+    handler: handler.renderNUXT
     memorySize: 512
     timeout: 30
     events:
@@ -42,6 +48,19 @@ functions:
           cors: true
       - http:
           path: /{proxy+}
+          method: ANY
+          cors: true
+  API-renderer:
+    handler: handler.renderAPI
+    memorySize: 512
+    timeout: 30
+    events:
+      - http:
+          path: /api
+          method: ANY
+          cors: true
+      - http:
+          path: /api/{proxy+}
           method: ANY
           cors: true
 
@@ -90,7 +109,9 @@ resources:
             },
           ]
 
+
 plugins:
   # - serverless-webpack
   - serverless-s3-sync
   - serverless-offline
+  - serverless-domain-manager

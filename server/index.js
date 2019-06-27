@@ -5,9 +5,7 @@ const cors = require("cors");
 const bodyParser = require("body-parser");
 // const session = require('express-session');
 // const session = require("cookie-session");
-const mongoose = require("mongoose");
 const initDb = require("./db");
-const cookieparser = require('cookieparser');
 
 const authMiddleware = require("./middlewares/authMiddleware");
 
@@ -25,8 +23,7 @@ app.set("port", port);
 let config = require("../nuxt.config.js");
 config.dev = !(process.env.NODE_ENV === "production");
 
-// config.dev = false;
-
+config.dev = false;
 async function start() {
   // Init Nuxt.js
   const nuxt = new Nuxt(config);
@@ -36,14 +33,11 @@ async function start() {
     const builder = new Builder(nuxt);
     await builder.build();
   }
-  initDb();
+  initDb(); 
 
-  app.get("/p/:id", (req, res) => {
-    const actualPage = "/post";
-    const queryParams = { id: req.params.id };
-    app.render(req, res, actualPage, queryParams);
-  });
-  
+  app.get('/test', (req, res) => {
+    res.send('kkkkkkk--          ---hhjj')
+  })
   
   
   // app.get('*', (req, res) => nuxt(req, res))
@@ -69,10 +63,21 @@ async function start() {
 
   const routes = require("./routes");
 
-  app.use("/api", [cors(), bodyParser.json()], routes);
+  // app.use("/api", [cors(), bodyParser.json()], routes);
 
-  console.log('API routes: ' + JSON.stringify(routes.stack));
-  console.log('Api routes', routes);
+  // console.log('API routes: ' + JSON.stringify(routes.stack));
+  // console.log('Api routes', routes); 
+
+  app.use(bodyParser.json())
+
+  app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    next();
+  });
+
+  app.use('/api',routes);
+
+  
 
   
   // POST `/api/logout` to log out the user and remove it from the `req.session`
@@ -96,7 +101,7 @@ async function start() {
   });
 
   // Give nuxt middleware to express
-  app.use(nuxt.render);
+  // app.use(nuxt.render);
 
   // Listen the server
   // app.listen(port, host);

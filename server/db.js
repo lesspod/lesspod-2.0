@@ -1,7 +1,7 @@
 require("dotenv").config();
 const mongoose = require("mongoose");
 
-let uri = process.env.DB_URI || 'mongodb+srv://lesspodTesting:lesspodtesting@cluster0lesspod-nhjrg.mongodb.net/test?retryWrites=true&w=majority';
+let uri = 'mongodb+srv://lesspodTesting:lesspodtesting@cluster0lesspod-nhjrg.mongodb.net/test?retryWrites=true&w=majority';
 
 // let uri = process.env.DB_URI || 'mongodb://localhost:27017/';
 

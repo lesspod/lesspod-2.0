@@ -2,8 +2,8 @@
   <span>
     <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
       <a class="navbar-brand" href="#">
-        <img src="/icon.png" alt="Logo" style="width: 40px;margin-right:0.25rem;">
-        <img src="/type.png" alt="Logo" style="height: 40px;width: auto;">
+        <img src="/static/icon.png" alt="Logo" style="width: 40px;margin-right:0.25rem;">
+        <img src="/static/type.png" alt="Logo" style="height: 40px;width: auto;">
         <!-- <img src="/soi.png" alt="Logo" style="height: 40px;width: auto;"> -->
       </a>
       <!-- <a class="navbar-brand" href="/">Lesspod</a> -->
