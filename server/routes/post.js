@@ -71,25 +71,23 @@ router.put("/:id", authMiddleware,async (req, res) => {
   }
 });
 
-router.delete("/:id", authMiddleware,async (req, res) => {
+router.delete("/:id", async (req, res) => {
   try {
     let { id } = req.params;
 
     let Post = new PostModel();
     let post1 = await Post.getById(id);
 
-    if(post1.createdBy != req.user.userId){             //check for authenticity before deletion
-      throw new Error('unauthorised deletion');
-    }
+    
     
     addTrashedPost(post1);
 
     let result = await post1.delete(post1._id);       //added await here
 
-    // console.log('result from router/pages')
-    // console.log(result);
+    console.log('result from router/pages')
+    console.log(result);
 
-    // addTrashedPost(result);
+    addTrashedPost(result);
     res.send(result)
   } catch (e) {
     console.log(e);
