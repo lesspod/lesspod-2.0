@@ -1,18 +1,23 @@
-const joi = require("joi");
+// const joi = require("joi");
 const { Router } = require("express");
 const { hashPassword, comparePassword } = require("../utils/password");
 const { generateToken } = require("../utils/token");
-const { loginSchema, signupSchema } = require("../validators/user");
+// const { loginSchema, signupSchema } = require("../validators/user");
 const UserModel = require("../models/user");
-const session = require('express-session');
 const router = Router();
 
 router.post("/signup", async (req, res) => {
   try {
     let { body } = req;
-    const { error, value } = joi.validate(body, signupSchema);
-    if (error) {
-      return res.status(400).send(error.message);
+    // const { error, value } = joi.validate(body, signupSchema);
+    // if (error) {
+    //   return res.status(400).send(error.message);
+    // }
+
+    let value = {fullname: req.body.fullname,
+      username: req.body.username,
+      email: req.body.email,
+      password: req.body.password
     }
     value.password = hashPassword(value.password);
     const User = new UserModel();
@@ -27,11 +32,20 @@ router.post("/signup", async (req, res) => {
 router.post("/login", async (req, res) => {
   try {
     let { body } = req;
-    const { error, value } = joi.validate(body, loginSchema);
+    // const { error, value } = joi.validate(body, loginSchema);
 
-    if (error) {
-      return res.status(400).send({ error: error.message });
+    // if (error) {
+    //   return res.status(400).send({ error: error.message });
+    // }
+
+    console.log(body)
+
+    let value = {
+        username : req.body.username,
+        password : req.body.password
     }
+
+  
     console.log(value)
     const User = new UserModel();
     const user = await User.getByEmail(value.username);

@@ -1,4 +1,4 @@
-service: lesspod-2  # 1. Edit whole service name
+service: lesspod-22  # 1. Edit whole service name
 
 provider:
   name: aws
@@ -7,22 +7,15 @@ provider:
   region: ${opt:region, 'us-east-1'} # 2. Edit AWS region name
   environment:
     NODE_ENV: production
-    BUCKET_NAMESPACE: lp2mumabc  # 3. Specify a new AWS S3 bucket namespace for bundled assets and static assets (should be unique)
+    BUCKET_NAMESPACE: lp2mumabcdxyz23  # 3. Specify a new AWS S3 bucket namespace for bundled assets and static assets (should be unique)
     ASSETS_BUCKET_NAME: ${self:provider.environment.BUCKET_NAMESPACE}-assets-${opt:stage, 'dev'}
     STATIC_BUCKET_NAME: ${self:provider.environment.BUCKET_NAMESPACE}-static-${opt:stage, 'dev'}
     ASSETS_BUCKET_URL: https://s3.${self:provider.region}.amazonaws.com/${self:provider.environment.ASSETS_BUCKET_NAME}
     STATIC_BUCKET_URL: https://s3.${self:provider.region}.amazonaws.com/${self:provider.environment.STATIC_BUCKET_NAME}
-
+    
 custom:
   webpack:
     # webpackConfig: ./folder/my-webpack.config.js
-  customDomain:
-    domainName: 'lesspod.org'  # 4. Specify a new domain name to be created
-    stage: ${opt:stage, 'dev'}
-    basePath: ''
-    certificateName: 'lesspod.org'  # 5. Enter the certificate name in AWS Certificate Manager (us-east-1) for https connection
-    createRoute53Record: true
-    #endpointType: 'regional'
   serverless-offline:
     port: 3000
   s3Sync:
@@ -30,6 +23,12 @@ custom:
       localDir: .nuxt/dist/client
     - bucketName: ${self:provider.environment.STATIC_BUCKET_NAME}
       localDir: static
+  customDomain:
+    domainName: 'sampark.tech'
+    basePath: ''
+    certificateName: 'sampark.tech'
+    stage: 'dev'
+    createRoute53Record: true
 
 package:
   exclude:
@@ -39,7 +38,7 @@ package:
 
 functions:
   nuxt-renderer:
-    handler: handler.render
+    handler: handler.renderNUXT
     memorySize: 512
     timeout: 30
     events:
@@ -49,6 +48,19 @@ functions:
           cors: true
       - http:
           path: /{proxy+}
+          method: ANY
+          cors: true
+  API-renderer:
+    handler: handler.renderAPI
+    memorySize: 512
+    timeout: 30
+    events:
+      - http:
+          path: /api
+          method: ANY
+          cors: true
+      - http:
+          path: /api/{proxy+}
           method: ANY
           cors: true
 
@@ -97,8 +109,9 @@ resources:
             },
           ]
 
+
 plugins:
   # - serverless-webpack
   - serverless-s3-sync
-  - serverless-domain-manager
   - serverless-offline
+  - serverless-domain-manager

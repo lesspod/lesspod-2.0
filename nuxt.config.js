@@ -3,10 +3,12 @@ const webpack = require('webpack')
 module.exports = {
   mode: "universal",
   env: {
-    baseUrl: process.env.BASE_URL || 'http://localhost:3000'
+    baseUrl: 'https://nwvi72mlej.execute-api.us-east-1.amazonaws.com/dev'
   },
   /*
    ** Headers of the page
+
+   
    */
   head: {
     title: pkg.name,

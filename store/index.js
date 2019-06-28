@@ -72,6 +72,7 @@ export const actions = {
       }
     })
     .then((authUser) => {
+      console.log(authUser)
       commit('SET_USER', authUser)
       this.$router.push('/admin')
     })
@@ -97,9 +98,9 @@ export const actions = {
       dispatch('trash/GET_TRASH_PAGES'),
       dispatch('trash/GET_TRASH_MENUS')
     ])
-    // if (req.session && req.session.authUser) {
-    //   commit('SET_USER', req.session.authUser)
-    // }
+    if (req.session && req.session.authUser) {
+      commit('SET_USER', req.session.authUser)
+    }
 
     let auth = null
     if (req && req.headers.cookie) {

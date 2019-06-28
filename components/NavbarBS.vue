@@ -2,8 +2,8 @@
   <span>
     <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
       <a class="navbar-brand" href="#">
-        <img src="/icon.png" alt="Logo" style="width: 40px;margin-right:0.25rem;">
-        <img src="/type.png" alt="Logo" style="height: 40px;width: auto;">
+        <img src="/static/icon.png" alt="Logo" style="width: 40px;margin-right:0.25rem;">
+        <img src="/static/type.png" alt="Logo" style="height: 40px;width: auto;">
         <!-- <img src="/soi.png" alt="Logo" style="height: 40px;width: auto;"> -->
       </a>
       <!-- <a class="navbar-brand" href="/">Lesspod</a> -->
@@ -310,7 +310,7 @@ export default {
         title: this.menuName,
         menuName: this.menuName,
         content: 'content for ' + this.menuName,
-        author: 'Rajan Chandi'
+        auth: this.$store.state.authUser
       }
       this.$store.dispatch('pages/ADD_PAGE', page)
       console.log(JSON.stringify(page))
@@ -318,7 +318,8 @@ export default {
       var menuItem = {
         menuName: this.menuName,
         underMenu: this.underMenu,
-        linkedTo: link
+        linkedTo: link,
+        auth: this.$store.state.authUser
       }
       this.$store.dispatch('menus/ADD_MENU', menuItem)
       console.log(JSON.stringify(this.menus))

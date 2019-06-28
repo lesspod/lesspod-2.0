@@ -59,7 +59,7 @@ export const actions = {
 
   async GET_TRASH_POSTS ({ commit }) {
     // process.env.baseUrl
-    console.log('getting posts from: ' + process.env.baseUrl)
+    console.log('getting trashed posts from: ' + process.env.baseUrl + '/api/trash')
     const { data } = await axios.get(process.env.baseUrl + '/api/trash')
     console.log('data from gettarsh posts action', data)
     commit('setTrashPosts', data)            //line 15
@@ -68,7 +68,7 @@ export const actions = {
 
   async GET_TRASH_MENUS ({ commit }) {
     // process.env.baseUrl
-    console.log('getting trashmenus from: ' + process.env.baseUrl)
+    console.log('getting trashmenus from: ' + process.env.baseUrl + '/api/trashMenu')
     const { data } = await axios.get(process.env.baseUrl + '/api/trashMenu');  //
     commit('setTrashMenus', data)            //line 15
     console.log('data in GET_TRASH_MENUS... ' + JSON.stringify(data))
@@ -76,7 +76,7 @@ export const actions = {
 
   async GET_TRASH_PAGES ({ commit }) {
     // process.env.baseUrl
-    console.log('getting pages from: ' + process.env.baseUrl)
+    console.log('getting trashed pages from: ' + process.env.baseUrl + '/api/trashPage') 
     const { data } = await axios.get(process.env.baseUrl + '/api/trashPage');  //
     commit('setTrashPages', data)            //line 15
     console.log('data in GET_TRASH_PAGES... ' + JSON.stringify(data))
@@ -100,7 +100,6 @@ export const actions = {
     console.log('ssaksaksaksaksaksakskasnaskansaskasnkasnksnka',menuName)
     const {result} = await axios.delete(process.env.baseUrl + '/api/trashMenu/' + menuName)
     console.log('Menu deleted...' + result)
-    console.log('dekho is bhai')
     commit('removeTrashedMenu', result)
   },
   

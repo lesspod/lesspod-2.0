@@ -14,6 +14,7 @@ export default {
       return this.$store.state.pages.pages
     },
     myPosts(){
+      if(this.$store.state.authUser.token)
       return this.$store.state.posts.myPosts
     },
     blogs(){
