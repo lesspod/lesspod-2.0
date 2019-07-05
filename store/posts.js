@@ -65,7 +65,7 @@ export const mutations = {
 export const actions = {
   async ADD_POST ({ commit }, post) {
     console.log('ADD_POST...')
-    var result = await axios.post(process.env.baseUrl + '/api/post', post)
+    var result = await axios.post('/api/post', post)
     console.log('ADD_POST result: ' + JSON.stringify(result))
     if(result.data == "sucessfully created")
       commit('add', post)
@@ -74,6 +74,7 @@ export const actions = {
   },
   async GET_MY_POSTS ({ commit }, authUser) {
     // process.env.baseUrl
+    authUser ={userId : 'hjhjhjhjj'}
     console.log('getting posts from: ' + process.env.baseUrl + '/api/post/myPosts/' + authUser.userId)
     const  {data}  = await axios.get(process.env.baseUrl + '/api/post/myPosts/' + authUser.userId)
     commit('setMyPosts', data)
@@ -106,7 +107,7 @@ export const actions = {
     commit('update', post);
   },
   async DELETE_POST({ commit }, post) {
-    const { result } = await axios.delete(process.env.baseUrl + '/api/post/' + post._id)
+    const { result } = await axios.delete('/api/post/' + post._id)
     console.log('post deleted...' + result)
     commit('remove', post)
     commit('removeBlog', post)

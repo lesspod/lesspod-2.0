@@ -51,15 +51,15 @@ router.put("/:id", authMiddleware,async (req, res) => {
   }
 });
 
-router.delete("/:id", authMiddleware,async (req, res) => {
+router.delete("/:id", async (req, res) => {
   try {
     let { id } = req.params;
     let Page = new PageModel();
     let page1 = await Page.getById(id);
 
-    if(page1.createdBy != req.user.userId){           //authorising the creator
-      throw new Error('unauthorised deletion!!!!');
-    }
+    // if(page1.createdBy != req.user.userId){           //authorising the creator
+    //   throw new Error('unauthorised deletion!!!!');
+    // }
     
     let result =await page1.delete(page1._id);
     addTrashedPage(result);

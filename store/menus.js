@@ -33,7 +33,8 @@ export const mutations = {
     var menuItem = state.menuItems.filter(menu1 => {
       return menu1.menuName == menuName;
     })
-    const { result } = axios.delete(process.env.baseUrl + '/api/menu/' + menuItem[0]._id)
+    console.log(menuItem[0]._id)
+    const { result } = axios.delete('/api/menu/' + menuItem[0]._id)
     console.log('menu deleted...' + result)
     state.menuItems.splice(state.menuItems.indexOf(menuItem[0], 1))
     this.$toast.success('Menu removed successfully.', { duration: 2000 })
@@ -43,7 +44,7 @@ export const mutations = {
 export const actions = {
   async ADD_MENU ({ commit }, menu) {
     console.log('ADD_MENU...')
-    var result = await axios.post(process.env.baseUrl + '/api/menu', menu)
+    var result = await axios.post( '/api/menu', menu)
     console.log('ADD_MENU result: ' + JSON.stringify(result))
     commit('add', menu)
   },
@@ -61,8 +62,8 @@ export const actions = {
     console.log('data in GET_MENU... ' + JSON.stringify(data))
   },
   async DELETE_MENU({ commit }, menuName) {
-    const { result } = await axios.delete(process.env.baseUrl + '/api/menu/' + menuName)
-    console.log('menu deleted...' + result)
+    // const { result } = await axios.delete( '/api/menu/' + menuName)
+    // console.log('menu deleted...' + result)
     // commit('remove', page)
     commit('remove', menuName)
   }
