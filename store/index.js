@@ -93,12 +93,12 @@ export const actions = {
     await Promise.all([
       dispatch('menus/GET_MENUS'),
       // dispatch('posts/GET_MY_POSTS'),
-      dispatch('pages/GET_BLOGS'),
+      dispatch('posts/GET_BLOGS'),
       dispatch('trash/GET_TRASH_POSTS'),
       dispatch('trash/GET_TRASH_PAGES'),
       dispatch('trash/GET_TRASH_MENUS')
     ])
-    if (req.session && req.session.authUser) {
+    if (req && req.session && req.session.authUser) {
       commit('SET_USER', req.session.authUser)
     }
 

@@ -55,6 +55,8 @@ async function start() {
 
   const routes = require("./routes");
 
+app.use(cors());
+
   app.use(bodyParser.json())
 
   app.use((req, res, next) => {
@@ -63,6 +65,8 @@ async function start() {
   });
 
   app.use('/api',routes);
+
+
 
   
 
