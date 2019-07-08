@@ -5,6 +5,17 @@ provider:
   runtime: nodejs8.10
   stage: ${opt:stage, 'dev'}
   region: ${opt:region, 'us-east-1'} # 2. Edit AWS region name
+  iamRoleStatements:
+    - Effect: 'Allow'
+      Action:
+        - 'lambda:InvokeFunction'
+      Resource:
+      - Fn::Join:
+        - ':'
+        - - arn:aws:lambda
+          - Ref: AWS::Region
+          - Ref: AWS::AccountId
+          - function:${self:service}-${opt:stage, self:provider.stage}-*
   environment:
     NODE_ENV: production
     BUCKET_NAMESPACE: lp2mumabcdxyz23  # 3. Specify a new AWS S3 bucket namespace for bundled assets and static assets (should be unique)
@@ -24,11 +35,18 @@ custom:
     - bucketName: ${self:provider.environment.STATIC_BUCKET_NAME}
       localDir: static
   customDomain:
-    domainName: 'sampark.tech'
+    domainName: 'lesspod.org'
     basePath: ''
-    certificateName: 'sampark.tech'
+    certificateName: 'lesspod.org'
     stage: 'dev'
     createRoute53Record: true
+  warmup:
+    folderName: '_warmup' # Name of the folder created for the generated warmup 
+    cleanFolder: false
+    memorySize: 256
+    name: 'make-them-pop'
+    timeout: 20
+    prewarm: true
 
 package:
   exclude:
@@ -41,6 +59,7 @@ functions:
     handler: handler.renderNUXT
     memorySize: 512
     timeout: 30
+    warmup: true
     events:
       - http:
           path: /
@@ -115,3 +134,4 @@ plugins:
   - serverless-s3-sync
   - serverless-offline
   - serverless-domain-manager
+  - serverless-plugin-warmup

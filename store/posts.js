@@ -74,7 +74,6 @@ export const actions = {
   },
   async GET_MY_POSTS ({ commit }, authUser) {
     // process.env.baseUrl
-    authUser ={userId : 'hjhjhjhjj'}
     console.log('getting posts from: ' + process.env.baseUrl + '/api/post/myPosts/' + authUser.userId)
     const  {data}  = await axios.get(process.env.baseUrl + '/api/post/myPosts/' + authUser.userId)
     commit('setMyPosts', data)
