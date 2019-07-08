@@ -2,12 +2,23 @@
 import test from 'ava'
 const { Nuxt, Builder } = require("nuxt");
 import { resolve } from 'path'
+
 const Cookie = require('js-cookie') 
+
+const app = require('../server/app')
 
 // We keep a reference to Nuxt so we can close
 // the server at the end of the test
 
 let nuxt = null
+
+const user = {
+  token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiO…I1N30.Vj_uo2BzEHjSLVxuOz3uO3ipdqaYBYo862Gy3FsdJAY", 
+  username: "test@gmail.com", 
+  userId: "5d136460c8ad101e52ca78b5", 
+  fullname: "Test3"
+}
+
 
 // Init Nuxt.js and start listening on localhost:4000
 test.before('Init Nuxt.js', async t => {
@@ -18,18 +29,14 @@ test.before('Init Nuxt.js', async t => {
   config.dev = false // production build
   config.mode = 'universal' // Isomorphic application
   nuxt = new Nuxt(config)
+  Cookie.set('auth', user)
+  app.use(nuxt.render);
   await new Builder(nuxt).build()
   nuxt.listen(4000, 'localhost')
 })
 
 
 test('Route / exits and render HTML', async t => {
-    // const user = {
-    //     token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiO…I1N30.Vj_uo2BzEHjSLVxuOz3uO3ipdqaYBYo862Gy3FsdJAY", 
-    //     username: "test@gmail.com", 
-    //     userId: "5d136460c8ad101e52ca78b5", 
-    //     fullname: "Test3"
-    // }
     
   
     // let req = {
@@ -41,6 +48,8 @@ test('Route / exits and render HTML', async t => {
     
     
     const { html } = await nuxt.renderRoute('/', context)
+    console.log(html)
+    
     t.true(html.includes('<button type="submit" class="btn btn-primary">Login</button>'))
   
   })

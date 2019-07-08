@@ -116,7 +116,8 @@ module.exports = {
     ["@nuxtjs/pwa"],
     ['@nuxtjs/auth'],
     ['@nuxtjs/toast'],
-    ['nuxt-babel']
+    ['nuxt-babel'],
+    ['cookie-universal-nuxt']
   ],
   toast: {
     position: 'top-center'
