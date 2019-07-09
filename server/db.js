@@ -5,9 +5,9 @@ let uri = process.env.DB_URI || 'mongodb://localhost:27017/';
 
 let dadabaseName = 'lptest';
 
-if(process.env.NODE_ENV == 'test'){
-  dadabaseName = 'lessPodTest'
-}
+// if(process.env.NODE_ENV == 'test'){
+//   dadabaseName = 'lessPodTest'
+// }
 module.exports = () => {
   // mongoose.connect(uri)
 

@@ -98,10 +98,10 @@ export const actions = {
       dispatch('trash/GET_TRASH_PAGES'),
       dispatch('trash/GET_TRASH_MENUS')
     ])
-    if (req && req.session && req.session.authUser) {
-      commit('SET_USER', req.session.authUser)
+      if (req && req.session && req.session.authUser) {
+        commit('SET_USER', req.session.authUser)
     }
-
+    
     let auth = null
     if (req && req.headers.cookie) {
       const parsed = cookieparser.parse(req.headers.cookie)
@@ -113,5 +113,19 @@ export const actions = {
       }
     }
     commit('SET_USER', auth)
+    
+    if(process.env.NODE_ENV === 'test'){
+      const user = {
+        token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiO…I1N30.Vj_uo2BzEHjSLVxuOz3uO3ipdqaYBYo862Gy3FsdJAY", 
+        username: "test@gmail.com", 
+        userId: "5d136460c8ad101e52ca78b5", 
+        fullname: "Test3"
+      }
+      
+      commit('SET_USER', user)
+    }
+    
   }
+    
+  
 }
