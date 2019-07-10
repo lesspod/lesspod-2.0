@@ -4,7 +4,6 @@ import test from 'ava'
 const { Nuxt, Builder } = require("nuxt");
 import { resolve } from 'path'
 
-const app = require('../server/app')
 
 // We keep a reference to Nuxt so we can close
 // the server at the end of the test
@@ -22,7 +21,6 @@ test.before('Init Nuxt.js', async t => {
   config.env.NODE_ENV = 'test'
   nuxt = new Nuxt(config)
 
-  app.use(nuxt.render);
   await new Builder(nuxt).build()
 
   nuxt.listen(4000, 'localhost')
