@@ -79,8 +79,7 @@ app.use("/static", (req, res) =>{
 });
 app.use(nuxt.render);
 
-exports.renderNUXT = serverless(app);
+exports.renderNUXT =serverless(app);
 
-const server = require('./server/index')
 
-exports.renderAPI = serverless(server); 
+

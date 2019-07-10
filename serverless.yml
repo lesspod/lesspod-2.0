@@ -70,7 +70,7 @@ functions:
           method: ANY
           cors: true
   API-renderer:
-    handler: handler.renderAPI
+    handler: handlerAPI.renderAPI
     memorySize: 512
     timeout: 30
     events:
