@@ -18,9 +18,14 @@ export default {
       return this.$store.state.posts.myPosts
     },
     blogs(){
-      
         return this.$store.state.posts.blogs
-      
+    },
+    currentUser(){
+      if(isLoggedIn()){
+        return this.$store.state.authUser;
+      } else {
+        return null;
+      }
     }
   },
   methods: {
@@ -28,10 +33,13 @@ export default {
       console.log('A common method')
     },
     isLoggedIn:  function(){
-      
-        if(this.$store.state.authUser && this.$store.state.authUser.username) {
+
+      console.log('in content Processing isLoggedin() method');
+        if(this.$store.state.authUser && this.$store.state.authUser.token) {
+          console.log('logged in')
           return true;
         }else {
+          console.log('log out')
           return false;
         }
 

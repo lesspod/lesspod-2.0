@@ -20,7 +20,6 @@ app.set("port", port);
 let config = require("../nuxt.config.js");
 config.dev = !(process.env.NODE_ENV === "production");
 
-config.dev = false;
 async function start() {
   // Init Nuxt.js
   const nuxt = new Nuxt(config);

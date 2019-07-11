@@ -10,14 +10,14 @@ const authMiddleware = async (req, res, next) => {
     // const details = decodeToken(req.headers.authorization);
 
 
-    console.log('heyaaaaaa!!!!!!!!!!!!!!@@@@@@@@@@@@@@@@@@@@@@')
+    // console.log('heyaaaaaa!!!!!!!!!!!!!!@@@@@@@@@@@@@@@@@@@@@@')
 
-    if(req.body.auth.token){
+    if(req && req.body && req.body.auth && req.body.auth.token){
       auth = req.body.auth;
     } else{
         if(!req.headers.cookie){
-          console.log('oopar wala')
-          console.log('please login')
+          // console.log('oopar wala')
+          // console.log('please login')
           return res.send("ooparYou must login first!!!");
         }
       
@@ -25,7 +25,7 @@ const authMiddleware = async (req, res, next) => {
       console.log(parsed);
 
       if(!parsed.auth){
-        console.log('please login')
+        // console.log('please login')
         return res.send("beechYou must login first!!!");
       }
       
@@ -37,13 +37,13 @@ const authMiddleware = async (req, res, next) => {
     console.log(auth);
 
     if(!auth.token){
-      console.log('please login')
+      // console.log('please login')
       return res.send("neechYou must login first!!!");
     }
     
     const details = decodeToken(auth.token);
 
-    console.log(details)
+    // console.log(details)
 
     if(details.userId != auth.userId){        //cheking if the token is tempered
       return res.send("bruh, send me the right token?");
@@ -55,7 +55,7 @@ const authMiddleware = async (req, res, next) => {
       //   fullname : user.fullname,
       //   id : user._id,
       //   token : token
-    console.log(details)
+    // console.log(details)
 
     next();
   } catch (e) {

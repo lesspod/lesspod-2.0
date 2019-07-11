@@ -74,29 +74,29 @@ export const actions = {
   },
   async GET_MY_POSTS ({ commit }, authUser) {
     // process.env.baseUrl
-    console.log('getting posts from: ' + process.env.baseUrl + '/api/post/myPosts/' + authUser.userId)
+    // console.log('getting posts from: ' + process.env.baseUrl + '/api/post/myPosts/' + authUser.userId)
     const  {data}  = await axios.get(process.env.baseUrl + '/api/post/myPosts/' + authUser.userId)
     commit('setMyPosts', data)
-    console.log('data in GET_MY_POSTS... ' + JSON.stringify(data))
+    // console.log('data in GET_MY_POSTS... ' + JSON.stringify(data))
   },
 
   async GET_BLOGS({ commit }) {
-    console.log('getting posts from: ' + process.env.baseUrl + '/api/post/published')
+    // console.log('getting posts from: ' + process.env.baseUrl + '/api/post/published')
     const  {data}  = await axios.get(process.env.baseUrl + '/api/post/published')
     commit('setBlogs', data)
-    console.log('data in GET_BLOGS... ' + JSON.stringify(data))
+    // console.log('data in GET_BLOGS... ' + JSON.stringify(data))
   },
 
   async GET_POST ({ commit }, post_id) {
     // process.env.baseUrl
-    console.log('POST_URL: ' + process.env.baseUrl + '/api/post/' + post_id)
-    const { data } = await axios.get(process.env.baseUrl + '/api/post/' + post_id)
+    // console.log('POST_URL: ' + process.env.baseUrl + '/api/post/' + post_id)
+    const { data } = await axios.get('/api/post/' + post_id)
     commit('setPost', data)
-    console.log('data in GET_POST... ' + JSON.stringify(data))
+    // console.log('data in GET_POST... ' + JSON.stringify(data))
   },
   async UPDATE_POST ({ commit }, post) {
     console.log('UPDATE_POST...')
-    var result = await axios.put(process.env.baseUrl +'/api/post/' + post._id, post)
+    var result = await axios.put('/api/post/' + post._id, post)
     console.log('UPDATE_POST result: ' + JSON.stringify(result))
     if(post.isPublished == true){
       commit('addBlog', post);

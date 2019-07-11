@@ -53,10 +53,6 @@ router.put("/:id", authMiddleware,async (req, res) => {
     let Post = new PostModel();
     let post1 = await Post.getById(id);
 
-    // if(post1.createdBy != req.session.authUser.id){             //check for authenticity before updation
-    //   throw new Error('unauthorised updation');
-    // }
-
     if(post1.createdBy != req.user.userId){             //check for authenticity before updation
       throw new Error('unauthorised updation');
     }

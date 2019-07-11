@@ -72,13 +72,13 @@ export const actions = {
   },
   async GET_PAGE({ commit }, page_id) {
     // process.env.baseUrl
-    const { data } = await axios.get(process.env.baseUrl + '/api/page/' + post_id)
+    const { data } = await axios.get('/api/page/' + post_id)
     commit('setPage', data)
     console.log('data in GET_PAGE... ' + JSON.stringify(data))
   },
   async UPDATE_PAGE ({ commit }, page) {
     console.log('UPDATE_PAGE...')
-    var result = await axios.put(process.env.baseUrl + '/api/page/' + page._id, page)
+    var result = await axios.put('/api/page/' + page._id, page)
     // console.log('UPDATE_PAGE result: ' + JSON.stringify(result))
     commit('update', page)
   },
