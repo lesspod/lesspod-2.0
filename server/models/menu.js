@@ -34,7 +34,10 @@ class Menu {
   }
 
   getById(_id) {
-    return this.Menu.findOne({ _id }, formatMenu);
+    console.log('!@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
+    // console.log(this.Menu.findById(_id))
+    console.log(_id)
+    return this.Menu.findById(_id);
   }
 
   getByMenuName(menuName){
@@ -42,6 +45,8 @@ class Menu {
   }
 
   delete(_id) {
+    console.log('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
+    // console.log(this.Menu.findById(_id))
     return this.Menu.remove({ _id });
   }
 

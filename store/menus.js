@@ -33,8 +33,9 @@ export const mutations = {
     var menuItem = state.menuItems.filter(menu1 => {
       return menu1.menuName == menuName;
     })
-    console.log(menuItem[0]._id)
-    const { result } = axios.delete('/api/menu/' + menuItem[0]._id)
+    console.log(menuItem)
+    console.log(menuItem[0])
+    const { result } = axios.delete('/api/menu/' + menuName)
     console.log('menu deleted...' + result)
     state.menuItems.splice(state.menuItems.indexOf(menuItem[0], 1))
     this.$toast.success('Menu removed successfully.', { duration: 2000 })

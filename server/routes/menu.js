@@ -28,16 +28,16 @@ router.get("/:id", async (req, res) => {
   }
 });
 
-router.delete("/:menuName", async (req, res) => {
+router.delete("/:name", authMiddleware,async (req, res) => {
   try {
-    let { menuName } = req.params;
+    let { name } = req.params;
     let Menu = new MenuModel();
-    let menu1 = await Menu.getByMenuName(menuName);
+    console.log(name)
+    let menu1 = await Menu.getByMenuName(name);
 
-    // if(menu1.createdBy != req.user.userId){           //check for authenticity
-    //   throw new Error('unauthorised deletion!!!!!!');       
-    // }
-  
+    if(menu1.createdBy != req.user.userId){           //check for authenticity
+      throw new Error('unauthorised deletion!!!!!!');       
+    }
     let result = menu1.delete(menu1._id);
     addTrashedMenu(menu1)
     res.send(result)    
