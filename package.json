@@ -90,7 +90,7 @@
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
     "html-script-hook": "^1.0.0",
     "jsdom": "^15.0.0",
-    "node-sass": "^4.11.0",
+    "node-sass": "^4.13.1",
     "nodemon": "^1.18.11",
     "prettier": "^1.16.4",
     "sass-loader": "^7.1.0",
