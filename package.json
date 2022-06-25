@@ -89,7 +89,7 @@
     "eslint-plugin-vue": "^5.2.2",
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
     "html-script-hook": "^1.0.0",
-    "jsdom": "^15.0.0",
+    "jsdom": "^16.5.0",
     "node-sass": "^4.11.0",
     "nodemon": "^1.18.11",
     "prettier": "^1.16.4",
